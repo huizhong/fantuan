@@ -12,6 +12,8 @@
     <name>fantuan</name>
 
     <properties>
+        <app.build.finalName>${project.artifactId}-${project.version}</app.build.finalName>
+
         <spring.version>4.1.1.RELEASE</spring.version>
         <spring.boot.version>1.2.1.RELEASE</spring.boot.version>
 
@@ -52,6 +54,8 @@
     </dependencies>
 
     <build>
+        <!-- 可以用命令行方式修改包名 -->
+        <finalName>${app.build.finalName}</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
