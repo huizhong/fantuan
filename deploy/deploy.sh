@@ -23,7 +23,7 @@ TMP_PATH=/tmp
 JAVA=/usr/bin/java
 #MVN=/opt/apache-maven/bin/mvn
 MVN=mvn
-SUPVERVISORCTL=sudo supervisorctl
+SUPERVISORCTL=supervisorctl
 
 ROOT_DIR=/opt/fantuan
 APPS_ROOT=${ROOT_DIR}/apps
@@ -45,7 +45,7 @@ APP_DIR=${APPS_ROOT}/${APP}
 
 BASE_NAME=$(basename ${DEPLOY_SCRIPT})
 DEPLOY_DIR=$(dirname ${DEPLOY_SCRIPT})
-JAR=${APP}.jar
+JAR=${APP_NAME}.jar
 
 NEW_DEPLOY_SCIRPT=${APP_DIR}/${BASE_NAME}
 NEW_CONF=${APP_DIR}/supervisor.conf
@@ -87,7 +87,7 @@ function __install(){
 function __start(){
     echo 'beigin __start()!'
     echo 'update supervisor process'
-    ${SUPVERVISORCTL} update
+    ${SUPERVISORCTL} update
     k=1
     for k in $(seq 1 20)
     do
@@ -120,7 +120,7 @@ function __start(){
 function __stop(){
     echo 'beigin __stop()!'
     echo "stop supervisor process: ${APP}"
-    ${SUPVERVISORCTL} stop ${APP}
+    ${SUPERVISORCTL} stop ${APP}
     PID=`ps -ef | grep " -Dapp.name=${APP} " | grep -v grep | awk '{print $2}'`
     if [ "${PID}" != "" ]; then
     	kill ${PID}
@@ -202,7 +202,6 @@ function __run(){
 function __deploy(){
     PWD = $(pwd)
     cd ${DEPLOY_DIR}/..
-    ${MVN}  -Dspring.profiles.active=${APP_PROFILE}  -Dapp.build.finalName=${APP} clean package
     ${CP} target/${JAR} deploy/
     __stop
     __install
