@@ -78,6 +78,7 @@ function __install(){
     echo "make APP_DIR at ${APP_DIR}"
     mkdir -p ${APP_DIR}
     ${CP} -r ${DEPLOY_DIR}/* ${APP_DIR}/
+    ${CP} ${DEPLOY_DIR}/../target/${JAR} ${NEW_JAR}
     chmod +x ${NEW_DEPLOY_SCIRPT}
 
     echo "[program:${APP}]" > ${NEW_CONF}
@@ -197,13 +198,9 @@ function __run(){
 }
 
 function __deploy(){
-    WORK_DIR="$(pwd)"
-    cd ${DEPLOY_DIR}/..
-    ${CP} target/${JAR} deploy/
     __stop
     __install
     __start
-    cd ${WORK_DIR}
 }
 
 function __dispatcher(){
