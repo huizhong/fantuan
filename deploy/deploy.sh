@@ -200,12 +200,13 @@ function __run(){
 }
 
 function __deploy(){
-    PWD = $(pwd)
+    WORK_DIR="$(pwd)"
     cd ${DEPLOY_DIR}/..
     ${CP} target/${JAR} deploy/
     __stop
     __install
     __start
+    cd ${WORK_DIR}
 }
 
 function __dispatcher(){
