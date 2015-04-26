@@ -148,9 +148,6 @@ function __stop(){
 
 function __run(){
     EXEC="exec"
-    if [ "$UID" = "0" ]; then
-        EXEC="exec setuidgid fantuan"
-    fi
 
     cd ${APP_DIR}
 
