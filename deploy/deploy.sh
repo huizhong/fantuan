@@ -9,11 +9,11 @@ APP_NAME="fantuan"
 APP_PROFILES="test production"
 
 function __help(){
-    echo "usage: $0 <commond> <profile> <port> <print:ture|false>"
+    echo "usage: $0 <commond> <profile> <port> <print:ture|false> <buildTag>"
     exit
 }
 
-if [[ $# < 4 ]]; then
+if [[ $# < 5 ]]; then
     __help
 fi
 
@@ -37,6 +37,8 @@ APP_PROFILE=$2
 APP_PORT=$3
 
 PRINT_STDOUT=$4
+
+BUILD_TAG=$5
 
 APP=${APP_NAME}-${APP_PROFILE}-${APP_PORT}
 
@@ -82,7 +84,7 @@ function __install(){
     chmod +x ${NEW_DEPLOY_SCIRPT}
 
     echo "[program:${APP}]" > ${NEW_CONF}
-    echo "command=bash $NEW_DEPLOY_SCIRPT run ${APP_PROFILE} ${APP_PORT} ${PRINT_STDOUT}" >> ${NEW_CONF}
+    echo "command=bash $NEW_DEPLOY_SCIRPT run ${APP_PROFILE} ${APP_PORT} ${PRINT_STDOUT} ${BUILD_TAG}" >> ${NEW_CONF}
 }
 
 function __start(){
@@ -185,7 +187,7 @@ function __run(){
         EXEC_JAVA=${EXEC_JAVA}" $JVM_DEBUG,address=$JVM_DEBUG_PORT"
     fi
 
-    EXEC_JAVA=${EXEC_JAVA}" -Dapp.name=${APP} -Djetty.logs=${LOG_DIR}"
+    EXEC_JAVA=${EXEC_JAVA}" -Dapp.name=${APP} -Dapp.description=${BUILD_TAG} -Djetty.logs=${LOG_DIR}"
     EXEC_JAVA=${EXEC_JAVA}" $JAVA_ARGS "
     EXEC_JAVA=${EXEC_JAVA}" -Dserver.port=${APP_PORT} -Dspring.profiles.active=${APP_PROFILE} -jar ${NEW_JAR}"
 
