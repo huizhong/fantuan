@@ -17,11 +17,9 @@ if [[ $# < 5 ]]; then
     __help
 fi
 
-CP=/bin/cp
-RM=/bin/rm
-TMP_PATH=/tmp
-JAVA=/usr/bin/java
-#MVN=/opt/apache-maven/bin/mvn
+CP=cp
+RM=rm
+JAVA=java
 MVN=mvn
 SUPERVISORCTL=supervisorctl
 
