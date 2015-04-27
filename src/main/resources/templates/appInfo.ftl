@@ -9,6 +9,5 @@
 <p>description: ${data.appDescription}</p>
 
 <p>profile: ${data.appProfileName}</p>
-中文
 </body>
 </html>
