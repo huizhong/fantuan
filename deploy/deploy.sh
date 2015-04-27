@@ -89,6 +89,8 @@ function __start(){
     echo 'beigin __start()!'
     echo 'update supervisor process'
     ${SUPERVISORCTL} update
+    ${SUPERVISORCTL} start ${APP}
+
     k=1
     for k in $(seq 1 20)
     do
