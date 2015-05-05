@@ -1,0 +1,46 @@
+Index: src/main/webapp/swagger-ui/index.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/webapp/swagger-ui/index.html	(date 1421376875000)
++++ src/main/webapp/swagger-ui/index.html	(revision )
+@@ -29,9 +29,11 @@
+         url = url[1];
+       } else {
+         var hostName = location.protocol + '//' + location.host;
++//        url = hostName + "/api-docs";
++        url = hostName + "/admin/firework/api-docs";
+         var loc = window.location.pathname;
+         var dir = loc.substring(0, loc.lastIndexOf('/'));
+-        url = hostName + "/api-docs";
++        $("#logo").attr("href", hostName + "/admin/firework/swagger-ui/index.html");
+       }
+       window.swaggerUi = new SwaggerUi({
+         url: url,
+@@ -55,8 +57,8 @@
+         onFailure: function(data) {
+           log("Unable to Load SwaggerUI");
+         },
+-        docExpansion: "none",
+-        sorter : "alpha"
++        docExpansion: "list"
++//        ,sorter : "alpha"
+       });
+ 
+       function addApiKeyAuthorization() {
+@@ -73,11 +75,11 @@
+       });
+ 
+       // if you have an apiKey you would like to pre-populate on the page for demonstration purposes...
+-      /*
+-        var apiKey = "myApiKeyXXXX123456789";
++      /* */
++        var apiKey = '{"data":{"name":"测试账号","id":88888,"login":"testId"}}';
+         $('#input_apiKey').val(apiKey);
+         addApiKeyAuthorization();
+-      */
++      /* */
+ 
+       window.swaggerUi.load();
+   });

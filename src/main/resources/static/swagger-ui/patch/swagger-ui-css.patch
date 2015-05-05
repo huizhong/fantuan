@@ -1,0 +1,21 @@
+Index: src/main/webapp/swagger-ui/css/screen.css
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/webapp/swagger-ui/css/screen.css	(date 1421376875000)
++++ src/main/webapp/swagger-ui/css/screen.css	(revision )
+@@ -1222,3 +1222,12 @@
+   text-align: center;
+   padding-top: 10px;
+ }
++
++table.fullwidth + div + h4,
++table.fullwidth + div + h4 + table.fullwidth,
++div + div + h4 + table.fullwidth,
++div.response-content-type,
++#input_baseUrl
++{
++  display: none;
++}
+\ No newline at end of file
