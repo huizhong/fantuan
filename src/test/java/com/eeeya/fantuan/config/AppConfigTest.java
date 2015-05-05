@@ -1,6 +1,6 @@
 package com.eeeya.fantuan.config;
 
-import com.eeeya.fantuan.BaseTest;
+import com.eeeya.fantuan.BaseControllerTest;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -10,7 +10,7 @@ import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
 @Component
-public class AppConfigTest extends BaseTest {
+public class AppConfigTest extends BaseControllerTest {
 
     @Autowired
     AppConfig appConfig;

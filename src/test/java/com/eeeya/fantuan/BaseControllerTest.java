@@ -19,7 +19,6 @@ abstract public class BaseControllerTest extends BaseTest {
 
     protected MockMvc mockMvc;
 
-    @SuppressWarnings("SpringJavaAutowiringInspection")
     @Autowired
     protected WebApplicationContext wac;
 

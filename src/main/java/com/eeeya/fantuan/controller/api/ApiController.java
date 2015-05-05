@@ -1,6 +1,7 @@
 package com.eeeya.fantuan.controller.api;
 
 import com.eeeya.fantuan.config.AppConfig;
+import com.eeeya.fantuan.config.FantuanConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -11,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @since 4/16/15
  */
 @RestController
-@RequestMapping("/api")
+@RequestMapping(FantuanConfig.URL_PREFIX + "/api")
 public class ApiController {
 
     @Autowired
