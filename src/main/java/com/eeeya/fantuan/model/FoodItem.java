@@ -1,5 +1,7 @@
 package com.eeeya.fantuan.model;
 
+import com.eeeya.fantuan.config.FantuanConfig;
+
 /**
  * @author zhonghui
  * @since 5/6/15.
@@ -13,6 +15,14 @@ public class FoodItem {
         this.foodId = foodId;
         this.foodName = foodName;
         this.foodPrice = foodPrice;
+    }
+
+    public FoodItem() {
+        this(
+                FantuanConfig.DEFAULT_FOOD_ID,
+                FantuanConfig.DEFAULT_FOOD_NAME,
+                FantuanConfig.DEFAULT_FOOD_PRICE
+        );
     }
 
     public Long getFoodId() {

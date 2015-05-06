@@ -2,6 +2,8 @@ package com.eeeya.fantuan.model;
 
 import com.eeeya.fantuan.api.ListDataModel;
 import com.eeeya.fantuan.config.FantuanConfig;
+import com.wordnik.swagger.annotations.ApiModel;
+import com.wordnik.swagger.annotations.ApiModelProperty;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,14 +12,31 @@ import java.util.List;
  * @author zhonghui
  * @since 5/6/15.
  */
+@ApiModel("餐厅信息")
 public class RestaurantInfo {
+
+    @ApiModelProperty("餐厅唯一ID")
     Long restaurantId;
+
+    @ApiModelProperty("短名称，比如'金百万'")
     String shortName;
+
+    @ApiModelProperty("全名称，比如'金百万（望京店）'")
     String fullName;
+
+    @ApiModelProperty("最大饭桌数")
     Integer maxTable;
+
+    @ApiModelProperty("餐厅电话")
     String restaurantPhone;
+
+    @ApiModelProperty("餐厅地址")
     String restaurantLocation;
+
+    @ApiModelProperty("餐厅经纬度")
     CoordinatePosition coordinatePosition;
+
+    @ApiModelProperty("菜品列表")
     List<FoodItem> foodMenu;
 
     public RestaurantInfo() {

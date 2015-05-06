@@ -24,15 +24,12 @@ import java.util.List;
 @RequestMapping(FantuanConfig.URL_PREFIX + "/api/table")
 public class TableController {
 
-    @RequestMapping(value = "{tableId}/users/join", method = RequestMethod.GET)
-    ListResultModel<UserInfo> getUserListJoin(
+    @ApiOperation("查看餐桌信息")
+    @RequestMapping(value = "{tableId}/info.json", method = RequestMethod.GET)
+    ResultModel<TableInfo> getTableInfo(
             @PathVariable Integer tableId
     ){
-        List<UserInfo> userInfoList = new ArrayList<UserInfo>();
-        for(int i=0; i<3; i++){
-            userInfoList.add(new UserInfo(tableId * 2 + i));
-        }
-        return new ListResultModel<UserInfo>(userInfoList);
+        return new ResultModel<TableInfo>(new TableInfo());
     }
 
     @ApiOperation("查看下一桌信息")
@@ -47,14 +44,6 @@ public class TableController {
     @ApiOperation("查看下一餐馆信息")
     @RequestMapping(value = "{tableId}/next/restaurant/info.json", method = RequestMethod.GET)
     ResultModel<TableInfo> getNextRestaurantTableInfo(
-            @PathVariable Integer tableId
-    ){
-        return new ResultModel<TableInfo>(new TableInfo());
-    }
-
-    @ApiOperation("查看餐桌信息")
-    @RequestMapping(value = "{tableId}/info.json", method = RequestMethod.GET)
-    ResultModel<TableInfo> getTableInfo(
             @PathVariable Integer tableId
     ){
         return new ResultModel<TableInfo>(new TableInfo());

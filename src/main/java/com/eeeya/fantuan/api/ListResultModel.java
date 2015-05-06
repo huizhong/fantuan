@@ -1,5 +1,7 @@
 package com.eeeya.fantuan.api;
 
+import com.wordnik.swagger.annotations.ApiModel;
+
 import java.util.List;
 
 /**
@@ -7,6 +9,7 @@ import java.util.List;
  * @since 1/17/15.
  */
 @SuppressWarnings("UnusedDeclaration")
+@ApiModel("通用列表返回结果")
 public class ListResultModel<T> extends ResultModel<ListDataModel<T>> {
     public ListResultModel() {
         this((List<T>) null);

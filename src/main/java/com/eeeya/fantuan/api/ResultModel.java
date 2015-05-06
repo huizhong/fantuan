@@ -2,6 +2,7 @@ package com.eeeya.fantuan.api;
 
 import com.eeeya.fantuan.config.FantuanConfig;
 import com.eeeya.fantuan.utils.DateUtils;
+import com.wordnik.swagger.annotations.ApiModel;
 import com.wordnik.swagger.annotations.ApiModelProperty;
 
 /**
@@ -9,6 +10,7 @@ import com.wordnik.swagger.annotations.ApiModelProperty;
  * @since 1/19/15.
  */
 @SuppressWarnings("UnusedDeclaration")
+@ApiModel("通用返回结果")
 public class ResultModel<T> {
 
     @ApiModelProperty(value = "请求状态, 0表示正常", required = true)

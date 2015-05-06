@@ -1,5 +1,6 @@
 package com.eeeya.fantuan.api;
 
+import com.wordnik.swagger.annotations.ApiModel;
 import com.wordnik.swagger.annotations.ApiModelProperty;
 
 import java.util.Collections;
@@ -10,6 +11,7 @@ import java.util.List;
  * @since 1/17/15.
  */
 @SuppressWarnings("UnusedDeclaration")
+@ApiModel(description = "能用列表返回结果数据")
 public class ListDataModel<T> {
 
     public final static int PAGE = 1;

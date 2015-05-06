@@ -82,6 +82,7 @@ public class MySwaggerConfig {
         return new ApiInfo(
                 "API for YueFan",
                 "约团前后端接口。<br/>" +
+                "时间都是timestamp<br/>" +
                         "未特别说明，都返回Json",
                 "",
                 "",

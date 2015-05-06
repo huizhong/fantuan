@@ -1,7 +1,7 @@
 package com.eeeya.fantuan.model;
 
+import com.eeeya.fantuan.config.FantuanConfig;
 import com.eeeya.fantuan.contants.ImageType;
-import com.eeeya.fantuan.contants.TableIconType;
 import com.wordnik.swagger.annotations.ApiModel;
 import com.wordnik.swagger.annotations.ApiModelProperty;
 
@@ -13,7 +13,7 @@ import com.wordnik.swagger.annotations.ApiModelProperty;
 public class UserInfo {
 
     @ApiModelProperty("用户Id")
-    Integer userId;
+    Long userId;
 
     @ApiModelProperty("用户名")
     String userName;
@@ -21,22 +21,17 @@ public class UserInfo {
     @ApiModelProperty("用于展示在桌面上的圆头像")
     ImageInfo userLogo;
 
-    public UserInfo(int userId) {
-        setUserId(userId);
-        // todo 替换成真实头像
-        ImageInfo imageInfo = new ImageInfo(ImageType.USER_LOGO, "http://t.meituan.com/qrc/s?c=" + userId);
-        // todo 替换成真实姓名
-        setUserName("用户" + userId);
-
-        setUserLogo(imageInfo);
-
+    public UserInfo() {
+        this.userId = FantuanConfig.DEFAULT_USER_ID;
+        this.userName = FantuanConfig.DEFAULT_USER_NAME;
+        this.userLogo = new ImageInfo();
     }
 
-    public Integer getUserId() {
+    public Long getUserId() {
         return userId;
     }
 
-    public void setUserId(Integer userId) {
+    public void setUserId(Long userId) {
         this.userId = userId;
     }
 

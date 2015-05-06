@@ -1,13 +1,20 @@
 package com.eeeya.fantuan.model.table;
 
 import com.eeeya.fantuan.config.FantuanConfig;
+import com.wordnik.swagger.annotations.ApiModel;
+import com.wordnik.swagger.annotations.ApiModelProperty;
 
 /**
  * @author zhonghui
  * @since 5/6/15.
  */
+@ApiModel("价格信息")
 public class PriceInfo {
+
+    @ApiModelProperty("价格数值")
     Integer priceValue;
+
+    @ApiModelProperty("价格单位")
     String priceUnit;
 
     public PriceInfo() {

@@ -2,6 +2,7 @@ package com.eeeya.fantuan.api;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.wordnik.swagger.annotations.ApiModel;
+import com.wordnik.swagger.annotations.ApiModelProperty;
 
 import java.util.Arrays;
 import java.util.List;
@@ -33,7 +34,10 @@ public enum ApiError {
     ;
 
 
+    @ApiModelProperty("错误代码")
     final private int errorCode;
+
+    @ApiModelProperty("错误原因，面向开发人员")
     final private String errorMessage;
 
     ApiError(int errorCode, String errorMessage) {

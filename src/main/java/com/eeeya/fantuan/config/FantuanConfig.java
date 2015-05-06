@@ -2,6 +2,7 @@ package com.eeeya.fantuan.config;
 
 import com.eeeya.fantuan.contants.ImageType;
 import com.eeeya.fantuan.contants.PayType;
+import com.eeeya.fantuan.contants.TableIconType;
 
 /**
  * @author zhonghui
@@ -25,7 +26,7 @@ public class FantuanConfig {
     public static final ImageType DEFAULT_IMAGE_TYPE = ImageType.NORMAL_IMG;
     public static final String DEFAULT_IMG_URL = "http://t.meituan.com/qrc/s?c=0";
 
-    public static final Long DEFAULT_RESTAURANT_ID = 1L;
+    public static final Long DEFAULT_RESTAURANT_ID = 1001L;
     public static final String DEFAULT_RESTAURANT_SHORT_NAME = "百万庄园";
     public static final String DEFAULT_RESTAURANT_FULL_NAME = "百万庄园（知春路一店）";
     public static final Integer DEFAULT_RESTAURANT_MAX_TABLE = 4;
@@ -34,4 +35,15 @@ public class FantuanConfig {
 
     public static final Double DEFAULT_COORDINATE_POSITION_LATITUDE_VALUE = 39.977047526042;
     public static final Double DEFAULT_COORDINATE_POSITION_LONGITUDE_VALUE = 116.33045057509;
+    
+    public static final Long DEFAULT_USER_ID = 101L;
+    public static final String DEFAULT_USER_NAME = "小灰灰";
+    
+    public static final Long DEFAULT_FOOD_ID = 10001L;
+    public static final String DEFAULT_FOOD_NAME = "烤鱼";
+    public static final Integer DEFAULT_FOOD_PRICE = 30;
+    public static final Integer DEFAULT_TABLE_JOIN_NUMBER = 3;
+    public static final String DEFAULT_TABLE_STATUS_TITLE = "四缺一";
+    public static final TableIconType DEFAULT_TABLE_ICON = TableIconType.NOT_FULL;
+    public static final Boolean DEFAULT_TABLE_HAS_NEW_MESSAGE = true;
 }
