@@ -1,6 +1,7 @@
 package com.eeeya.fantuan.api;
 
 import com.eeeya.fantuan.config.FantuanConfig;
+import com.eeeya.fantuan.utils.DateUtils;
 import com.wordnik.swagger.annotations.ApiModelProperty;
 
 /**
@@ -13,20 +14,24 @@ public class ResultModel<T> {
     @ApiModelProperty(value = "请求状态, 0表示正常", required = true)
     private final int status;
 
-    @ApiModelProperty(value = "请求的数据。")
+    @ApiModelProperty(value = "请求的数据")
     private final T data;
 
-    @ApiModelProperty(value = "错误信息。")
+    @ApiModelProperty(value = "错误信息")
     private final String message;
 
-    @ApiModelProperty(value = "其它信息。")
+    @ApiModelProperty(value = "其它信息")
     private final Object ext;
+
+    @ApiModelProperty(value = "服务器时间")
+    private final Long time;
 
     private ResultModel(int status, T data, String message, Object ext) {
         this.ext = ext;
         this.message = message;
         this.data = data;
         this.status = status;
+        this.time = DateUtils.getTimeInNumber();
     }
 
     public ResultModel(T data) {
@@ -51,5 +56,9 @@ public class ResultModel<T> {
 
     public Object getExt() {
         return ext;
+    }
+
+    public Long getTime() {
+        return time;
     }
 }
