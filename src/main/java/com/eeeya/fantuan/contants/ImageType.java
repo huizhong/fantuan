@@ -18,11 +18,11 @@ public enum ImageType {
 
 
     private final Byte value;
-    private final String name;
+    private final String label;
 
-    ImageType(Byte value, String name) {
+    ImageType(Byte value, String label) {
         this.value = value;
-        this.name = name;
+        this.label = label;
     }
 
     public static ImageType load(Byte imageTypeValue) {
@@ -40,15 +40,15 @@ public enum ImageType {
 
     @Override
     public String toString() {
-        return name;
+        return label;
     }
 
     public Byte getValue() {
         return value;
     }
 
-    public String getName() {
-        return name;
+    public String getLabel() {
+        return label;
     }
 
 }

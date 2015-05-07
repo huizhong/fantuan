@@ -1,37 +1,40 @@
 package com.eeeya.fantuan.contants;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
+import com.wordnik.swagger.annotations.ApiModelProperty;
 
 import java.util.Arrays;
 import java.util.List;
 
 /**
  * @author zhonghui
- * @since 5/6/15.
+ * @since 5/7/15.
  */
-@JsonFormat(shape = JsonFormat.Shape.OBJECT)
-public enum PayType {
-    AA((byte) 1, "AA"),
+public enum TableType {
+    SIZE_4((byte) 4, "四人拼桌"),
     ;
 
+
+    @ApiModelProperty("餐桌能坐多少人")
     private final Byte value;
+
+    @ApiModelProperty("餐桌型号名称")
     private final String label;
 
-    PayType(Byte value, String label) {
+    TableType(Byte value, String label) {
         this.value = value;
         this.label = label;
     }
 
-    public static PayType load(Byte payTypeValue) {
-        for (PayType payType : values()) {
-            if (payType.getValue().equals(payTypeValue)) {
-                return payType;
+    public static TableType load(Byte tableTypeValue) {
+        for (TableType tableType : values()) {
+            if (tableType.getValue().equals(tableTypeValue)) {
+                return tableType;
             }
         }
         return null;
     }
 
-    public static List<PayType> getAllTypes() {
+    public static List<TableType> getAllTypes() {
         return Arrays.asList(values());
     }
 

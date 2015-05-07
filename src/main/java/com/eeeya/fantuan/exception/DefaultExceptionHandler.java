@@ -18,6 +18,19 @@ import javax.servlet.http.HttpServletResponse;
 
 @ControllerAdvice
 public class DefaultExceptionHandler {
+    Boolean isUrlReturnJson(String url){
+        if(url == null){
+            return false;
+        }
+        if(url.toLowerCase().endsWith(".json")){
+            return true;
+        }
+        //noinspection RedundantIfStatement
+        if(url.toLowerCase().endsWith(".do")){
+            return true;
+        }
+        return false;
+    }
     @SuppressWarnings("RedundantIfStatement")
     private ModelAndView handleExceptionWithApiError(HttpServletRequest request, HttpServletResponse response, ApiError apiError, Exception exception) {
         exception.printStackTrace();
@@ -26,10 +39,10 @@ public class DefaultExceptionHandler {
         if(request == null){
             showJsonFormatData = true;
         }
-        else if(request.getPathInfo() != null && request.getPathInfo().toLowerCase().endsWith(".json")){
+        else if( isUrlReturnJson(request.getPathInfo())){
             showJsonFormatData = true;
         }
-        else if(request.getServletPath() != null && request.getServletPath().toLowerCase().endsWith(".json")){
+        else if( isUrlReturnJson(request.getServletPath())){
             showJsonFormatData = true;
         }
         else{

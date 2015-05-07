@@ -31,6 +31,9 @@ public class TableJoinStatus extends TableElementStatus {
     public TableJoinStatus() {
         // todo 测试数据
         this.joinUserList = new ArrayList<UserInfo>();
+        getJoinUserList().add(new UserInfo());
+        getJoinUserList().add(new UserInfo());
+        getJoinUserList().add(new UserInfo());
         this.joinNumber = FantuanConfig.DEFAULT_TABLE_JOIN_NUMBER;
         this.tableStatusTitle = FantuanConfig.DEFAULT_TABLE_STATUS_TITLE;
         this.tableIconType = FantuanConfig.DEFAULT_TABLE_ICON;

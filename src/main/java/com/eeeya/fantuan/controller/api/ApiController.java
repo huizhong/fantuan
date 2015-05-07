@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author ben@eeeya.com
  * @since 4/16/15
  */
+@ApiIgnore
 @RestController
 @RequestMapping(FantuanConfig.URL_PREFIX + "/api")
 public class ApiController {

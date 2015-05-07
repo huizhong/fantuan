@@ -3,6 +3,7 @@ package com.eeeya.fantuan.config;
 import com.eeeya.fantuan.contants.ImageType;
 import com.eeeya.fantuan.contants.PayType;
 import com.eeeya.fantuan.contants.TableIconType;
+import com.eeeya.fantuan.contants.TableType;
 
 /**
  * @author zhonghui
@@ -29,7 +30,7 @@ public class FantuanConfig {
     public static final Long DEFAULT_RESTAURANT_ID = 1001L;
     public static final String DEFAULT_RESTAURANT_SHORT_NAME = "百万庄园";
     public static final String DEFAULT_RESTAURANT_FULL_NAME = "百万庄园（知春路一店）";
-    public static final Integer DEFAULT_RESTAURANT_MAX_TABLE = 4;
+    public static final Integer DEFAULT_RESTAURANT_MAX_TABLE = 10;
     public static final String DEFAULT_RESTAURANT_PHONE = "10086";
     public static final String DEFAULT_RESTAURANT_LOCATION = "知春路63号卫星大夏1层";
 
@@ -46,4 +47,5 @@ public class FantuanConfig {
     public static final String DEFAULT_TABLE_STATUS_TITLE = "四缺一";
     public static final TableIconType DEFAULT_TABLE_ICON = TableIconType.NOT_FULL;
     public static final Boolean DEFAULT_TABLE_HAS_NEW_MESSAGE = true;
+    public static final TableType DEFAULT_TABLE_TYPE = TableType.SIZE_4;
 }

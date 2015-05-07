@@ -2,6 +2,7 @@ package com.eeeya.fantuan.model.table;
 
 import com.eeeya.fantuan.config.FantuanConfig;
 import com.eeeya.fantuan.contants.PayType;
+import com.eeeya.fantuan.contants.TableType;
 import com.eeeya.fantuan.model.ImageInfo;
 import com.eeeya.fantuan.model.RestaurantInfo;
 import com.wordnik.swagger.annotations.ApiModel;
@@ -20,8 +21,8 @@ public class TableInfo {
     @ApiModelProperty("餐桌在餐厅的位置序号")
     Integer tableIndex;
 
-    @ApiModelProperty("餐桌能坐多少人")
-    Integer tableSize;
+    @ApiModelProperty("餐桌座位类型")
+    TableType tableType;
 
     @ApiModelProperty("餐桌的Logo图，用于背景")
     ImageInfo tableLogo;
@@ -40,6 +41,7 @@ public class TableInfo {
 
     public TableInfo() {
         this.tableId = FantuanConfig.DEFAULT_TABLE_ID;
+        this.tableType = FantuanConfig.DEFAULT_TABLE_TYPE;
         this.tableIndex = FantuanConfig.DEFAULT_TABLE_INDEX;
         this.tableLogo = new ImageInfo();
         this.averagePrice= new PriceInfo();
@@ -64,12 +66,12 @@ public class TableInfo {
         this.tableIndex = tableIndex;
     }
 
-    public Integer getTableSize() {
-        return tableSize;
+    public TableType getTableType() {
+        return tableType;
     }
 
-    public void setTableSize(Integer tableSize) {
-        this.tableSize = tableSize;
+    public void setTableType(TableType tableType) {
+        this.tableType = tableType;
     }
 
     public ImageInfo getTableLogo() {

@@ -11,7 +11,7 @@ import com.wordnik.swagger.annotations.ApiModelProperty;
  * @since 5/6/15.
  */
 @ApiModel("会餐投票条目")
-public class MealOrderItem extends TableElementStatus {
+public class MealVoteItem extends TableElementStatus {
 
     @ApiModelProperty("投票人")
     UserInfo userInfo;
@@ -19,7 +19,7 @@ public class MealOrderItem extends TableElementStatus {
     @ApiModelProperty("投的菜品")
     FoodItem foodItem;
 
-    public MealOrderItem() {
+    public MealVoteItem() {
         this.userInfo = new UserInfo();
         this.foodItem = new FoodItem();
     }

@@ -17,11 +17,11 @@ public enum TableIconType {
     ;
 
     private final Byte value;
-    private final String name;
+    private final String label;
 
-    TableIconType(Byte value, String name) {
+    TableIconType(Byte value, String label) {
         this.value = value;
-        this.name = name;
+        this.label = label;
     }
 
     public static TableIconType load(Byte tableStatusTypeValue) {
@@ -39,14 +39,14 @@ public enum TableIconType {
 
     @Override
     public String toString() {
-        return name;
+        return label;
     }
 
     public Byte getValue() {
         return value;
     }
 
-    public String getName() {
-        return name;
+    public String getLabel() {
+        return label;
     }
 }
