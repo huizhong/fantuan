@@ -1,6 +1,7 @@
 package com.eeeya.fantuan.model.table.meal;
 
 import com.eeeya.fantuan.model.table.TableElementStatus;
+import com.eeeya.fantuan.utils.DateUtils;
 import com.wordnik.swagger.annotations.ApiModel;
 import com.wordnik.swagger.annotations.ApiModelProperty;
 
@@ -32,4 +33,5 @@ public class MealVoteInfo extends TableElementStatus {
     public void setMealVoteItemList(List<MealVoteItem> mealVoteItemList) {
         this.mealVoteItemList = mealVoteItemList;
     }
+
 }

@@ -18,9 +18,9 @@ import org.springframework.web.bind.annotation.*;
 public class RestaurantController {
 
     @ApiOperation("换餐厅")
-    @RequestMapping(value = "/{restaurantId}/change.do", method = RequestMethod.POST)
-    ResultModel<TableInfo> changeRestaurantByRestaurantId(
-            @ApiParam("当前餐厅ID") @PathVariable Long restaurantId,
+    @RequestMapping(value = "/{tableId}/change.do", method = RequestMethod.POST)
+    public ResultModel<TableInfo> changeRestaurantByTableId(
+            @ApiParam("当前餐厅ID") @PathVariable Long tableId,
             @ApiParam("切换到更远") @RequestParam Boolean isFarther,
             @ApiParam("用户位置经度") @RequestParam Double userLatitude,
             @ApiParam("用户位置纬度") @RequestParam Double userLongitude

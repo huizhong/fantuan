@@ -13,6 +13,7 @@ public class ApiUtils {
     public static ModelAndView getModelAndViewByResultModel(ResultModel result, String viewName) {
         ModelAndView mav = new ModelAndView(viewName);
         mav.addObject("data", result.getData());
+        mav.addObject("time", result.getTime());
         return mav;
     }
 }

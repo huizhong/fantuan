@@ -2,6 +2,9 @@ package com.eeeya.fantuan.exception;
 
 
 import com.eeeya.fantuan.api.ApiError;
+import com.eeeya.fantuan.param.RestaurantChangeParam;
+
+import java.util.Arrays;
 
 /**
  * @author zhonghui
@@ -11,8 +14,21 @@ public class ApiException extends Exception {
     private final ApiError apiError;
 
     public ApiException(ApiError apiError) {
-        super(apiError.getErrorCode() + ":" + apiError.getErrorMessage());
+        this(apiError, apiError.getErrorCode() + ":" + apiError.getErrorMessage());
+    }
+
+
+    public ApiException(ApiError apiError, String message) {
+        super(message);
         this.apiError = apiError;
+    }
+    public ApiException(ApiError apiError, String message, Throwable cause) {
+        super(message, cause);
+        this.apiError = apiError;
+    }
+
+    public ApiException(ApiError apiError, Object ... args) {
+        this(apiError, Arrays.toString(args));
     }
 
     public ApiError getApiError() {

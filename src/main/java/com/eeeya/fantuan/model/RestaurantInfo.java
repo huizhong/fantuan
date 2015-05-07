@@ -1,6 +1,5 @@
 package com.eeeya.fantuan.model;
 
-import com.eeeya.fantuan.api.ListDataModel;
 import com.eeeya.fantuan.config.FantuanConfig;
 import com.wordnik.swagger.annotations.ApiModel;
 import com.wordnik.swagger.annotations.ApiModelProperty;
@@ -31,13 +30,13 @@ public class RestaurantInfo {
     String restaurantPhone;
 
     @ApiModelProperty("餐厅地址")
-    String restaurantLocation;
+    String restaurantAddress;
 
     @ApiModelProperty("餐厅经纬度")
     CoordinatePosition coordinatePosition;
 
     @ApiModelProperty("菜品列表")
-    List<FoodItem> foodMenu;
+    List<FoodItem> foodItemList;
 
     public RestaurantInfo() {
         this.restaurantId = FantuanConfig.DEFAULT_RESTAURANT_ID;
@@ -45,16 +44,16 @@ public class RestaurantInfo {
         this.fullName = FantuanConfig.DEFAULT_RESTAURANT_FULL_NAME;
         this.maxTable = FantuanConfig.DEFAULT_RESTAURANT_MAX_TABLE;
         this.restaurantPhone = FantuanConfig.DEFAULT_RESTAURANT_PHONE;
-        this.restaurantLocation = FantuanConfig.DEFAULT_RESTAURANT_LOCATION;
+        this.restaurantAddress = FantuanConfig.DEFAULT_RESTAURANT_LOCATION;
         this.coordinatePosition = new CoordinatePosition();
-        this.foodMenu = new ArrayList<FoodItem>();
+        this.foodItemList = new ArrayList<FoodItem>();
 
         // todo 真实数据时去掉
-        foodMenu.add(new FoodItem(1L, "鹅肝", 30));
-        foodMenu.add(new FoodItem(2L, "烤鱼", 40));
-        foodMenu.add(new FoodItem(3L, "土豆沙拉", 35));
-        foodMenu.add(new FoodItem(4L, "牛排", 20));
-        foodMenu.add(new FoodItem(5L, "蟹子手券", 40));
+        foodItemList.add(new FoodItem(1L, "鹅肝", 30));
+        foodItemList.add(new FoodItem(2L, "烤鱼", 40));
+        foodItemList.add(new FoodItem(3L, "土豆沙拉", 35));
+        foodItemList.add(new FoodItem(4L, "牛排", 20));
+        foodItemList.add(new FoodItem(5L, "蟹子手券", 40));
     }
 
     public Long getRestaurantId() {
@@ -65,12 +64,12 @@ public class RestaurantInfo {
         this.restaurantId = restaurantId;
     }
 
-    public String getRestaurantLocation() {
-        return restaurantLocation;
+    public String getRestaurantAddress() {
+        return restaurantAddress;
     }
 
-    public void setRestaurantLocation(String restaurantLocation) {
-        this.restaurantLocation = restaurantLocation;
+    public void setRestaurantAddress(String restaurantAddress) {
+        this.restaurantAddress = restaurantAddress;
     }
 
     public String getShortName() {
@@ -103,5 +102,21 @@ public class RestaurantInfo {
 
     public void setCoordinatePosition(CoordinatePosition coordinatePosition) {
         this.coordinatePosition = coordinatePosition;
+    }
+
+    public Integer getMaxTable() {
+        return maxTable;
+    }
+
+    public void setMaxTable(Integer maxTable) {
+        this.maxTable = maxTable;
+    }
+
+    public List<FoodItem> getFoodItemList() {
+        return foodItemList;
+    }
+
+    public void setFoodItemList(List<FoodItem> foodItemList) {
+        this.foodItemList = foodItemList;
     }
 }

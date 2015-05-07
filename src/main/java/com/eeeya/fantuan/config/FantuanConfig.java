@@ -1,9 +1,6 @@
 package com.eeeya.fantuan.config;
 
-import com.eeeya.fantuan.contants.ImageType;
-import com.eeeya.fantuan.contants.PayType;
-import com.eeeya.fantuan.contants.TableIconType;
-import com.eeeya.fantuan.contants.TableType;
+import com.eeeya.fantuan.contants.*;
 
 /**
  * @author zhonghui
@@ -44,8 +41,10 @@ public class FantuanConfig {
     public static final String DEFAULT_FOOD_NAME = "烤鱼";
     public static final Integer DEFAULT_FOOD_PRICE = 30;
     public static final Integer DEFAULT_TABLE_JOIN_NUMBER = 3;
-    public static final String DEFAULT_TABLE_STATUS_TITLE = "四缺一";
+    public static final String DEFAULT_TABLE_STATUS_TITLE = "四缺一, 召唤小伙伴";
     public static final TableIconType DEFAULT_TABLE_ICON = TableIconType.NOT_FULL;
     public static final Boolean DEFAULT_TABLE_HAS_NEW_MESSAGE = true;
     public static final TableType DEFAULT_TABLE_TYPE = TableType.SIZE_4;
+    public static final MealType DEFAULT_MEAL_TYPE = MealType.MEAL_NOON;
+    public static final String DEFAULT_USER_PHONE = "10086";
 }

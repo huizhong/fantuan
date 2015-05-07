@@ -19,7 +19,7 @@ public enum ApiError {
      * error code 前三位为 http的status，后两位用于区分不同场景。
      */
     BAD_REQUEST(        40000, "参数有误"),
-    BAD_REQUEST_PARAM_TYPE(     40003, "请求参数类型有误"),
+    BAD_REQUEST_PARAM_TYPE(     40001, "请求参数类型有误"),
     BAD_TIME_FORMAT(    40005, "时间格式错误"),
     AUTHENTICATE_FAIL(  40100, "未通过授权验证"),
     NEED_LOGIN(         40101, "未登录"),
@@ -30,6 +30,9 @@ public enum ApiError {
 
     UNKNOWN_EXCEPTION(  50099, "未知异常"),
 
+
+    BAD_REQUEST_ARGUMENT_NOT_MATCH_MODEL(4002, "参数值json值和期望的模型不一致"),
+    BAD_REQUEST_ACTION(4003, "该动作不支持")
 
     ;
 

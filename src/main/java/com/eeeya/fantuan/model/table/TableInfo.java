@@ -1,10 +1,12 @@
 package com.eeeya.fantuan.model.table;
 
 import com.eeeya.fantuan.config.FantuanConfig;
+import com.eeeya.fantuan.contants.MealType;
 import com.eeeya.fantuan.contants.PayType;
 import com.eeeya.fantuan.contants.TableType;
 import com.eeeya.fantuan.model.ImageInfo;
 import com.eeeya.fantuan.model.RestaurantInfo;
+import com.eeeya.fantuan.utils.DateUtils;
 import com.wordnik.swagger.annotations.ApiModel;
 import com.wordnik.swagger.annotations.ApiModelProperty;
 
@@ -17,6 +19,12 @@ public class TableInfo {
 
     @ApiModelProperty("餐桌唯一ID")
     Long tableId;
+
+    @ApiModelProperty("会餐时间")
+    Long mealTime;
+
+    @ApiModelProperty("会餐类型")
+    MealType mealType;
 
     @ApiModelProperty("餐桌在餐厅的位置序号")
     Integer tableIndex;
@@ -41,6 +49,8 @@ public class TableInfo {
 
     public TableInfo() {
         this.tableId = FantuanConfig.DEFAULT_TABLE_ID;
+        this.mealType = FantuanConfig.DEFAULT_MEAL_TYPE;
+        this.mealTime = DateUtils.getTimeInNumber();
         this.tableType = FantuanConfig.DEFAULT_TABLE_TYPE;
         this.tableIndex = FantuanConfig.DEFAULT_TABLE_INDEX;
         this.tableLogo = new ImageInfo();
@@ -56,6 +66,22 @@ public class TableInfo {
 
     public void setTableId(Long tableId) {
         this.tableId = tableId;
+    }
+
+    public Long getMealTime() {
+        return mealTime;
+    }
+
+    public MealType getMealType() {
+        return mealType;
+    }
+
+    public void setMealType(MealType mealType) {
+        this.mealType = mealType;
+    }
+
+    public void setMealTime(Long mealTime) {
+        this.mealTime = mealTime;
     }
 
     public Integer getTableIndex() {
