@@ -13,8 +13,8 @@ import java.util.List;
 public enum ImageType {
     NORMAL_IMG((byte) 0, "普通图片"),
     USER_LOGO((byte) 1, "用户LOGO"),
-    TABLE_LOGO((byte) 2, "饭桌LOGO"),
-    ;
+    TABLE_LOGO((byte) 2, "餐桌LOGO"),
+    RESTAURANT_LOGO((byte)3, "餐厅LOGO");
 
 
     private final Byte value;

@@ -5,6 +5,8 @@
  */
 package com.eeeya.fantuan.utils;
 
+import com.eeeya.fantuan.api.v1.model.CoordinatePosition;
+
 import java.math.BigDecimal;
 
 public class MathUtils {
@@ -40,6 +42,15 @@ public class MathUtils {
         s = s * EARTH_RADIUS;
         s = Math.round(s * 10000) / 10000;
         return s;
+    }
+
+    public static Double getDistance(CoordinatePosition coordinatePosition, CoordinatePosition nextCoordinatePosition) {
+        return getDistance(
+                coordinatePosition.getLatitudeValue(),
+                coordinatePosition.getLongitudeValue(),
+                nextCoordinatePosition.getLatitudeValue(),
+                nextCoordinatePosition.getLongitudeValue()
+        );
     }
 
 }

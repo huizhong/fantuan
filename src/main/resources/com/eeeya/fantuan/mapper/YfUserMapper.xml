@@ -35,7 +35,6 @@
     <result column="evaluation" jdbcType="VARCHAR" property="evaluation" />
     <result column="weight" jdbcType="VARCHAR" property="weight" />
     <result column="height" jdbcType="VARCHAR" property="height" />
-    <result column="like" jdbcType="VARCHAR" property="like" />
     <result column="industry" jdbcType="VARCHAR" property="industry" />
     <result column="industry_id" jdbcType="INTEGER" property="industryId" />
     <result column="hometown" jdbcType="VARCHAR" property="hometown" />
@@ -125,10 +124,9 @@
     -->
     id, name, password, telphone, constar, age, sex, want, job, school, weibo_name, weibo_id, 
     city, state, imgid, token, lasttime, breaktime, forbid, longitude, latitude, circle, 
-    company, salary, birth, birth_datetime, evaluation, weight, height, like, industry, 
-    industry_id, hometown, system_info, last_login_time, zombie, black_state, version, 
-    position, neo4j_id, today_free_mark, today_free_text, mother_marray_mark, mother_marry_text, 
-    virtual_mark
+    company, salary, birth, birth_datetime, evaluation, weight, height, industry, industry_id, 
+    hometown, system_info, last_login_time, zombie, black_state, version, position, neo4j_id, 
+    today_free_mark, today_free_text, mother_marray_mark, mother_marry_text, virtual_mark
   </sql>
   <select id="selectByExample" parameterType="com.eeeya.fantuan.domain.YfUserExample" resultMap="BaseResultMap">
     <!--
@@ -192,13 +190,12 @@
       forbid, longitude, latitude, 
       circle, company, salary, 
       birth, birth_datetime, evaluation, 
-      weight, height, like, 
-      industry, industry_id, hometown, 
-      system_info, last_login_time, zombie, 
-      black_state, version, position, 
-      neo4j_id, today_free_mark, today_free_text, 
-      mother_marray_mark, mother_marry_text, virtual_mark
-      )
+      weight, height, industry, 
+      industry_id, hometown, system_info, 
+      last_login_time, zombie, black_state, 
+      version, position, neo4j_id, 
+      today_free_mark, today_free_text, mother_marray_mark, 
+      mother_marry_text, virtual_mark)
     values (#{name,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{telphone,jdbcType=CHAR}, 
       #{constar,jdbcType=VARCHAR}, #{age,jdbcType=BIT}, #{sex,jdbcType=CHAR}, #{want,jdbcType=VARCHAR}, 
       #{job,jdbcType=VARCHAR}, #{school,jdbcType=VARCHAR}, #{weiboName,jdbcType=VARCHAR}, 
@@ -207,13 +204,12 @@
       #{forbid,jdbcType=BIT}, #{longitude,jdbcType=DOUBLE}, #{latitude,jdbcType=DOUBLE}, 
       #{circle,jdbcType=VARCHAR}, #{company,jdbcType=VARCHAR}, #{salary,jdbcType=VARCHAR}, 
       #{birth,jdbcType=VARCHAR}, #{birthDatetime,jdbcType=TIMESTAMP}, #{evaluation,jdbcType=VARCHAR}, 
-      #{weight,jdbcType=VARCHAR}, #{height,jdbcType=VARCHAR}, #{like,jdbcType=VARCHAR}, 
-      #{industry,jdbcType=VARCHAR}, #{industryId,jdbcType=INTEGER}, #{hometown,jdbcType=VARCHAR}, 
-      #{systemInfo,jdbcType=VARCHAR}, #{lastLoginTime,jdbcType=TIMESTAMP}, #{zombie,jdbcType=BIT}, 
-      #{blackState,jdbcType=BIT}, #{version,jdbcType=CHAR}, #{position,jdbcType=VARCHAR}, 
-      #{neo4jId,jdbcType=INTEGER}, #{todayFreeMark,jdbcType=BIT}, #{todayFreeText,jdbcType=VARCHAR}, 
-      #{motherMarrayMark,jdbcType=BIT}, #{motherMarryText,jdbcType=VARCHAR}, #{virtualMark,jdbcType=BIT}
-      )
+      #{weight,jdbcType=VARCHAR}, #{height,jdbcType=VARCHAR}, #{industry,jdbcType=VARCHAR}, 
+      #{industryId,jdbcType=INTEGER}, #{hometown,jdbcType=VARCHAR}, #{systemInfo,jdbcType=VARCHAR}, 
+      #{lastLoginTime,jdbcType=TIMESTAMP}, #{zombie,jdbcType=BIT}, #{blackState,jdbcType=BIT}, 
+      #{version,jdbcType=CHAR}, #{position,jdbcType=VARCHAR}, #{neo4jId,jdbcType=INTEGER}, 
+      #{todayFreeMark,jdbcType=BIT}, #{todayFreeText,jdbcType=VARCHAR}, #{motherMarrayMark,jdbcType=BIT}, 
+      #{motherMarryText,jdbcType=VARCHAR}, #{virtualMark,jdbcType=BIT})
   </insert>
   <insert id="insertSelective" parameterType="com.eeeya.fantuan.domain.YfUser">
     <!--
@@ -308,9 +304,6 @@
       </if>
       <if test="height != null">
         height,
-      </if>
-      <if test="like != null">
-        like,
       </if>
       <if test="industry != null">
         industry,
@@ -442,9 +435,6 @@
       </if>
       <if test="height != null">
         #{height,jdbcType=VARCHAR},
-      </if>
-      <if test="like != null">
-        #{like,jdbcType=VARCHAR},
       </if>
       <if test="industry != null">
         #{industry,jdbcType=VARCHAR},
@@ -597,9 +587,6 @@
       <if test="record.height != null">
         height = #{record.height,jdbcType=VARCHAR},
       </if>
-      <if test="record.like != null">
-        like = #{record.like,jdbcType=VARCHAR},
-      </if>
       <if test="record.industry != null">
         industry = #{record.industry,jdbcType=VARCHAR},
       </if>
@@ -685,7 +672,6 @@
       evaluation = #{record.evaluation,jdbcType=VARCHAR},
       weight = #{record.weight,jdbcType=VARCHAR},
       height = #{record.height,jdbcType=VARCHAR},
-      like = #{record.like,jdbcType=VARCHAR},
       industry = #{record.industry,jdbcType=VARCHAR},
       industry_id = #{record.industryId,jdbcType=INTEGER},
       hometown = #{record.hometown,jdbcType=VARCHAR},
@@ -796,9 +782,6 @@
       <if test="height != null">
         height = #{height,jdbcType=VARCHAR},
       </if>
-      <if test="like != null">
-        like = #{like,jdbcType=VARCHAR},
-      </if>
       <if test="industry != null">
         industry = #{industry,jdbcType=VARCHAR},
       </if>
@@ -881,7 +864,6 @@
       evaluation = #{evaluation,jdbcType=VARCHAR},
       weight = #{weight,jdbcType=VARCHAR},
       height = #{height,jdbcType=VARCHAR},
-      like = #{like,jdbcType=VARCHAR},
       industry = #{industry,jdbcType=VARCHAR},
       industry_id = #{industryId,jdbcType=INTEGER},
       hometown = #{hometown,jdbcType=VARCHAR},

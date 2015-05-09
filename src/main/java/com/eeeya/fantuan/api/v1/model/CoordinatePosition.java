@@ -18,8 +18,15 @@ public class CoordinatePosition {
     Double latitudeValue;
 
     public CoordinatePosition() {
-        this.latitudeValue = FantuanConfig.DEFAULT_COORDINATE_POSITION_LATITUDE_VALUE;
-        this.longitudeValue = FantuanConfig.DEFAULT_COORDINATE_POSITION_LONGITUDE_VALUE;
+        this(
+                FantuanConfig.DEFAULT_COORDINATE_POSITION_LONGITUDE_VALUE,
+                FantuanConfig.DEFAULT_COORDINATE_POSITION_LATITUDE_VALUE
+        );
+    }
+
+    public CoordinatePosition(Double longitudeValue, Double latitudeValue) {
+        this.longitudeValue = longitudeValue;
+        this.latitudeValue = latitudeValue;
     }
 
     public Double getLatitudeValue() {

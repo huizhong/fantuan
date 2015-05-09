@@ -22,6 +22,9 @@
         clear: both;
     }
 
+    .table-logo{
+        clear: both;
+    }
     .table-button {
         width: 100px;
         padding: 10px;
@@ -49,6 +52,7 @@
         </dd>
     </#list>
     </dl>
+    <img src="${data.tableLogo.imageUrl}" class="table-logo" />
 </div>
 <div class="table-info">
     <div class="table-join-status">

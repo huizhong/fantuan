@@ -14,7 +14,7 @@
  */
 -->
 <#function getUniformUrl originURI="/" map={}>
-    <#local globalParam = ''>
+    <#local globalParam = 'userId=101'>
     <#local param = ''>
 <#-- 线下环境 -->
     <#--<#if originURI?starts_with('/')>-->

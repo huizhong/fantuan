@@ -4,8 +4,11 @@ import com.eeeya.fantuan.api.common.ApiError;
 import com.eeeya.fantuan.api.common.ResultModel;
 import com.eeeya.fantuan.api.v1.controller.RestaurantController;
 import com.eeeya.fantuan.api.v1.controller.TableController;
+import com.eeeya.fantuan.api.v1.controller.UserController;
+import com.eeeya.fantuan.api.v1.model.CoordinatePosition;
 import com.eeeya.fantuan.api.v1.model.table.TableInfo;
 import com.eeeya.fantuan.api.v1.param.RestaurantChangeParam;
+import com.eeeya.fantuan.config.FantuanConfig;
 import com.eeeya.fantuan.contants.TableActionType;
 import com.eeeya.fantuan.exception.ApiException;
 import com.eeeya.fantuan.utils.ApiUtils;
@@ -25,6 +28,9 @@ import org.springframework.web.servlet.ModelAndView;
 public class TableViewController {
 
     @Autowired
+    UserController userController;
+
+    @Autowired
     TableController tableController;
 
     @Autowired
@@ -34,6 +40,7 @@ public class TableViewController {
     ModelAndView getIndexView(
             @RequestParam(required = false) String action,
             @RequestParam(required = false) Long tableId,
+            @RequestParam(required = false) Long userId,
             @RequestParam(required = false) String argument
     ) throws ApiException {
         TableActionType tableActionType = TableActionType.loadByLabel(action);
@@ -70,6 +77,15 @@ public class TableViewController {
                 if (restaurantChangeParam == null) {
                     throw new ApiException(ApiError.BAD_REQUEST_ARGUMENT_NOT_MATCH_MODEL, argument, RestaurantChangeParam.class);
                 }
+                if(restaurantChangeParam.getUserLatitude() == null || restaurantChangeParam.getUserLongitude() == null){
+                    ResultModel<CoordinatePosition> userPositionResult = userController.getUserCoordinatePosition(userId);
+                    if(userPositionResult.getStatus() == FantuanConfig.SUCCESS_STATUS_CODE){
+                        CoordinatePosition userPosition = userPositionResult.getData();
+                        restaurantChangeParam.setUserLatitude(userPosition.getLatitudeValue());
+                        restaurantChangeParam.setUserLongitude(userPosition.getLongitudeValue());
+                    }
+                }
+
                 tableInfoResult = restaurantController.changeRestaurantByTableId(
                         tableId,
                         restaurantChangeParam.getIsFarther(),

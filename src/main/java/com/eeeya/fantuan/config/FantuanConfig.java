@@ -47,4 +47,5 @@ public class FantuanConfig {
     public static final TableType DEFAULT_TABLE_TYPE = TableType.SIZE_4;
     public static final MealType DEFAULT_MEAL_TYPE = MealType.MEAL_NOON;
     public static final String DEFAULT_USER_PHONE = "10086";
+    public static final Integer DEFAULT_TALK_GROUP_ID = 1;
 }

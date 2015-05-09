@@ -44,6 +44,9 @@ public class TableInfo {
     @ApiModelProperty("餐厅信息")
     RestaurantInfo restaurantInfo;
 
+    @ApiModelProperty("环信群聊ID")
+    Integer talkGroupId;
+
     @ApiModelProperty("餐桌状态，会实时变化")
     TableStatus tableStatus;
 
@@ -57,6 +60,7 @@ public class TableInfo {
         this.averagePrice= new PriceInfo();
         this.payType = FantuanConfig.DEFAULT_PAY_TYPE;
         this.restaurantInfo = new RestaurantInfo();
+        this.talkGroupId = FantuanConfig.DEFAULT_TALK_GROUP_ID;
         this.tableStatus = new TableStatus();
     }
 
@@ -130,6 +134,14 @@ public class TableInfo {
 
     public void setRestaurantInfo(RestaurantInfo restaurantInfo) {
         this.restaurantInfo = restaurantInfo;
+    }
+
+    public Integer getTalkGroupId() {
+        return talkGroupId;
+    }
+
+    public void setTalkGroupId(Integer talkGroupId) {
+        this.talkGroupId = talkGroupId;
     }
 
     public TableStatus getTableStatus() {

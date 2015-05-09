@@ -1,5 +1,6 @@
 package com.eeeya.fantuan.dao.impl;
 
+import com.eeeya.fantuan.api.v1.model.CoordinatePosition;
 import com.eeeya.fantuan.api.v1.model.ImageInfo;
 import com.eeeya.fantuan.api.v1.model.UserInfo;
 import com.eeeya.fantuan.contants.ImageType;
@@ -46,5 +47,14 @@ public class UserDAOImpl implements UserDAO {
             }
         }
         return userInfo;
+    }
+
+    @Override
+    public CoordinatePosition getUserCoordinatePositionByUserId(Long userId) {
+        YfUser yfUser = yfUserMapper.selectByPrimaryKey(userId);
+        CoordinatePosition coordinatePosition = new CoordinatePosition();
+        coordinatePosition.setLatitudeValue(yfUser.getLatitude());
+        coordinatePosition.setLongitudeValue(yfUser.getLongitude());
+        return coordinatePosition;
     }
 }

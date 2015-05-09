@@ -1,5 +1,6 @@
 package com.eeeya.fantuan.dao;
 
+import com.eeeya.fantuan.api.v1.model.CoordinatePosition;
 import com.eeeya.fantuan.api.v1.model.UserInfo;
 
 /**
@@ -8,4 +9,6 @@ import com.eeeya.fantuan.api.v1.model.UserInfo;
  */
 public interface UserDAO {
     UserInfo getUserInfoById(Long userId);
+
+    CoordinatePosition getUserCoordinatePositionByUserId(Long userId);
 }
