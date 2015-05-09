@@ -2,7 +2,8 @@ package com.eeeya.fantuan.service;
 
 import com.eeeya.fantuan.api.v1.model.table.TableInfo;
 import com.eeeya.fantuan.param.RestaurantSelectParam;
-import com.sun.istack.internal.Nullable;
+
+import javax.annotation.Nullable;
 
 /**
  * @author zhonghui
