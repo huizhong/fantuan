@@ -1,7 +1,7 @@
 package com.eeeya.fantuan.exception;
 
 import com.eeeya.fantuan.BaseControllerTest;
-import com.eeeya.fantuan.api.ApiError;
+import com.eeeya.fantuan.api.common.ApiError;
 import com.eeeya.fantuan.config.FantuanConfig;
 import org.junit.Test;
 import org.springframework.stereotype.Component;

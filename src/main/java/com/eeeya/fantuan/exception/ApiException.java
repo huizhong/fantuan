@@ -1,8 +1,7 @@
 package com.eeeya.fantuan.exception;
 
 
-import com.eeeya.fantuan.api.ApiError;
-import com.eeeya.fantuan.param.RestaurantChangeParam;
+import com.eeeya.fantuan.api.common.ApiError;
 
 import java.util.Arrays;
 

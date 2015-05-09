@@ -1,4 +1,4 @@
-<#-- @ftlvariable name="data" type="com.eeeya.fantuan.model.table.TableInfo" -->
+<#-- @ftlvariable name="data" type="com.eeeya.fantuan.api.v1.model.table.TableInfo" -->
 <#--
     这里存放页面级的常量配置
 -->

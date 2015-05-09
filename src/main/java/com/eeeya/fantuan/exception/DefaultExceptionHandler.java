@@ -1,9 +1,9 @@
 package com.eeeya.fantuan.exception;
 
-import com.eeeya.fantuan.api.ApiError;
-import com.eeeya.fantuan.api.ApiViewPath;
-import com.eeeya.fantuan.api.ResultModel;
+import com.eeeya.fantuan.api.common.ApiError;
+import com.eeeya.fantuan.api.common.ResultModel;
 import com.eeeya.fantuan.config.FantuanConfig;
+import com.eeeya.fantuan.controller.ApiViewPath;
 import com.eeeya.fantuan.utils.JsonUtils;
 import org.springframework.beans.TypeMismatchException;
 import org.springframework.http.MediaType;

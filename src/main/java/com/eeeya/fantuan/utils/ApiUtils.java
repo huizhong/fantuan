@@ -1,8 +1,7 @@
 package com.eeeya.fantuan.utils;
 
 
-import com.eeeya.fantuan.api.ApiViewPath;
-import com.eeeya.fantuan.api.ResultModel;
+import com.eeeya.fantuan.api.common.ResultModel;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
