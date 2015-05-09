@@ -1,6 +1,5 @@
-package com.eeeya.fantuan;
+package com.eeeya.fantuan.server;
 
-import com.eeeya.fantuan.server.Application;
 import com.eeeya.fantuan.server.config.DatabaseConfig;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.SpringApplicationConfiguration;

@@ -46,6 +46,7 @@ APP_DIR=${APPS_ROOT}/${APP}
 BASE_NAME=$(basename ${DEPLOY_SCRIPT})
 DEPLOY_DIR=$(dirname ${DEPLOY_SCRIPT})
 JAR=${APP_NAME}.jar
+TARGET_JAR=${DEPLOY_DIR}/../fantuan-server/target/${JAR}
 
 NEW_DEPLOY_SCIRPT=${APP_DIR}/${BASE_NAME}
 NEW_CONF=${APP_DIR}/supervisor.conf
@@ -78,7 +79,7 @@ function __install(){
     echo "make APP_DIR at ${APP_DIR}"
     mkdir -p ${APP_DIR}
     ${CP} -r ${DEPLOY_DIR}/* ${APP_DIR}/
-    ${CP} ${DEPLOY_DIR}/../target/${JAR} ${NEW_JAR}
+    ${CP} ${TARGET_JAR} ${NEW_JAR}
     chmod +x ${NEW_DEPLOY_SCIRPT}
 
     echo "[program:${APP}]" > ${NEW_CONF}

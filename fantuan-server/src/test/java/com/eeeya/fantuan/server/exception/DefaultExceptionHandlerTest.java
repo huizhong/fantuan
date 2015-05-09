@@ -1,6 +1,6 @@
-package com.eeeya.fantuan.exception;
+package com.eeeya.fantuan.server.exception;
 
-import com.eeeya.fantuan.BaseControllerTest;
+import com.eeeya.fantuan.server.BaseControllerTest;
 import com.eeeya.fantuan.server.api.common.ApiError;
 import com.eeeya.fantuan.server.config.FantuanConfig;
 import org.junit.Test;

@@ -1,6 +1,6 @@
-package com.eeeya.fantuan.controller.api;
+package com.eeeya.fantuan.server.controller.api;
 
-import com.eeeya.fantuan.BaseControllerTest;
+import com.eeeya.fantuan.server.BaseControllerTest;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.any;

@@ -1,4 +1,4 @@
-package com.eeeya.fantuan.boot;
+package com.eeeya.fantuan.server.boot;
 
 import com.eeeya.fantuan.server.Application;
 import org.junit.Test;

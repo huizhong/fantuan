@@ -1,7 +1,6 @@
-package com.eeeya.fantuan.config;
+package com.eeeya.fantuan.server.config;
 
-import com.eeeya.fantuan.BaseControllerTest;
-import com.eeeya.fantuan.server.config.AppConfig;
+import com.eeeya.fantuan.server.BaseControllerTest;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

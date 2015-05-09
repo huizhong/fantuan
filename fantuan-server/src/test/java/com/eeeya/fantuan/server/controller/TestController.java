@@ -1,4 +1,4 @@
-package com.eeeya.fantuan.controller;
+package com.eeeya.fantuan.server.controller;
 
 import com.eeeya.fantuan.server.api.common.ApiError;
 import com.eeeya.fantuan.server.config.FantuanConfig;

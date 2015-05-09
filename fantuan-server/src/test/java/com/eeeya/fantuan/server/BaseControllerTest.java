@@ -1,4 +1,4 @@
-package com.eeeya.fantuan;
+package com.eeeya.fantuan.server;
 
 import org.junit.Before;
 import org.springframework.beans.factory.annotation.Autowired;
