@@ -1,0 +1,65 @@
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+
+    <context id="MysqlTables" targetRuntime="MyBatis3">
+        <!-- 分页插件 -->
+        <plugin type="com.eeeya.mybatis.offset.PaginationSupportedPlugin"/>
+
+        <commentGenerator>
+            <property name="suppressDate" value="true"/>
+        </commentGenerator>
+
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://daidaiduoduo.com:3306/fantuan"
+                        userId="fantuan" password="fantuan"/>
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <!-- 生成vo对象 -->
+        <javaModelGenerator targetPackage="com.eeeya.fantuan.server.domain" targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+        </javaModelGenerator>
+        <!-- 生成用于查询的Example对象 -->
+        <sqlMapGenerator targetPackage="com.eeeya.fantuan.server.mapper" targetProject="MAVEN">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+        <!-- 生成DAO的类文件以及配置文件 -->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.eeeya.fantuan.server.mapper"
+                             targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <!-- tableName:想要生成的数据库表,自动化工具会根据该表的结构生成相应的vo对象 -->
+        <table tableName="yf_user">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+            <columnOverride column="id" javaType="java.lang.Long" />
+            <ignoreColumn column="like"/>
+        </table>
+        <table tableName="yf_image">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+            <columnOverride column="userId" javaType="java.lang.Long" />
+        </table>
+
+        <table tableName="yf_restaurant">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>
+
+        <table tableName="yf_restaurant_image">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>
+
+        <table tableName="yf_restaurant_food">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>
+
+
+        <table tableName="yf_table">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>
+
+    </context>
+
+</generatorConfiguration>
