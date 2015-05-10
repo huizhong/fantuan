@@ -20,4 +20,8 @@ public interface TableDAO {
     Long insertTable(RestaurantMetaInfo restaurantMetaInfo);
 
     Long insertJoinStatus(Long tableId, Long userId);
+
+    Long insertStartStatus(Long tableId, Long userId);
+
+    Long insertVoteStatus(Long tableId, Long userId, Long foodItemId);
 }

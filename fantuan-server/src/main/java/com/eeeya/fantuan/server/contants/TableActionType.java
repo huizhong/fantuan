@@ -14,7 +14,8 @@ public enum TableActionType {
     ADD_TABLE((byte) 3, "addTable"),
     JOIN_TABLE((byte) 4, "joinTable"),
     CHANGE_RESTAURANT((byte) 5, "changeRestaurant"),
-
+    USER_START((byte) 6, "userStart"),
+    USER_VOTE((byte)7, "userVote")
     ;
 
     private final Byte value;

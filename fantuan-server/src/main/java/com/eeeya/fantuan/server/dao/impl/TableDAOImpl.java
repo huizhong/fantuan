@@ -107,7 +107,42 @@ public class TableDAOImpl implements TableDAO {
             if(affectNumber == 1){
                 return yfTableJoin.getId();
             }
-        }catch (DuplicateKeyException ignore){}
+        }catch (DuplicateKeyException ignore){
+            // todo 插入失败处理
+        }
+        return null;
+    }
+
+    @Override
+    public Long insertStartStatus(Long tableId, Long userId) {
+        YfTableStart yfTableStart = new YfTableStart();
+        yfTableStart.setTableId(tableId);
+        yfTableStart.setUserId(userId);
+        try {
+            Integer affectNumber = yfTableStartMapper.insertSelective(yfTableStart);
+            if(affectNumber == 1){
+                return yfTableStart.getId();
+            }
+        }catch (DuplicateKeyException ignore){
+            // todo 插入失败处理
+        }
+        return null;
+    }
+
+    @Override
+    public Long insertVoteStatus(Long tableId, Long userId, Long foodItemId) {
+        YfTableVote yfTableVote = new YfTableVote();
+        yfTableVote.setTableId(tableId);
+        yfTableVote.setUserId(userId);
+        yfTableVote.setFoodId(foodItemId);
+        try {
+            Integer affectNumber = yfTableVoteMapper.insertSelective(yfTableVote);
+            if(affectNumber == 1){
+                return yfTableVote.getId();
+            }
+        }catch (DuplicateKeyException ignore){
+            // todo 插入失败处理
+        }
         return null;
     }
 

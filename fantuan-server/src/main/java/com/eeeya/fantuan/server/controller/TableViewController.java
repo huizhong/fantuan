@@ -72,6 +72,14 @@ public class TableViewController {
                 viewPath = ApiViewPath.TABLE_DETAIL_VIEW;
                 tableInfoResult = tableController.joinTable(tableId, userId);
                 break;
+            case USER_START:
+                viewPath = ApiViewPath.TABLE_DETAIL_VIEW;
+                tableInfoResult = tableController.startMeal(tableId, userId);
+                break;
+            case USER_VOTE:
+                viewPath = ApiViewPath.TABLE_DETAIL_VIEW;
+                tableInfoResult = tableController.voteFoodItem(tableId, userId, Long.valueOf(argument));
+                break;
             case CHANGE_TABLE:
                 viewPath = ApiViewPath.TABLE_VIEW;
                 tableInfoResult = tableController.changeTableByTableId(tableId);

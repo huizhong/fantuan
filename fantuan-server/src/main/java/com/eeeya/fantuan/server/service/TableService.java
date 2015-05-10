@@ -19,4 +19,8 @@ public interface TableService {
     TableInfo getNextTable(Long tableId);
 
     TableInfo joinTable(Long tableId, Long userId);
+
+    TableInfo startMeal(Long tableId, Long userId);
+
+    TableInfo voteMeal(Long tableId, Long userId, Long foodItemId);
 }

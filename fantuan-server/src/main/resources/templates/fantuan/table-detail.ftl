@@ -66,7 +66,7 @@
 <div class="table-detail-item restaurant-food-list">
     <div>大家待会儿吃什么！（每人选择一道）</div>
     <#list data.restaurantInfo.foodItemList as foodItem>
-        <span class="food-item">${foodItem.foodName}</span>
+        <span class="food-item"> <a href="${CommonHelper.getUniformUrl('/?action=userVote&argument='+ foodItem.foodId + '&tableId=' + data.tableId)}">${foodItem.foodName}</a></span>
     </#list>
     <hr/>
     <ol>
@@ -78,7 +78,10 @@
     </ol>
 </div>
 <div class="table-detail-item user-start-info">
-    <div>我已准备出发!</div><div>确定出发</div>
+    <div>我已准备出发!</div>
+    <div>
+    <a href="${CommonHelper.getUniformUrl('/?action=userStart&tableId=' + data.tableId)}">确定出发</a>
+    </div>
     <hr/>
     <ol>
         <#list data.tableStatus.mealStartStatus.mealStartItemList as meaStartInfo>

@@ -65,22 +65,21 @@ public class TableController {
 
     @ApiOperation("投票")
     @RequestMapping(value = "{tableId}/vote.do", method = RequestMethod.POST)
-    ResultModel<TableInfo> voteFoodItem(
+    public ResultModel<TableInfo> voteFoodItem(
             @ApiParam("当前餐桌ID") @PathVariable Long tableId,
+            @ApiParam("用户ID") @RequestParam Long userId,
             @ApiParam("投票菜品ID") @RequestParam Long foodItemId
     ){
-        return new ResultModel<TableInfo>(new TableInfo());
+        return new ResultModel<TableInfo>(tableService.voteMeal(tableId, userId, foodItemId));
     }
 
 
     @ApiOperation("出发")
     @RequestMapping(value = "{tableId}/start.do", method = RequestMethod.POST)
-    ResultModel<TableInfo> startMeal(
-            @ApiParam("当前餐桌ID") @PathVariable Long tableId
+    public ResultModel<TableInfo> startMeal(
+            @ApiParam("当前餐桌ID") @PathVariable Long tableId,
+            @ApiParam("用户ID") @RequestParam Long userId
     ){
-        return new ResultModel<TableInfo>(new TableInfo());
+        return new ResultModel<TableInfo>(tableService.startMeal(tableId, userId));
     }
-
-
-
 }

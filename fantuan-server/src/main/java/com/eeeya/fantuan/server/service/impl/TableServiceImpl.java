@@ -91,4 +91,18 @@ public class TableServiceImpl implements TableService {
         // todo 插入失败时提示
         return getTableInfo(tableId);
     }
+
+    @Override
+    public TableInfo startMeal(Long tableId, Long userId) {
+        Long startId = tableDAO.insertStartStatus(tableId, userId);
+        // todo 插入失败时提示
+        return getTableInfo(tableId);
+    }
+
+    @Override
+    public TableInfo voteMeal(Long tableId, Long userId, Long foodItemId) {
+        Long voteId = tableDAO.insertVoteStatus(tableId, userId, foodItemId);
+        // todo 插入失败时提示
+        return getTableInfo(tableId);
+    }
 }
