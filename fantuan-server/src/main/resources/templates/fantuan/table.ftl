@@ -48,14 +48,20 @@
     <h4>${data.restaurantInfo.shortName}</h4>
     <h5>${data.tableType.label}</h5>
     <h6>${data.tableStatus.joinStatus.joinNumber}/${data.tableType.value}</h6>
+    <div class="table-logo">
+        <img src="${data.tableLogo.imageUrl}" class="table-logo" />
+    </div>
     <dl>
     <#list data.tableStatus.joinStatus.joinUserList as joinUser>
         <dd>
             <img src="${joinUser.userLogo.imageUrl}" id="user-${joinUser.userId}" class="user-logo"/>
         </dd>
     </#list>
+    <#list 1..(data.tableType.value - data.tableStatus.joinStatus.joinNumber) as i>
+        <dd class="user-logo" >等待</dd>
+    </#list>
+
     </dl>
-    <img src="${data.tableLogo.imageUrl}" class="table-logo" />
 </div>
 <div class="table-info">
     <div class="table-join-status">
