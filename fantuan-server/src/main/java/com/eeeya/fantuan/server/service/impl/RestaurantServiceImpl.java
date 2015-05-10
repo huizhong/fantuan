@@ -33,7 +33,14 @@ public class RestaurantServiceImpl implements RestaurantService {
         CoordinatePosition currentTableCoordinatePosition = tableService.getTableCoordinatePosition(restaurantSelectParam.getTableId());
         Double currentDistance = MathUtils.getDistance(userCoordinatePosition, currentTableCoordinatePosition);
 
-        return getNewRestaurant(userCoordinatePosition, currentDistance,  restaurantSelectParam.getIsFarther());
+        TableInfo tableInfo = getNewRestaurant(userCoordinatePosition, currentDistance,  restaurantSelectParam.getIsFarther());
+        if(tableInfo != null){
+            return tableInfo;
+        }
+        else{
+            // todo 提示用户信息
+            return tableService.getTableInfo(restaurantSelectParam.getTableId());
+        }
     }
 
 

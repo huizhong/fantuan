@@ -1,4 +1,4 @@
-package com.eeeya.fantuan.server.api.v1.model.table;
+package com.eeeya.fantuan.server.api.v1.model.table.status;
 
 import com.eeeya.fantuan.server.config.FantuanConfig;
 import com.wordnik.swagger.annotations.ApiModel;
@@ -9,7 +9,7 @@ import com.wordnik.swagger.annotations.ApiModelProperty;
  * @since 5/6/15.
  */
 @ApiModel("餐桌消息状态")
-public class TableMessageStatus extends TableElementStatus{
+public class TableMessageStatus extends TableElementStatus {
 
     @ApiModelProperty("是否有新消息")
     Boolean hasNewMessage;

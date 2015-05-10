@@ -1,7 +1,6 @@
-package com.eeeya.fantuan.server.api.v1.model.table.meal;
+package com.eeeya.fantuan.server.api.v1.model.table.status;
 
 import com.eeeya.fantuan.server.api.v1.model.UserInfo;
-import com.eeeya.fantuan.server.api.v1.model.table.TableElementStatus;
 import com.eeeya.fantuan.server.utils.DateUtils;
 import com.wordnik.swagger.annotations.ApiModel;
 import com.wordnik.swagger.annotations.ApiModelProperty;

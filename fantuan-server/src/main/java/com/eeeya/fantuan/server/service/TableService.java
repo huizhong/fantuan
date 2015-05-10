@@ -17,4 +17,6 @@ public interface TableService {
     TableInfo getTableInfo(Long tableId);
 
     TableInfo getNextTable(Long tableId);
+
+    TableInfo joinTable(Long tableId, Long userId);
 }

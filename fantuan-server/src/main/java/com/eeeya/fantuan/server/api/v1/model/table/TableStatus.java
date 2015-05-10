@@ -1,5 +1,6 @@
 package com.eeeya.fantuan.server.api.v1.model.table;
 
+import com.eeeya.fantuan.server.api.v1.model.table.status.*;
 import com.wordnik.swagger.annotations.ApiModel;
 import com.wordnik.swagger.annotations.ApiModelProperty;
 
@@ -16,14 +17,12 @@ public class TableStatus extends TableElementStatus {
     @ApiModelProperty("消息状态")
     TableMessageStatus messageStatus;
 
-    @ApiModelProperty("会餐状态")
-    TableMealStatus mealStatus;
+    @ApiModelProperty("菜品投票状态")
+    MealVoteStatus mealVoteStatus;
 
-    public TableStatus() {
-        this.joinStatus = new TableJoinStatus();
-        this.messageStatus = new TableMessageStatus();
-        this.mealStatus = new TableMealStatus();
-    }
+    @ApiModelProperty("会餐人员出发状态")
+    MealStartStatus mealStartStatus;
+
 
     public TableJoinStatus getJoinStatus() {
         return joinStatus;
@@ -41,11 +40,19 @@ public class TableStatus extends TableElementStatus {
         this.messageStatus = messageStatus;
     }
 
-    public TableMealStatus getMealStatus() {
-        return mealStatus;
+    public MealVoteStatus getMealVoteStatus() {
+        return mealVoteStatus;
     }
 
-    public void setMealStatus(TableMealStatus mealStatus) {
-        this.mealStatus = mealStatus;
+    public void setMealVoteStatus(MealVoteStatus mealVoteStatus) {
+        this.mealVoteStatus = mealVoteStatus;
+    }
+
+    public MealStartStatus getMealStartStatus() {
+        return mealStartStatus;
+    }
+
+    public void setMealStartStatus(MealStartStatus mealStartStatus) {
+        this.mealStartStatus = mealStartStatus;
     }
 }

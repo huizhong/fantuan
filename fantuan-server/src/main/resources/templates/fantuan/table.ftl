@@ -57,7 +57,7 @@
 <div class="table-info">
     <div class="table-join-status">
         <span class="table-join-status-icon">${data.tableStatus.joinStatus.tableIconType.label}</span>
-        <span class="table-join-status-label">${data.tableStatus.joinStatus.tableStatusTitle}</span>
+        <span class="table-join-status-label">${data.tableStatus.joinStatus.tableStatusLabel}</span>
     </div>
     <div class="table-time-info table-info-item">${data.mealTime?number_to_datetime?string("yyyy-MM-dd E HH:mm")}</div>
     <div class="table-average-price-info table-info-item">

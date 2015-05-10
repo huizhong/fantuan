@@ -3,6 +3,7 @@ package com.eeeya.fantuan.server.api.v1.controller;
 import com.eeeya.fantuan.server.api.common.ResultModel;
 import com.eeeya.fantuan.server.api.v1.contants.V1Constants;
 import com.eeeya.fantuan.server.api.v1.model.table.TableInfo;
+import com.eeeya.fantuan.server.api.v1.model.table.TableStatus;
 import com.eeeya.fantuan.server.service.RestaurantService;
 import com.eeeya.fantuan.server.service.TableService;
 import com.wordnik.swagger.annotations.Api;
@@ -38,10 +39,10 @@ public class TableController {
 
     @ApiOperation("餐桌状态")
     @RequestMapping(value = "{tableId}/status.json", method = RequestMethod.GET)
-    ResultModel<TableInfo> getTableStatus(
+    ResultModel<TableStatus> getTableStatus(
             @ApiParam("当前餐桌ID") @PathVariable Long tableId
     ){
-        return new ResultModel<TableInfo>(new TableInfo());
+        return new ResultModel<TableStatus>(tableService.getTableInfo(tableId).getTableStatus());
     }
 
 
@@ -56,17 +57,10 @@ public class TableController {
     @ApiOperation("拼桌")
     @RequestMapping(value = "{tableId}/join.do", method = RequestMethod.POST)
     public ResultModel<TableInfo> joinTable(
-            @ApiParam("当前餐桌ID") @PathVariable Long tableId
+            @ApiParam("当前餐桌ID") @PathVariable Long tableId,
+            @ApiParam("用户ID") @RequestParam Long userId
     ){
-        return new ResultModel<TableInfo>(new TableInfo());
-    }
-
-    @ApiOperation("开桌")
-    @RequestMapping(value = "{tableId}/add.do", method = RequestMethod.POST)
-    public ResultModel<TableInfo> addTable(
-            @ApiParam("当前餐桌ID") @PathVariable Long tableId
-    ){
-        return new ResultModel<TableInfo>(new TableInfo());
+        return new ResultModel<TableInfo>(tableService.joinTable(tableId, userId));
     }
 
     @ApiOperation("投票")

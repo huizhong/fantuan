@@ -47,6 +47,10 @@ public class TableViewController {
         if (tableActionType == null) {
             tableActionType = TableActionType.SHOW_TABLE;
         }
+        if(userId == null){
+            userId = FantuanConfig.DEFAULT_USER_ID;
+        }
+
         ResultModel<TableInfo> tableInfoResult;
         String viewPath;
         switch (tableActionType) {
@@ -62,11 +66,11 @@ public class TableViewController {
                 break;
             case ADD_TABLE:
                 viewPath = ApiViewPath.TABLE_DETAIL_VIEW;
-                tableInfoResult = tableController.addTable(tableId);
+                tableInfoResult = tableController.joinTable(tableId, userId);
                 break;
             case JOIN_TABLE:
                 viewPath = ApiViewPath.TABLE_DETAIL_VIEW;
-                tableInfoResult = tableController.joinTable(tableId);
+                tableInfoResult = tableController.joinTable(tableId, userId);
                 break;
             case CHANGE_TABLE:
                 viewPath = ApiViewPath.TABLE_VIEW;

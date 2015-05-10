@@ -1,4 +1,4 @@
-package com.eeeya.fantuan.server.api.v1.model.table;
+package com.eeeya.fantuan.server.api.v1.model.table.status;
 
 import com.eeeya.fantuan.server.utils.DateUtils;
 import com.wordnik.swagger.annotations.ApiModel;

@@ -84,4 +84,11 @@ public class TableServiceImpl implements TableService {
         }
         throw new ApiException(ApiError.UNKNOWN_EXCEPTION);
     }
+
+    @Override
+    public TableInfo joinTable(Long tableId, Long userId) {
+        Long joinId = tableDAO.insertJoinStatus(tableId, userId);
+        // todo 插入失败时提示
+        return getTableInfo(tableId);
+    }
 }

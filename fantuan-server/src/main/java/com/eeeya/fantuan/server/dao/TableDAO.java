@@ -18,4 +18,6 @@ public interface TableDAO {
     TableInfo getTableInfoByTableId(Long tableId);
 
     Long insertTable(RestaurantMetaInfo restaurantMetaInfo);
+
+    Long insertJoinStatus(Long tableId, Long userId);
 }

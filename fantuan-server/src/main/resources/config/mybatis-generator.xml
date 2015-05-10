@@ -60,6 +60,16 @@
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
         </table>
 
+        <table tableName="yf_table_join" >
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>
+        <table tableName="yf_table_vote" >
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>
+        <table tableName="yf_table_start" >
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>
+
     </context>
 
 </generatorConfiguration>

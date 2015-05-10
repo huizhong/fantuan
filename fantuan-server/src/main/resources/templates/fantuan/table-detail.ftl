@@ -70,7 +70,7 @@
     </#list>
     <hr/>
     <ol>
-    <#list data.tableStatus.mealStatus.mealVoteInfo.mealVoteItemList as mealVoteInfo>
+    <#list data.tableStatus.mealVoteStatus.mealVoteItemList as mealVoteInfo>
         <li class="meal-message meal-vote-item">
             ${mealVoteInfo.userInfo.userName}, ${(time-mealVoteInfo.voteTime)?number_to_datetime?string("m")}分钟前点选了${mealVoteInfo.foodItem.foodName}！
         </li>
@@ -81,7 +81,7 @@
     <div>我已准备出发!</div><div>确定出发</div>
     <hr/>
     <ol>
-        <#list data.tableStatus.mealStatus.mealStartInfo.mealStartItemList as meaStartInfo>
+        <#list data.tableStatus.mealStartStatus.mealStartItemList as meaStartInfo>
             <li class="meal-message meal-start-item">
                 ${meaStartInfo.userInfo.userName}<span class="phone-number">${meaStartInfo.userInfo.userPhone}</span>,${(time-meaStartInfo.startTime)?number_to_datetime?string("m")}分钟前准备出发！
             </li>

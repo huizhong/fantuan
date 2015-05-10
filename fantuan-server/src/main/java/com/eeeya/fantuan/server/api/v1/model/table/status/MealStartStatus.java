@@ -1,6 +1,5 @@
-package com.eeeya.fantuan.server.api.v1.model.table.meal;
+package com.eeeya.fantuan.server.api.v1.model.table.status;
 
-import com.eeeya.fantuan.server.api.v1.model.table.TableElementStatus;
 import com.wordnik.swagger.annotations.ApiModel;
 import com.wordnik.swagger.annotations.ApiModelProperty;
 
@@ -12,12 +11,12 @@ import java.util.List;
  * @since 5/6/15.
  */
 @ApiModel("会餐人员出发信息")
-public class MealStartInfo extends TableElementStatus {
+public class MealStartStatus extends TableElementStatus {
 
     @ApiModelProperty("出发信息列表")
     List<MealStartItem> mealStartItemList;
 
-    public MealStartInfo() {
+    public MealStartStatus() {
         this.mealStartItemList = new ArrayList<MealStartItem>();
 
         // todo 测试
