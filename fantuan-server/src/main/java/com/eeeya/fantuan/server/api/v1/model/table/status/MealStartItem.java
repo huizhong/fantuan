@@ -1,7 +1,6 @@
 package com.eeeya.fantuan.server.api.v1.model.table.status;
 
 import com.eeeya.fantuan.server.api.v1.model.UserInfo;
-import com.eeeya.fantuan.server.utils.DateUtils;
 import com.wordnik.swagger.annotations.ApiModel;
 import com.wordnik.swagger.annotations.ApiModelProperty;
 
@@ -17,11 +16,6 @@ public class MealStartItem extends TableElementStatus {
 
     @ApiModelProperty("出发时间")
     Long startTime;
-
-    public MealStartItem() {
-        this.userInfo = new UserInfo();
-        this.startTime = DateUtils.getTimeInNumber();
-    }
 
     public UserInfo getUserInfo() {
         return userInfo;

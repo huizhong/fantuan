@@ -4,23 +4,19 @@ import com.eeeya.fantuan.server.api.common.ApiError;
 import com.eeeya.fantuan.server.api.v1.model.*;
 import com.eeeya.fantuan.server.api.v1.model.table.TableInfo;
 import com.eeeya.fantuan.server.api.v1.model.table.TableStatus;
-import com.eeeya.fantuan.server.api.v1.model.table.status.MealStartStatus;
-import com.eeeya.fantuan.server.api.v1.model.table.status.MealVoteStatus;
-import com.eeeya.fantuan.server.api.v1.model.table.status.TableJoinStatus;
-import com.eeeya.fantuan.server.api.v1.model.table.status.TableMessageStatus;
+import com.eeeya.fantuan.server.api.v1.model.table.status.*;
 import com.eeeya.fantuan.server.config.FantuanConfig;
 import com.eeeya.fantuan.server.contants.ImageType;
 import com.eeeya.fantuan.server.contants.TableIconType;
 import com.eeeya.fantuan.server.dao.RestaurantDAO;
 import com.eeeya.fantuan.server.dao.TableDAO;
 import com.eeeya.fantuan.server.dao.UserDAO;
-import com.eeeya.fantuan.server.domain.YfTable;
-import com.eeeya.fantuan.server.domain.YfTableExample;
-import com.eeeya.fantuan.server.domain.YfTableJoin;
-import com.eeeya.fantuan.server.domain.YfTableJoinExample;
+import com.eeeya.fantuan.server.domain.*;
 import com.eeeya.fantuan.server.exception.ApiException;
 import com.eeeya.fantuan.server.mapper.YfTableJoinMapper;
 import com.eeeya.fantuan.server.mapper.YfTableMapper;
+import com.eeeya.fantuan.server.mapper.YfTableStartMapper;
+import com.eeeya.fantuan.server.mapper.YfTableVoteMapper;
 import com.eeeya.fantuan.server.model.RestaurantFullInfo;
 import com.eeeya.fantuan.server.utils.DomainUtils;
 import com.eeeya.fantuan.server.utils.FoodUtils;
@@ -42,6 +38,13 @@ public class TableDAOImpl implements TableDAO {
 
     @Autowired
     YfTableJoinMapper yfTableJoinMapper;
+
+
+    @Autowired
+    YfTableVoteMapper yfTableVoteMapper;
+
+    @Autowired
+    YfTableStartMapper yfTableStartMapper;
 
     @Autowired
     UserDAO userDAO;
@@ -140,16 +143,60 @@ public class TableDAOImpl implements TableDAO {
     }
 
     private TableStatus getTableStatusByTableId(Long tableId, Byte tableSize) {
-        TableJoinStatus joinStatus = getTableJoinStatus(tableId, tableSize);
 
         TableStatus tableStatus = new TableStatus();
-        tableStatus.setJoinStatus(joinStatus);
+        tableStatus.setJoinStatus(getTableJoinStatus(tableId, tableSize));
+        tableStatus.setMealVoteStatus(getMealVoteStatus(tableId));
+        tableStatus.setMealStartStatus(getMealStartStatus(tableId));
 
         // todo
         tableStatus.setMessageStatus(new TableMessageStatus());
-        tableStatus.setMealVoteStatus(new MealVoteStatus());
-        tableStatus.setMealStartStatus(new MealStartStatus());
         return tableStatus;
+    }
+
+    private MealStartStatus getMealStartStatus(Long tableId) {
+        MealStartStatus mealStartStatus = new MealStartStatus();
+        YfTableStartExample yfTableStartExample = new YfTableStartExample();
+        yfTableStartExample.or().andTableIdEqualTo(tableId);
+        List<YfTableStart> yfTableStartList = yfTableStartMapper.selectByExample(yfTableStartExample);
+        List<MealStartItem> mealStartItemList = new ArrayList<MealStartItem>();
+        Long lastStartTime = FantuanConfig.DEFAULT_LAST_UPDATE_TIME;
+        for(YfTableStart yfTableStart : yfTableStartList){
+            MealStartItem mealStartItem = new MealStartItem();
+            mealStartItem.setUserInfo(userDAO.getUserInfoById(yfTableStart.getUserId()));
+            Long startTime = yfTableStart.getStartTime().getTime();
+            mealStartItem.setStartTime(startTime);
+            if(startTime>lastStartTime){
+                lastStartTime = startTime;
+            }
+            mealStartItemList.add(mealStartItem);
+        }
+        mealStartStatus.setMealStartItemList(mealStartItemList);
+        mealStartStatus.setUpdateTime(lastStartTime);
+        return mealStartStatus;
+    }
+
+    private MealVoteStatus getMealVoteStatus(Long tableId) {
+        MealVoteStatus mealVoteStatus = new MealVoteStatus();
+        YfTableVoteExample yfTableVoteExample = new YfTableVoteExample();
+        yfTableVoteExample.or().andTableIdEqualTo(tableId);
+        List<YfTableVote> yfTableVoteList = yfTableVoteMapper.selectByExample(yfTableVoteExample);
+        List<MealVoteItem> mealVoteItemList = new ArrayList<MealVoteItem>();
+        Long lastVoteTime = FantuanConfig.DEFAULT_LAST_UPDATE_TIME;
+        for(YfTableVote yfTableVote : yfTableVoteList){
+            MealVoteItem mealVoteItem = new MealVoteItem();
+            mealVoteItem.setUserInfo(userDAO.getUserInfoById(yfTableVote.getUserId()));
+            mealVoteItem.setFoodItem(restaurantDAO.getFoodItem(yfTableVote.getFoodId()));
+            Long voteTime = yfTableVote.getVoteTime().getTime();
+            mealVoteItem.setVoteTime(voteTime);
+            if(voteTime>lastVoteTime){
+                lastVoteTime = voteTime;
+            }
+            mealVoteItemList.add(mealVoteItem);
+        }
+        mealVoteStatus.setMealVoteItemList(mealVoteItemList);
+        mealVoteStatus.setUpdateTime(lastVoteTime);
+        return mealVoteStatus;
     }
 
     private TableJoinStatus getTableJoinStatus(Long tableId, Byte tableSize) {

@@ -1,6 +1,10 @@
 package com.eeeya.fantuan.server.config;
 
-import com.eeeya.fantuan.server.contants.*;
+import com.eeeya.fantuan.server.contants.ImageType;
+import com.eeeya.fantuan.server.contants.MealType;
+import com.eeeya.fantuan.server.contants.PayType;
+import com.eeeya.fantuan.server.contants.TableType;
+import com.eeeya.fantuan.server.utils.DateUtils;
 
 /**
  * @author zhonghui
@@ -40,13 +44,12 @@ public class FantuanConfig {
     public static final Long DEFAULT_FOOD_ID = 10001L;
     public static final String DEFAULT_FOOD_NAME = "烤鱼";
     public static final Integer DEFAULT_FOOD_PRICE = 30;
-    public static final Integer DEFAULT_TABLE_JOIN_NUMBER = 0;
     public static final String DEFAULT_TABLE_STATUS_TITLE = "%d缺%d, 召唤小伙伴";
-    public static final TableIconType DEFAULT_TABLE_ICON = TableIconType.NOT_FULL;
     public static final Boolean DEFAULT_TABLE_HAS_NEW_MESSAGE = true;
     public static final TableType DEFAULT_TABLE_TYPE = TableType.SIZE_4;
     public static final MealType DEFAULT_MEAL_TYPE = MealType.MEAL_NOON;
     public static final String DEFAULT_USER_PHONE = "10086";
     public static final Integer DEFAULT_TALK_GROUP_ID = 1;
     public static final String TABLE_AVERAGE_PRICE_UNIT = "元/位";
+    public static final Long DEFAULT_LAST_UPDATE_TIME = DateUtils.parseDD("2015-05-10").getTime();
 }

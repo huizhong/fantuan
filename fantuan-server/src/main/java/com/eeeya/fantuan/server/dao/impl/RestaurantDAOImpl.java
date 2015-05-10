@@ -55,10 +55,7 @@ public class RestaurantDAOImpl implements RestaurantDAO {
                 yfRestaurantFoodList = new ArrayList<FoodItem>();
                 yfRestaurantFoodHashMap.put(yfRestaurantFood.getRestaurantId(), yfRestaurantFoodList);
             }
-            FoodItem foodItem = new FoodItem();
-            foodItem.setFoodId(yfRestaurantFood.getId());
-            foodItem.setFoodName(yfRestaurantFood.getFoodName());
-            foodItem.setFoodPrice(yfRestaurantFood.getFoodPrice());
+            FoodItem foodItem = getFoodItem(yfRestaurantFood);
             yfRestaurantFoodList.add(foodItem);
         }
 
@@ -75,6 +72,20 @@ public class RestaurantDAOImpl implements RestaurantDAO {
         }
 
         return restaurantFullInfoList;
+    }
+
+    @Override
+    public FoodItem getFoodItem(Long foodId){
+        YfRestaurantFood yfRestaurantFood = yfRestaurantFoodMapper.selectByPrimaryKey(foodId);
+        return getFoodItem(yfRestaurantFood);
+    }
+
+    private FoodItem getFoodItem(YfRestaurantFood yfRestaurantFood) {
+        FoodItem foodItem = new FoodItem();
+        foodItem.setFoodId(yfRestaurantFood.getId());
+        foodItem.setFoodName(yfRestaurantFood.getFoodName());
+        foodItem.setFoodPrice(yfRestaurantFood.getFoodPrice());
+        return foodItem;
     }
 
     @Override

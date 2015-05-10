@@ -1,5 +1,6 @@
 package com.eeeya.fantuan.server.dao;
 
+import com.eeeya.fantuan.server.api.v1.model.FoodItem;
 import com.eeeya.fantuan.server.api.v1.model.RestaurantMetaInfo;
 import com.eeeya.fantuan.server.model.RestaurantFullInfo;
 
@@ -11,6 +12,8 @@ import java.util.List;
  */
 public interface RestaurantDAO {
     List<RestaurantFullInfo> getAllRestaurantInfo();
+
+    FoodItem getFoodItem(Long foodId);
 
     RestaurantMetaInfo getRestaurantMetaInfo(Long restaurantId);
 
