@@ -34,7 +34,9 @@ public enum ApiError {
     BAD_REQUEST_ARGUMENT_NOT_MATCH_MODEL(4002, "参数值json值和期望的模型不一致"),
     BAD_REQUEST_ACTION(4003, "该动作不支持"),
 
-    DATABASE_INSERT_FAILED(50301, "数据库插入失败")
+    DATABASE_INSERT_FAILED(50301, "数据库插入失败"),
+    USER_PHONE_NOT_FOUND(4004, "用户手机号未找到"),
+    USER_PHONE_PASSWORD_NOT_MATCH(4005, "用户手机号和密码不匹配")
     ;
 
 

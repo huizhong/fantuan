@@ -1,3 +1,5 @@
+<#-- @ftlvariable name="CurrentUser" type="com.eeeya.fantuan.server.api.v1.model.UserLoginModel" -->
+
 
 <#-- 得到bodyID -->
 <#assign bodyID = ''>
@@ -30,11 +32,25 @@
 <div id="tips"></div>
 </#if>
 
-    <#if !pageConfig.hideHeader?? && !hideHeader??>
-        <#if pageConfig.id?? == "index">
+
+<#if !pageConfig.hideHeader?? && !hideHeader??>
+        <#if pageConfig.id == "index">
         <#-- 首页 Header -->
         <header class="navbar">首页</header>
         <#else >
         <header class="navbar">内容</header>
         </#if>
     </#if>
+
+<#if CurrentUser?? >
+${CurrentUser.userName}
+</#if>
+
+<#if _csrf??>
+<#assign logoutUrl="/logout"/>
+<form action="${logoutUrl}" method="post">
+    <input type="submit" value="注销" />
+    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+</form>
+</#if>
+<hr/>

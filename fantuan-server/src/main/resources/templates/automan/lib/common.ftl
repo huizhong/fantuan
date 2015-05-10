@@ -1,3 +1,4 @@
+<#-- @ftlvariable name="CurrentUser" type="com.eeeya.fantuan.server.api.v1.model.UserLoginModel" -->
 
 <#assign GLOBAL = {
 "host":"test.daidaiduoduo.com"
@@ -14,7 +15,12 @@
  */
 -->
 <#function getUniformUrl originURI="/" map={}>
-    <#local globalParam = 'userId=101'>
+    <#if CurrentUser?? && CurrentUser.userId??>
+        <#local globalParam = 'userId=' + CurrentUser.userId>
+    <#else>
+        <#local globalParam = ''>
+    </#if>
+
     <#local param = ''>
 <#-- 线下环境 -->
     <#--<#if originURI?starts_with('/')>-->

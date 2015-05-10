@@ -1,6 +1,7 @@
 package com.eeeya.fantuan.server.service;
 
 import com.eeeya.fantuan.server.api.v1.model.CoordinatePosition;
+import com.eeeya.fantuan.server.api.v1.model.UserLoginModel;
 
 /**
  * @author zhonghui
@@ -8,4 +9,8 @@ import com.eeeya.fantuan.server.api.v1.model.CoordinatePosition;
  */
 public interface UserService {
     CoordinatePosition getUserCoordinatePosition(Long userId);
+
+    UserLoginModel getUserLoginModelByPassword(String userPhone, String password);
+
+    boolean isRightToken(Long userId, String token);
 }

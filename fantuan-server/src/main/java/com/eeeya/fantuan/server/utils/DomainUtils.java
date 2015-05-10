@@ -8,6 +8,8 @@ import com.eeeya.fantuan.server.contants.PayType;
 import com.eeeya.fantuan.server.contants.TableType;
 import com.eeeya.fantuan.server.domain.YfRestaurant;
 import com.eeeya.fantuan.server.domain.YfTable;
+import com.eeeya.fantuan.server.domain.YfUser;
+import com.eeeya.fantuan.server.model.UserLoginAuthModel;
 
 /**
  * @author zhonghui
@@ -37,6 +39,13 @@ public class DomainUtils {
         tableMetaInfo.setPayType(PayType.load(yfTable.getPayType()));
         tableMetaInfo.setRestaurantId(yfTable.getRestaurantId());
         tableMetaInfo.setTalkGroupId(yfTable.getTalkGroupId());
+    }
 
+    public static void loadUserLoginAuthModel(UserLoginAuthModel userLoginModel, YfUser yfUser) {
+        userLoginModel.setUserId(yfUser.getId());
+        userLoginModel.setUserToken(yfUser.getToken());
+        userLoginModel.setUserName(yfUser.getName());
+        userLoginModel.setEncodedPassword(yfUser.getPassword());
+        userLoginModel.setUserPhone(yfUser.getTelphone());
     }
 }

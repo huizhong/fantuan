@@ -1,3 +1,6 @@
+<#--<#assign security=JspTaglibs["http://www.springframework.org/security/tags"]/>-->
+<#--<#assign  security=JspTaglibs["../WEB-INF/security.tld"] />-->
+
 <#-- @ftlvariable name="data" type="com.eeeya.fantuan.server.api.v1.model.table.TableInfo" -->
 <#--
     这里存放页面级的常量配置

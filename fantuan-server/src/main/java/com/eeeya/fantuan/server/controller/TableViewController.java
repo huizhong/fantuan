@@ -15,10 +15,13 @@ import com.eeeya.fantuan.server.utils.ApiUtils;
 import com.eeeya.fantuan.server.utils.JsonUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * @author zhonghui
@@ -41,7 +44,9 @@ public class TableViewController {
             @RequestParam(required = false) String action,
             @RequestParam(required = false) Long tableId,
             @RequestParam(required = false) Long userId,
-            @RequestParam(required = false) String argument
+            @RequestParam(required = false) String argument,
+            HttpServletRequest httpServletRequest,
+            Model model
     ) throws ApiException {
         TableActionType tableActionType = TableActionType.loadByLabel(action);
         if (tableActionType == null) {

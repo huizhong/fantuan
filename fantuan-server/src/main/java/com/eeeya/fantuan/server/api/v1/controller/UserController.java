@@ -3,15 +3,13 @@ package com.eeeya.fantuan.server.api.v1.controller;
 import com.eeeya.fantuan.server.api.common.ResultModel;
 import com.eeeya.fantuan.server.api.v1.contants.V1Constants;
 import com.eeeya.fantuan.server.api.v1.model.CoordinatePosition;
+import com.eeeya.fantuan.server.api.v1.model.UserLoginModel;
 import com.eeeya.fantuan.server.service.UserService;
 import com.wordnik.swagger.annotations.Api;
 import com.wordnik.swagger.annotations.ApiOperation;
 import com.wordnik.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author zhonghui
@@ -19,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @Api(value = "用户接口", description = "用于查看用户信息")
 @RestController
-@RequestMapping(V1Constants.URL_PREFIX + "/table")
+@RequestMapping(V1Constants.URL_PREFIX + "/user")
 public class UserController {
 
     @Autowired
@@ -34,4 +32,14 @@ public class UserController {
 
         return new ResultModel<CoordinatePosition>(coordinatePosition);
     }
+
+    @ApiOperation("用户登录")
+    @RequestMapping(value="/login.json", method = RequestMethod.GET)
+    public ResultModel<UserLoginModel> getUserLoginModel(
+            @ApiParam("用户手机号") @RequestParam String userPhone,
+            @ApiParam("用户密码") @RequestParam String password
+    ){
+        return new ResultModel<UserLoginModel>(userService.getUserLoginModelByPassword(userPhone, password));
+    }
+
 }
