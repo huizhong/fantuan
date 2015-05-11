@@ -1,8 +1,9 @@
 package com.eeeya.fantuan.api.java.client.model;
 
+import com.eeeya.fantuan.api.java.client.model.UserLoginModel;
+
+import com.wordnik.swagger.annotations.*;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.wordnik.swagger.annotations.ApiModel;
-import com.wordnik.swagger.annotations.ApiModelProperty;
 
 
 /**

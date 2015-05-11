@@ -1,4 +1,4 @@
-package com.eeeya.fantuan.server.utils;
+package com.eeeya.fantuan.service.utils;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 

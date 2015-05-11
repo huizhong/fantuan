@@ -3,8 +3,8 @@ package com.eeeya.fantuan.web.controller;
 import com.eeeya.fantuan.common.exception.ApiException;
 import com.eeeya.fantuan.common.model.ApiError;
 import com.eeeya.fantuan.common.model.ResultModel;
-import com.eeeya.fantuan.server.config.FantuanServerConfig;
-import com.eeeya.fantuan.server.utils.JsonUtils;
+import com.eeeya.fantuan.service.utils.JsonUtils;
+import com.eeeya.fantuan.web.config.FantuanWebConfig;
 import org.springframework.beans.TypeMismatchException;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -54,7 +54,7 @@ public class DefaultExceptionHandler {
             return new ModelAndView(ApiViewPath.MODEL_VIEW).addObject("model", JsonUtils.getJson(getExceptionResultModel(apiError, exception)));
         }
         else{
-            return new ModelAndView(new RedirectView(FantuanServerConfig.ERROR_REDIRECT_URL));
+            return new ModelAndView(new RedirectView(FantuanWebConfig.ERROR_REDIRECT_URL));
         }
     }
 
@@ -78,14 +78,7 @@ public class DefaultExceptionHandler {
 
     private ErrorResultModel getExceptionResultModel(ApiError apiError, Exception exception) {
 
-        ErrorResultModel resultModel;
-        if (FantuanServerConfig.PRINT_EXCEPTION_IN_ERROR) {
-            resultModel = new ErrorResultModel(apiError, exception);
-        } else {
-            resultModel = new ErrorResultModel(apiError, null);
-        }
-
-        return resultModel;
+            return new ErrorResultModel(apiError, exception);
     }
 
     private class ErrorResultModel extends ResultModel<String> {

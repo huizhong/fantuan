@@ -1,6 +1,6 @@
 package com.eeeya.fantuan.web.boot;
 
-import com.eeeya.fantuan.server.Application;
+import com.eeeya.fantuan.web.Application;
 import org.junit.Test;
 
 public class ApplicationTest {

@@ -17,6 +17,8 @@
         <!--<module>fantuan-api-client-codegen</module>-->
         <module>fantuan-api-java-client</module>
         <module>mybatis-offset</module>
+        <module>fantuan-web</module>
+        <module>fantuan-service</module>
     </modules>
 
     <properties>
@@ -32,11 +34,17 @@
     </properties>
     <dependencyManagement>
         <dependencies>
-            <!--<dependency>-->
-                <!--<groupId>com.eeeya.fantuan</groupId>-->
-                <!--<artifactId>fantuan-web</artifactId>-->
-                <!--<version>${project.version}</version>-->
-            <!--</dependency>-->
+            <dependency>
+                <groupId>com.eeeya.fantuan</groupId>
+                <artifactId>fantuan-web</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.eeeya.fantuan</groupId>
+                <artifactId>fantuan-service</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
             <dependency>
                 <groupId>com.eeeya.fantuan</groupId>
                 <artifactId>fantuan-api-java-client</artifactId>
@@ -174,6 +182,12 @@
                 <version>5.1.6</version>
             </dependency>
 
+
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>2.4.4</version>
+            </dependency>
             <!--  for db end -->
 
 

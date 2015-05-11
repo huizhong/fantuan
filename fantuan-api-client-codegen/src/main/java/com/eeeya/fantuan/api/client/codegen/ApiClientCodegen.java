@@ -15,12 +15,18 @@ public class ApiClientCodegen {
         String[] myArgs = args.clone();
         List<String> argumentList = new ArrayList<String>();
         argumentList.addAll(Arrays.asList(args));
-        argumentList.add("-l");
-        argumentList.add("com.eeeya.fantuan.api.client.codegen.MyJavaClientCodegen");
 //        argumentList.add("-l");
 //        argumentList.add("java");
         argumentList.add("-i");
-        argumentList.add("http://127.0.0.1:8080/api-docs");
-        Codegen.main(argumentList.toArray(myArgs));
+        argumentList.add("http://test.daidaiduoduo.com:80/api-docs");
+        argumentList.add("-l");
+
+        List<String> javaArgumentList = new ArrayList<String>(argumentList);
+        javaArgumentList.add("com.eeeya.fantuan.api.client.codegen.MyJavaClientCodegen");
+        Codegen.main(javaArgumentList.toArray(myArgs));
+
+        List<String> androidArgumentList = new ArrayList<String>(argumentList);
+        androidArgumentList.add("com.eeeya.fantuan.api.client.codegen.MyAndroidClientCodegen");
+        Codegen.main(androidArgumentList.toArray(myArgs));
     }
 }

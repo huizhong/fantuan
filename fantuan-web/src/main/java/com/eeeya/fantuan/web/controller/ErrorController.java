@@ -14,13 +14,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * @since 5/6/15.
  */
 @Controller
-@RequestMapping(FantuanConfig.URL_PREFIX + "/error")
+@RequestMapping(FantuanConfig.URL_PREFIX)
 public class ErrorController {
 
     @Autowired
     AppConfig appConfig;
 
-    @RequestMapping(value = {"/404", ""}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/404", "/error"}, method = RequestMethod.GET)
     @ResponseBody
     String getNotFoundPage() {
         return ErrorMessages.ERROR_PAGE_NOT_FOUND;

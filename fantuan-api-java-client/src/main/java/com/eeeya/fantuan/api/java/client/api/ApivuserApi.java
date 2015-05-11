@@ -2,12 +2,21 @@ package com.eeeya.fantuan.api.java.client.api;
 
 import com.eeeya.fantuan.api.java.client.invoker.ApiException;
 import com.eeeya.fantuan.api.java.client.invoker.ApiInvoker;
-import com.eeeya.fantuan.api.java.client.model.ResultModelOfCoordinatePosition;
+
+import com.eeeya.fantuan.api.java.client.model.*;
+
+import java.util.*;
+
 import com.eeeya.fantuan.api.java.client.model.ResultModelOfUserLoginModel;
+import com.eeeya.fantuan.api.java.client.model.ResultModelOfCoordinatePosition;
+
 import com.sun.jersey.multipart.FormDataMultiPart;
 
-import java.util.HashMap;
+import javax.ws.rs.core.MediaType;
+
+import java.io.File;
 import java.util.Map;
+import java.util.HashMap;
 
 public class ApivuserApi {
   String basePath = "http://null/";

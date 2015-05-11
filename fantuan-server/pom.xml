@@ -49,6 +49,10 @@
 
         <dependency>
             <groupId>com.eeeya.fantuan</groupId>
+            <artifactId>fantuan-service</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.eeeya.fantuan</groupId>
             <artifactId>fantuan-api-v1</artifactId>
         </dependency>
         <dependency>

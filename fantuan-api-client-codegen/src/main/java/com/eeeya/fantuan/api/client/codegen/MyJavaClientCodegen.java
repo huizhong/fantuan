@@ -1,24 +1,11 @@
 package com.eeeya.fantuan.api.client.codegen;
 
-import com.wordnik.swagger.codegen.CodegenType;
 import com.wordnik.swagger.codegen.SupportingFile;
 import com.wordnik.swagger.codegen.languages.JavaClientCodegen;
 
 import java.io.File;
 
 public class MyJavaClientCodegen extends JavaClientCodegen {
-
-  public CodegenType getTag() {
-    return CodegenType.CLIENT;
-  }
-
-  public String getName() {
-    return "java";
-  }
-
-  public String getHelp() {
-    return "Generates a Java client library.";
-  }
 
   public MyJavaClientCodegen() {
     super();

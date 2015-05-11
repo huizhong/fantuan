@@ -1,10 +1,8 @@
 package com.eeeya.fantuan.web.controller;
 
-import com.eeeya.fantuan.api.v1.model.UserLoginModel;
-import com.eeeya.fantuan.server.service.impl.UserServiceImpl;
-import org.springframework.security.core.Authentication;
+//import com.eeeya.fantuan.api.v1.model.UserLoginModel;
+//import com.eeeya.fantuan.server.service.impl.UserServiceImpl;
 import org.springframework.web.bind.annotation.ControllerAdvice;
-import org.springframework.web.bind.annotation.ModelAttribute;
 
 /**
  * @author zhonghui
@@ -12,8 +10,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
  */
 @ControllerAdvice
 public class CurrentUserControllerAdvice {
-    @ModelAttribute("CurrentUser")
-    public UserLoginModel getCurrentUser(Authentication authentication) {
-        return (authentication == null) ? null : ((UserServiceImpl.CurrentUser) authentication.getPrincipal()).getUserLoginAuthModel();
-    }
+//    @ModelAttribute("CurrentUser")
+//    public UserLoginModel getCurrentUser(Authentication authentication) {
+//        return (authentication == null) ? null : ((UserServiceImpl.CurrentUser) authentication.getPrincipal()).getUserLoginAuthModel();
+//    }
 }

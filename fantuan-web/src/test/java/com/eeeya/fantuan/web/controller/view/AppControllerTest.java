@@ -1,6 +1,6 @@
 package com.eeeya.fantuan.web.controller.view;
 
-import com.eeeya.fantuan.server.BaseControllerTest;
+import com.eeeya.fantuan.web.BaseControllerTest;
 import org.junit.Test;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;

@@ -1,19 +1,27 @@
 package com.eeeya.fantuan.api.java.client.invoker;
 
-import com.fasterxml.jackson.databind.JavaType;
+import com.fasterxml.jackson.core.JsonGenerator.Feature;
+import com.fasterxml.jackson.databind.*;
+import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
-import com.sun.jersey.api.client.WebResource.Builder;
+import com.sun.jersey.api.client.config.ClientConfig;
+import com.sun.jersey.api.client.config.DefaultClientConfig;
 import com.sun.jersey.api.client.filter.LoggingFilter;
+import com.sun.jersey.api.client.WebResource.Builder;
 import com.sun.jersey.multipart.FormDataMultiPart;
 
 import javax.ws.rs.core.Response.Status.Family;
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
+import javax.ws.rs.core.MediaType;
+
+import java.util.Map;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+import java.io.IOException;
+import java.net.URLEncoder;
+import java.io.UnsupportedEncodingException;
 
 public class ApiInvoker {
   private static ApiInvoker INSTANCE = new ApiInvoker();
@@ -109,7 +117,7 @@ public class ApiInvoker {
     ClientResponse response = null;
 
     if("GET".equals(method)) {
-      response = builder.get(ClientResponse.class);
+      response = (ClientResponse) builder.get(ClientResponse.class);
     }
     else if ("POST".equals(method)) {
       if(body == null)
@@ -161,7 +169,7 @@ public class ApiInvoker {
       return null;
     }
     else if(response.getClientResponseStatus().getFamily() == Family.SUCCESSFUL) {
-      return response.getEntity(String.class);
+      return (String) response.getEntity(String.class);
     }
     else {
       throw new ApiException(

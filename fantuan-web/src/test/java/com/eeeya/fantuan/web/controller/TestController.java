@@ -1,8 +1,8 @@
 package com.eeeya.fantuan.web.controller;
 
+import com.eeeya.fantuan.common.config.FantuanConfig;
 import com.eeeya.fantuan.common.exception.ApiException;
 import com.eeeya.fantuan.common.model.ApiError;
-import com.eeeya.fantuan.server.config.FantuanServerConfig;
 import com.wordnik.swagger.annotations.Api;
 import com.wordnik.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @Api(value = "测试接口", description = "内部调试使用，外部请勿调用，需要MIS登录")
 @RestController
-@RequestMapping(value = FantuanServerConfig.URL_PREFIX+"/test")
+@RequestMapping(value = FantuanConfig.URL_PREFIX+"/test")
 public class TestController {
 
     @ApiOperation("页面接口异常")

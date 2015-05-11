@@ -1,6 +1,8 @@
 package com.eeeya.fantuan.web.config;
 
-import com.eeeya.fantuan.server.BaseControllerTest;
+import com.eeeya.fantuan.web.BaseControllerTest;
+import org.hamcrest.CoreMatchers;
+import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

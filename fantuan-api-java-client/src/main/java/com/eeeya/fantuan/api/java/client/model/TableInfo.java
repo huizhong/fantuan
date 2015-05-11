@@ -1,8 +1,12 @@
 package com.eeeya.fantuan.api.java.client.model;
 
+import com.eeeya.fantuan.api.java.client.model.ImageInfo;
+import com.eeeya.fantuan.api.java.client.model.PriceInfo;
+import com.eeeya.fantuan.api.java.client.model.TableStatus;
+import com.eeeya.fantuan.api.java.client.model.RestaurantInfo;
+
+import com.wordnik.swagger.annotations.*;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.wordnik.swagger.annotations.ApiModel;
-import com.wordnik.swagger.annotations.ApiModelProperty;
 
 
 /**

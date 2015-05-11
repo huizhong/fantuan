@@ -4,7 +4,7 @@ import com.eeeya.fantuan.common.exception.ApiException;
 import com.eeeya.fantuan.common.model.ApiError;
 import com.eeeya.fantuan.common.model.ResultModel;
 import com.eeeya.fantuan.server.config.FantuanServerConfig;
-import com.eeeya.fantuan.server.utils.JsonUtils;
+import com.eeeya.fantuan.service.utils.JsonUtils;
 import org.springframework.beans.TypeMismatchException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;

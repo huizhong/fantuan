@@ -1,10 +1,9 @@
 package com.eeeya.fantuan.api.java.client.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.wordnik.swagger.annotations.ApiModel;
-import com.wordnik.swagger.annotations.ApiModelProperty;
+import java.util.*;
 
-import java.util.List;
+import com.wordnik.swagger.annotations.*;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 
 /**
@@ -13,11 +12,24 @@ import java.util.List;
 @ApiModel(description = "")
 public class TableJoinStatus  {
   
+  private Integer joinNumber = null;
   private List joinUserList = null;
   private String tableStatusLabel = null;
   private String tableIconType = null;
-  private Integer joinNumber = null;
   private Long updateTime = null;
+
+  
+  /**
+   * 参与人数
+   **/
+  @ApiModelProperty(required = false, value = "参与人数")
+  @JsonProperty("joinNumber")
+  public Integer getJoinNumber() {
+    return joinNumber;
+  }
+  public void setJoinNumber(Integer joinNumber) {
+    this.joinNumber = joinNumber;
+  }
 
   
   /**
@@ -60,19 +72,6 @@ public class TableJoinStatus  {
 
   
   /**
-   * 参与人数
-   **/
-  @ApiModelProperty(required = false, value = "参与人数")
-  @JsonProperty("joinNumber")
-  public Integer getJoinNumber() {
-    return joinNumber;
-  }
-  public void setJoinNumber(Integer joinNumber) {
-    this.joinNumber = joinNumber;
-  }
-
-  
-  /**
    * 状态更新时间
    **/
   @ApiModelProperty(required = false, value = "状态更新时间")
@@ -91,10 +90,10 @@ public class TableJoinStatus  {
     StringBuilder sb = new StringBuilder();
     sb.append("class TableJoinStatus {\n");
     
+    sb.append("  joinNumber: ").append(joinNumber).append("\n");
     sb.append("  joinUserList: ").append(joinUserList).append("\n");
     sb.append("  tableStatusLabel: ").append(tableStatusLabel).append("\n");
     sb.append("  tableIconType: ").append(tableIconType).append("\n");
-    sb.append("  joinNumber: ").append(joinNumber).append("\n");
     sb.append("  updateTime: ").append(updateTime).append("\n");
     sb.append("}\n");
     return sb.toString();
