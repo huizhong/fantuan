@@ -1,18 +1,18 @@
 package com.eeeya.fantuan.server.dao.impl;
 
-import com.eeeya.fantuan.server.api.common.ApiError;
-import com.eeeya.fantuan.server.api.v1.model.*;
-import com.eeeya.fantuan.server.api.v1.model.table.TableInfo;
-import com.eeeya.fantuan.server.api.v1.model.table.TableStatus;
-import com.eeeya.fantuan.server.api.v1.model.table.status.*;
-import com.eeeya.fantuan.server.config.FantuanConfig;
-import com.eeeya.fantuan.server.contants.ImageType;
-import com.eeeya.fantuan.server.contants.TableIconType;
+import com.eeeya.fantuan.api.v1.contants.ImageType;
+import com.eeeya.fantuan.api.v1.contants.TableIconType;
+import com.eeeya.fantuan.api.v1.model.*;
+import com.eeeya.fantuan.api.v1.model.table.TableInfo;
+import com.eeeya.fantuan.api.v1.model.table.TableStatus;
+import com.eeeya.fantuan.api.v1.model.table.status.*;
+import com.eeeya.fantuan.common.exception.ApiException;
+import com.eeeya.fantuan.common.model.ApiError;
+import com.eeeya.fantuan.server.config.FantuanServerConfig;
 import com.eeeya.fantuan.server.dao.RestaurantDAO;
 import com.eeeya.fantuan.server.dao.TableDAO;
 import com.eeeya.fantuan.server.dao.UserDAO;
 import com.eeeya.fantuan.server.domain.*;
-import com.eeeya.fantuan.server.exception.ApiException;
 import com.eeeya.fantuan.server.mapper.YfTableJoinMapper;
 import com.eeeya.fantuan.server.mapper.YfTableMapper;
 import com.eeeya.fantuan.server.mapper.YfTableStartMapper;
@@ -83,12 +83,12 @@ public class TableDAOImpl implements TableDAO {
     @Override
     public Long insertTable(RestaurantMetaInfo restaurantMetaInfo) {
         YfTable yfTable = new YfTable();
-        yfTable.setMealType(FantuanConfig.DEFAULT_MEAL_TYPE.getValue());
-        yfTable.setTableType(FantuanConfig.DEFAULT_TABLE_TYPE.getValue());
-        yfTable.setPayType(FantuanConfig.DEFAULT_PAY_TYPE.getValue());
+        yfTable.setMealType(FantuanServerConfig.DEFAULT_MEAL_TYPE.getValue());
+        yfTable.setTableType(FantuanServerConfig.DEFAULT_TABLE_TYPE.getValue());
+        yfTable.setPayType(FantuanServerConfig.DEFAULT_PAY_TYPE.getValue());
         yfTable.setRestaurantId(restaurantMetaInfo.getRestaurantId());
         // todo talk group
-        yfTable.setTalkGroupId(FantuanConfig.DEFAULT_TALK_GROUP_ID);
+        yfTable.setTalkGroupId(FantuanServerConfig.DEFAULT_TALK_GROUP_ID);
         if( 1 == yfTableMapper.insertSelective(yfTable)){
             return yfTable.getId();
         }
@@ -162,7 +162,7 @@ public class TableDAOImpl implements TableDAO {
         tableInfo.setTableIndex(tableIndex);
 
         PriceInfo priceInfo = new PriceInfo();
-        priceInfo.setPriceUnit(FantuanConfig.TABLE_AVERAGE_PRICE_UNIT);
+        priceInfo.setPriceUnit(FantuanServerConfig.TABLE_AVERAGE_PRICE_UNIT);
         priceInfo.setPriceValue(FoodUtils.getFoodAveragePriceValue(restaurantFullInfo.getFoodItemList()));
         tableInfo.setAveragePrice(priceInfo);
 
@@ -195,7 +195,7 @@ public class TableDAOImpl implements TableDAO {
         yfTableStartExample.or().andTableIdEqualTo(tableId);
         List<YfTableStart> yfTableStartList = yfTableStartMapper.selectByExample(yfTableStartExample);
         List<MealStartItem> mealStartItemList = new ArrayList<MealStartItem>();
-        Long lastStartTime = FantuanConfig.DEFAULT_LAST_UPDATE_TIME;
+        Long lastStartTime = FantuanServerConfig.DEFAULT_LAST_UPDATE_TIME;
         for(YfTableStart yfTableStart : yfTableStartList){
             MealStartItem mealStartItem = new MealStartItem();
             mealStartItem.setUserInfo(userDAO.getUserInfoById(yfTableStart.getUserId()));
@@ -217,7 +217,7 @@ public class TableDAOImpl implements TableDAO {
         yfTableVoteExample.or().andTableIdEqualTo(tableId);
         List<YfTableVote> yfTableVoteList = yfTableVoteMapper.selectByExample(yfTableVoteExample);
         List<MealVoteItem> mealVoteItemList = new ArrayList<MealVoteItem>();
-        Long lastVoteTime = FantuanConfig.DEFAULT_LAST_UPDATE_TIME;
+        Long lastVoteTime = FantuanServerConfig.DEFAULT_LAST_UPDATE_TIME;
         for(YfTableVote yfTableVote : yfTableVoteList){
             MealVoteItem mealVoteItem = new MealVoteItem();
             mealVoteItem.setUserInfo(userDAO.getUserInfoById(yfTableVote.getUserId()));
@@ -247,7 +247,7 @@ public class TableDAOImpl implements TableDAO {
         joinStatus.setJoinUserList(userInfoList);
         Integer joinNumber = userInfoList.size();
         joinStatus.setJoinNumber(joinNumber);
-        String tableStatusTitle = String.format(FantuanConfig.DEFAULT_TABLE_STATUS_TITLE, tableSize, joinNumber);
+        String tableStatusTitle = String.format(FantuanServerConfig.DEFAULT_TABLE_STATUS_TITLE, tableSize, joinNumber);
         joinStatus.setTableStatusLabel(tableStatusTitle);
         if(joinNumber.equals((int)tableSize)){
             joinStatus.setTableIconType(TableIconType.FULL);

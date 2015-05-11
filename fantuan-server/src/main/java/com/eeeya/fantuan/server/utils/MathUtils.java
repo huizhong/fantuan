@@ -5,7 +5,7 @@
  */
 package com.eeeya.fantuan.server.utils;
 
-import com.eeeya.fantuan.server.api.v1.model.CoordinatePosition;
+import com.eeeya.fantuan.api.v1.model.CoordinatePosition;
 
 import java.io.UnsupportedEncodingException;
 import java.math.BigDecimal;

@@ -1,9 +1,9 @@
 package com.eeeya.fantuan.server.dao.impl;
 
-import com.eeeya.fantuan.server.api.v1.model.FoodItem;
-import com.eeeya.fantuan.server.api.v1.model.ImageInfo;
-import com.eeeya.fantuan.server.api.v1.model.RestaurantMetaInfo;
-import com.eeeya.fantuan.server.contants.ImageType;
+import com.eeeya.fantuan.api.v1.contants.ImageType;
+import com.eeeya.fantuan.api.v1.model.FoodItem;
+import com.eeeya.fantuan.api.v1.model.ImageInfo;
+import com.eeeya.fantuan.api.v1.model.RestaurantMetaInfo;
 import com.eeeya.fantuan.server.dao.RestaurantDAO;
 import com.eeeya.fantuan.server.domain.*;
 import com.eeeya.fantuan.server.mapper.YfRestaurantFoodMapper;

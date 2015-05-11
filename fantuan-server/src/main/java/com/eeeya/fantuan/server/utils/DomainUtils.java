@@ -1,11 +1,11 @@
 package com.eeeya.fantuan.server.utils;
 
-import com.eeeya.fantuan.server.api.v1.model.CoordinatePosition;
-import com.eeeya.fantuan.server.api.v1.model.RestaurantMetaInfo;
-import com.eeeya.fantuan.server.api.v1.model.table.TableMetaInfo;
-import com.eeeya.fantuan.server.contants.MealType;
-import com.eeeya.fantuan.server.contants.PayType;
-import com.eeeya.fantuan.server.contants.TableType;
+import com.eeeya.fantuan.api.v1.contants.MealType;
+import com.eeeya.fantuan.api.v1.contants.PayType;
+import com.eeeya.fantuan.api.v1.contants.TableType;
+import com.eeeya.fantuan.api.v1.model.CoordinatePosition;
+import com.eeeya.fantuan.api.v1.model.RestaurantMetaInfo;
+import com.eeeya.fantuan.api.v1.model.table.TableMetaInfo;
 import com.eeeya.fantuan.server.domain.YfRestaurant;
 import com.eeeya.fantuan.server.domain.YfTable;
 import com.eeeya.fantuan.server.domain.YfUser;

@@ -1,6 +1,6 @@
 package com.eeeya.fantuan.server.service;
 
-import com.eeeya.fantuan.server.api.v1.model.table.TableInfo;
+import com.eeeya.fantuan.api.v1.model.table.TableInfo;
 import com.eeeya.fantuan.server.param.RestaurantSelectParam;
 
 import javax.annotation.Nullable;

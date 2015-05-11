@@ -1,7 +1,7 @@
 package com.eeeya.fantuan.server.service.impl;
 
-import com.eeeya.fantuan.server.api.v1.model.CoordinatePosition;
-import com.eeeya.fantuan.server.api.v1.model.table.TableInfo;
+import com.eeeya.fantuan.api.v1.model.CoordinatePosition;
+import com.eeeya.fantuan.api.v1.model.table.TableInfo;
 import com.eeeya.fantuan.server.dao.RestaurantDAO;
 import com.eeeya.fantuan.server.model.RestaurantFullInfo;
 import com.eeeya.fantuan.server.param.RestaurantSelectParam;

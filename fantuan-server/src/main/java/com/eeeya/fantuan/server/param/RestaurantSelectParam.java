@@ -1,7 +1,5 @@
 package com.eeeya.fantuan.server.param;
 
-import com.eeeya.fantuan.server.api.v1.param.RestaurantParam;
-
 /**
  * @author zhonghui
  * @since 5/8/15.

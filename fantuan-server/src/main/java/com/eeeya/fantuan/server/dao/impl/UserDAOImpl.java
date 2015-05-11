@@ -1,18 +1,18 @@
 package com.eeeya.fantuan.server.dao.impl;
 
-import com.eeeya.fantuan.server.api.common.ApiError;
-import com.eeeya.fantuan.server.api.v1.model.CoordinatePosition;
-import com.eeeya.fantuan.server.api.v1.model.ImageInfo;
-import com.eeeya.fantuan.server.api.v1.model.UserInfo;
-import com.eeeya.fantuan.server.api.v1.model.UserLoginModel;
-import com.eeeya.fantuan.server.config.FantuanConfig;
-import com.eeeya.fantuan.server.contants.ImageType;
+import com.eeeya.fantuan.api.v1.contants.ImageType;
+import com.eeeya.fantuan.api.v1.model.CoordinatePosition;
+import com.eeeya.fantuan.api.v1.model.ImageInfo;
+import com.eeeya.fantuan.api.v1.model.UserInfo;
+import com.eeeya.fantuan.api.v1.model.UserLoginModel;
+import com.eeeya.fantuan.common.exception.ApiException;
+import com.eeeya.fantuan.common.model.ApiError;
+import com.eeeya.fantuan.server.config.FantuanServerConfig;
 import com.eeeya.fantuan.server.dao.UserDAO;
 import com.eeeya.fantuan.server.domain.YfImage;
 import com.eeeya.fantuan.server.domain.YfImageExample;
 import com.eeeya.fantuan.server.domain.YfUser;
 import com.eeeya.fantuan.server.domain.YfUserExample;
-import com.eeeya.fantuan.server.exception.ApiException;
 import com.eeeya.fantuan.server.mapper.YfImageMapper;
 import com.eeeya.fantuan.server.mapper.YfUserMapper;
 import com.eeeya.fantuan.server.model.UserLoginAuthModel;
@@ -60,7 +60,7 @@ public class UserDAOImpl implements UserDAO {
     public CoordinatePosition getUserCoordinatePositionByUserId(Long userId) {
         if(userId == null){
             // todo
-            userId = FantuanConfig.DEFAULT_USER_ID;
+            userId = FantuanServerConfig.DEFAULT_USER_ID;
         }
         YfUser yfUser = yfUserMapper.selectByPrimaryKey(userId);
         CoordinatePosition coordinatePosition = new CoordinatePosition();

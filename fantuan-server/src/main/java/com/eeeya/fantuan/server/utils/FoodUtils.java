@@ -1,6 +1,6 @@
 package com.eeeya.fantuan.server.utils;
 
-import com.eeeya.fantuan.server.api.v1.model.FoodItem;
+import com.eeeya.fantuan.api.v1.model.FoodItem;
 
 import java.util.List;
 

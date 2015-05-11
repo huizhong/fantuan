@@ -1,11 +1,11 @@
 package com.eeeya.fantuan.server.service.impl;
 
-import com.eeeya.fantuan.server.api.common.ApiError;
-import com.eeeya.fantuan.server.api.v1.model.CoordinatePosition;
-import com.eeeya.fantuan.server.api.v1.model.RestaurantMetaInfo;
-import com.eeeya.fantuan.server.api.v1.model.table.TableInfo;
+import com.eeeya.fantuan.api.v1.model.CoordinatePosition;
+import com.eeeya.fantuan.api.v1.model.RestaurantMetaInfo;
+import com.eeeya.fantuan.api.v1.model.table.TableInfo;
+import com.eeeya.fantuan.common.exception.ApiException;
+import com.eeeya.fantuan.common.model.ApiError;
 import com.eeeya.fantuan.server.dao.TableDAO;
-import com.eeeya.fantuan.server.exception.ApiException;
 import com.eeeya.fantuan.server.model.RestaurantFullInfo;
 import com.eeeya.fantuan.server.service.RestaurantService;
 import com.eeeya.fantuan.server.service.TableService;

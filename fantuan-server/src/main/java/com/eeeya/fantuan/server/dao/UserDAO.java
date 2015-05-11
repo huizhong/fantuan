@@ -1,8 +1,8 @@
 package com.eeeya.fantuan.server.dao;
 
-import com.eeeya.fantuan.server.api.v1.model.CoordinatePosition;
-import com.eeeya.fantuan.server.api.v1.model.UserInfo;
-import com.eeeya.fantuan.server.api.v1.model.UserLoginModel;
+import com.eeeya.fantuan.api.v1.model.CoordinatePosition;
+import com.eeeya.fantuan.api.v1.model.UserInfo;
+import com.eeeya.fantuan.api.v1.model.UserLoginModel;
 import com.eeeya.fantuan.server.model.UserLoginAuthModel;
 
 /**

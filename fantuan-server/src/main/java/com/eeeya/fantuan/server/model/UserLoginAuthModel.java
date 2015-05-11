@@ -1,6 +1,6 @@
 package com.eeeya.fantuan.server.model;
 
-import com.eeeya.fantuan.server.api.v1.model.UserLoginModel;
+import com.eeeya.fantuan.api.v1.model.UserLoginModel;
 
 /**
  * @author zhonghui

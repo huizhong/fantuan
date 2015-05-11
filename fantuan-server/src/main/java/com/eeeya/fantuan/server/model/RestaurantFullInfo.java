@@ -1,7 +1,7 @@
 package com.eeeya.fantuan.server.model;
 
-import com.eeeya.fantuan.server.api.v1.model.ImageInfo;
-import com.eeeya.fantuan.server.api.v1.model.RestaurantInfo;
+import com.eeeya.fantuan.api.v1.model.ImageInfo;
+import com.eeeya.fantuan.api.v1.model.RestaurantInfo;
 
 /**
  * @author zhonghui

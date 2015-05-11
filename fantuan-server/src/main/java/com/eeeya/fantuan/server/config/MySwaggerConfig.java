@@ -1,6 +1,7 @@
 package com.eeeya.fantuan.server.config;
 
 import com.mangofactory.swagger.configuration.SpringSwaggerConfig;
+import com.mangofactory.swagger.models.GenericTypeNamingStrategy;
 import com.mangofactory.swagger.models.dto.ApiInfo;
 import com.mangofactory.swagger.paths.SwaggerPathProvider;
 import com.mangofactory.swagger.plugin.EnableSwagger;
@@ -43,7 +44,10 @@ public class MySwaggerConfig {
                 .includePatterns("/api/.*?")
                 .apiInfo(defaultApiInfo())
                 .apiVersion("0.3")
-                .pathProvider(new MySwaggerPathProvider());
+                .genericTypeNamingStrategy(new MyGenericNamingStrategy())
+                .pathProvider(new MySwaggerPathProvider())
+
+                ;
     }
 
     @Autowired
@@ -75,6 +79,27 @@ public class MySwaggerConfig {
         }
     }
 
+    public class MyGenericNamingStrategy implements GenericTypeNamingStrategy {
+        private final static String OPEN = "Of";
+        private final static String CLOSE = "";
+        private final static String DELIM = "And";
+
+        @Override
+        public String getOpenGeneric() {
+            return OPEN;
+        }
+
+        @Override
+        public String getCloseGeneric() {
+            return CLOSE;
+        }
+
+        @Override
+        public String getTypeListDelimiter() {
+            return DELIM;
+        }
+
+    }
 
 
     private ApiInfo defaultApiInfo() {

@@ -1,7 +1,7 @@
 package com.eeeya.fantuan.server.utils;
 
 
-import com.eeeya.fantuan.server.api.common.ResultModel;
+import com.eeeya.fantuan.common.model.ResultModel;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
