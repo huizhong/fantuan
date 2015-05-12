@@ -37,4 +37,5 @@ public class MyJavaClientCodegen extends JavaClientCodegen {
       (sourceFolder + File.separator + invokerPackage).replace(".", File.separator), "ApiException.java"));
   }
 
+
 }

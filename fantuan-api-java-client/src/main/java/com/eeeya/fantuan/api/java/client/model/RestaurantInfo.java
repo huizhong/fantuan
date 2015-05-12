@@ -1,10 +1,10 @@
 package com.eeeya.fantuan.api.java.client.model;
 
-import com.eeeya.fantuan.api.java.client.model.CoordinatePosition;
-import java.util.*;
-
-import com.wordnik.swagger.annotations.*;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.wordnik.swagger.annotations.ApiModel;
+import com.wordnik.swagger.annotations.ApiModelProperty;
+
+import java.util.List;
 
 
 /**
@@ -14,13 +14,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class RestaurantInfo  {
   
   private List foodItemList = null;
-  private String fullName = null;
-  private String shortName = null;
   private Long restaurantId = null;
   private CoordinatePosition coordinatePosition = null;
+  private Integer maxTable = null;
+  private String fullName = null;
   private String restaurantPhone = null;
   private String restaurantAddress = null;
-  private Integer maxTable = null;
+  private String shortName = null;
 
   
   /**
@@ -33,32 +33,6 @@ public class RestaurantInfo  {
   }
   public void setFoodItemList(List foodItemList) {
     this.foodItemList = foodItemList;
-  }
-
-  
-  /**
-   * 全名称，比如'金百万（望京店）'
-   **/
-  @ApiModelProperty(required = false, value = "全名称，比如'金百万（望京店）'")
-  @JsonProperty("fullName")
-  public String getFullName() {
-    return fullName;
-  }
-  public void setFullName(String fullName) {
-    this.fullName = fullName;
-  }
-
-  
-  /**
-   * 短名称，比如'金百万'
-   **/
-  @ApiModelProperty(required = false, value = "短名称，比如'金百万'")
-  @JsonProperty("shortName")
-  public String getShortName() {
-    return shortName;
-  }
-  public void setShortName(String shortName) {
-    this.shortName = shortName;
   }
 
   
@@ -89,6 +63,32 @@ public class RestaurantInfo  {
 
   
   /**
+   * 最大饭桌数
+   **/
+  @ApiModelProperty(required = false, value = "最大饭桌数")
+  @JsonProperty("maxTable")
+  public Integer getMaxTable() {
+    return maxTable;
+  }
+  public void setMaxTable(Integer maxTable) {
+    this.maxTable = maxTable;
+  }
+
+  
+  /**
+   * 全名称，比如'金百万（望京店）'
+   **/
+  @ApiModelProperty(required = false, value = "全名称，比如'金百万（望京店）'")
+  @JsonProperty("fullName")
+  public String getFullName() {
+    return fullName;
+  }
+  public void setFullName(String fullName) {
+    this.fullName = fullName;
+  }
+
+  
+  /**
    * 餐厅电话
    **/
   @ApiModelProperty(required = false, value = "餐厅电话")
@@ -115,15 +115,15 @@ public class RestaurantInfo  {
 
   
   /**
-   * 最大饭桌数
+   * 短名称，比如'金百万'
    **/
-  @ApiModelProperty(required = false, value = "最大饭桌数")
-  @JsonProperty("maxTable")
-  public Integer getMaxTable() {
-    return maxTable;
+  @ApiModelProperty(required = false, value = "短名称，比如'金百万'")
+  @JsonProperty("shortName")
+  public String getShortName() {
+    return shortName;
   }
-  public void setMaxTable(Integer maxTable) {
-    this.maxTable = maxTable;
+  public void setShortName(String shortName) {
+    this.shortName = shortName;
   }
 
   
@@ -134,13 +134,13 @@ public class RestaurantInfo  {
     sb.append("class RestaurantInfo {\n");
     
     sb.append("  foodItemList: ").append(foodItemList).append("\n");
-    sb.append("  fullName: ").append(fullName).append("\n");
-    sb.append("  shortName: ").append(shortName).append("\n");
     sb.append("  restaurantId: ").append(restaurantId).append("\n");
     sb.append("  coordinatePosition: ").append(coordinatePosition).append("\n");
+    sb.append("  maxTable: ").append(maxTable).append("\n");
+    sb.append("  fullName: ").append(fullName).append("\n");
     sb.append("  restaurantPhone: ").append(restaurantPhone).append("\n");
     sb.append("  restaurantAddress: ").append(restaurantAddress).append("\n");
-    sb.append("  maxTable: ").append(maxTable).append("\n");
+    sb.append("  shortName: ").append(shortName).append("\n");
     sb.append("}\n");
     return sb.toString();
   }

@@ -1,9 +1,8 @@
 package com.eeeya.fantuan.api.java.client.model;
 
-import com.eeeya.fantuan.api.java.client.model.CoordinatePosition;
-
-import com.wordnik.swagger.annotations.*;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.wordnik.swagger.annotations.ApiModel;
+import com.wordnik.swagger.annotations.ApiModelProperty;
 
 
 /**
@@ -13,8 +12,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class ResultModelOfCoordinatePosition  {
   
   private String message = null;
-  private Integer status = null;
   private Object ext = null;
+  private Integer status = null;
   private Long time = null;
   private CoordinatePosition data = null;
 
@@ -33,19 +32,6 @@ public class ResultModelOfCoordinatePosition  {
 
   
   /**
-   * 请求状态, 0表示正常
-   **/
-  @ApiModelProperty(required = false, value = "请求状态, 0表示正常")
-  @JsonProperty("status")
-  public Integer getStatus() {
-    return status;
-  }
-  public void setStatus(Integer status) {
-    this.status = status;
-  }
-
-  
-  /**
    * 其它信息
    **/
   @ApiModelProperty(required = false, value = "其它信息")
@@ -55,6 +41,19 @@ public class ResultModelOfCoordinatePosition  {
   }
   public void setExt(Object ext) {
     this.ext = ext;
+  }
+
+  
+  /**
+   * 请求状态, 0表示正常
+   **/
+  @ApiModelProperty(required = false, value = "请求状态, 0表示正常")
+  @JsonProperty("status")
+  public Integer getStatus() {
+    return status;
+  }
+  public void setStatus(Integer status) {
+    this.status = status;
   }
 
   
@@ -91,8 +90,8 @@ public class ResultModelOfCoordinatePosition  {
     sb.append("class ResultModelOfCoordinatePosition {\n");
     
     sb.append("  message: ").append(message).append("\n");
-    sb.append("  status: ").append(status).append("\n");
     sb.append("  ext: ").append(ext).append("\n");
+    sb.append("  status: ").append(status).append("\n");
     sb.append("  time: ").append(time).append("\n");
     sb.append("  data: ").append(data).append("\n");
     sb.append("}\n");

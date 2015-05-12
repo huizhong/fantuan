@@ -1,12 +1,8 @@
 package com.eeeya.fantuan.api.java.client.model;
 
-import com.eeeya.fantuan.api.java.client.model.TableMessageStatus;
-import com.eeeya.fantuan.api.java.client.model.TableJoinStatus;
-import com.eeeya.fantuan.api.java.client.model.MealStartStatus;
-import com.eeeya.fantuan.api.java.client.model.MealVoteStatus;
-
-import com.wordnik.swagger.annotations.*;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.wordnik.swagger.annotations.ApiModel;
+import com.wordnik.swagger.annotations.ApiModelProperty;
 
 
 /**
@@ -15,11 +11,24 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @ApiModel(description = "")
 public class TableStatus  {
   
+  private TableMessageStatus messageStatus = null;
   private MealStartStatus mealStartStatus = null;
   private MealVoteStatus mealVoteStatus = null;
   private TableJoinStatus joinStatus = null;
-  private TableMessageStatus messageStatus = null;
   private Long updateTime = null;
+
+  
+  /**
+   * 消息状态
+   **/
+  @ApiModelProperty(required = false, value = "消息状态")
+  @JsonProperty("messageStatus")
+  public TableMessageStatus getMessageStatus() {
+    return messageStatus;
+  }
+  public void setMessageStatus(TableMessageStatus messageStatus) {
+    this.messageStatus = messageStatus;
+  }
 
   
   /**
@@ -62,19 +71,6 @@ public class TableStatus  {
 
   
   /**
-   * 消息状态
-   **/
-  @ApiModelProperty(required = false, value = "消息状态")
-  @JsonProperty("messageStatus")
-  public TableMessageStatus getMessageStatus() {
-    return messageStatus;
-  }
-  public void setMessageStatus(TableMessageStatus messageStatus) {
-    this.messageStatus = messageStatus;
-  }
-
-  
-  /**
    * 状态更新时间
    **/
   @ApiModelProperty(required = false, value = "状态更新时间")
@@ -93,10 +89,10 @@ public class TableStatus  {
     StringBuilder sb = new StringBuilder();
     sb.append("class TableStatus {\n");
     
+    sb.append("  messageStatus: ").append(messageStatus).append("\n");
     sb.append("  mealStartStatus: ").append(mealStartStatus).append("\n");
     sb.append("  mealVoteStatus: ").append(mealVoteStatus).append("\n");
     sb.append("  joinStatus: ").append(joinStatus).append("\n");
-    sb.append("  messageStatus: ").append(messageStatus).append("\n");
     sb.append("  updateTime: ").append(updateTime).append("\n");
     sb.append("}\n");
     return sb.toString();

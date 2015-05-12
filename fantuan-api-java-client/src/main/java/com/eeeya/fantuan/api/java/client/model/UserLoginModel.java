@@ -1,8 +1,9 @@
 package com.eeeya.fantuan.api.java.client.model;
 
 
-import com.wordnik.swagger.annotations.*;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.wordnik.swagger.annotations.ApiModel;
+import com.wordnik.swagger.annotations.ApiModelProperty;
 
 
 /**
@@ -12,8 +13,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class UserLoginModel  {
   
   private String userToken = null;
-  private String userName = null;
   private Long userId = null;
+  private String userName = null;
 
   
   /**
@@ -31,24 +32,24 @@ public class UserLoginModel  {
   /**
    **/
   @ApiModelProperty(required = false, value = "")
-  @JsonProperty("userName")
-  public String getUserName() {
-    return userName;
-  }
-  public void setUserName(String userName) {
-    this.userName = userName;
-  }
-
-  
-  /**
-   **/
-  @ApiModelProperty(required = false, value = "")
   @JsonProperty("userId")
   public Long getUserId() {
     return userId;
   }
   public void setUserId(Long userId) {
     this.userId = userId;
+  }
+
+  
+  /**
+   **/
+  @ApiModelProperty(required = false, value = "")
+  @JsonProperty("userName")
+  public String getUserName() {
+    return userName;
+  }
+  public void setUserName(String userName) {
+    this.userName = userName;
   }
 
   
@@ -59,8 +60,8 @@ public class UserLoginModel  {
     sb.append("class UserLoginModel {\n");
     
     sb.append("  userToken: ").append(userToken).append("\n");
-    sb.append("  userName: ").append(userName).append("\n");
     sb.append("  userId: ").append(userId).append("\n");
+    sb.append("  userName: ").append(userName).append("\n");
     sb.append("}\n");
     return sb.toString();
   }

@@ -19,4 +19,6 @@ public class CodegenConfig {
     public static final String ANDROID_ARTIFACT_VERSION = "1.0-SNAPSHOT";
     public static final String ANDROID_API_PACKAGE = "com.eeeya.fantuan.api.android.client.api";
     public static final String ANDROID_MODEL_PACKAGE = "com.eeeya.fantuan.api.android.client.model";
+    public static final String SWAGGER_API_DOCS_DIR = "doc/swagger";
+    public static final String DEFAULT_API_HOST = "test.daidaiduoduo.com";
 }

@@ -1,12 +1,8 @@
 package com.eeeya.fantuan.api.java.client.model;
 
-import com.eeeya.fantuan.api.java.client.model.ImageInfo;
-import com.eeeya.fantuan.api.java.client.model.PriceInfo;
-import com.eeeya.fantuan.api.java.client.model.TableStatus;
-import com.eeeya.fantuan.api.java.client.model.RestaurantInfo;
-
-import com.wordnik.swagger.annotations.*;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.wordnik.swagger.annotations.ApiModel;
+import com.wordnik.swagger.annotations.ApiModelProperty;
 
 
 /**
@@ -15,18 +11,44 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @ApiModel(description = "")
 public class TableInfo  {
   
+  private ImageInfo tableLogo = null;
+  private PriceInfo averagePrice = null;
   private TableStatus tableStatus = null;
   private Integer tableIndex = null;
   private RestaurantInfo restaurantInfo = null;
-  private ImageInfo tableLogo = null;
-  private PriceInfo averagePrice = null;
+  private Long restaurantId = null;
+  private String tableType = null;
+  private Long tableId = null;
   private Long mealTime = null;
   private String mealType = null;
   private String payType = null;
   private Integer talkGroupId = null;
-  private Long restaurantId = null;
-  private String tableType = null;
-  private Long tableId = null;
+
+  
+  /**
+   * 餐桌的Logo图，用于背景
+   **/
+  @ApiModelProperty(required = false, value = "餐桌的Logo图，用于背景")
+  @JsonProperty("tableLogo")
+  public ImageInfo getTableLogo() {
+    return tableLogo;
+  }
+  public void setTableLogo(ImageInfo tableLogo) {
+    this.tableLogo = tableLogo;
+  }
+
+  
+  /**
+   * 餐桌人均价格
+   **/
+  @ApiModelProperty(required = false, value = "餐桌人均价格")
+  @JsonProperty("averagePrice")
+  public PriceInfo getAveragePrice() {
+    return averagePrice;
+  }
+  public void setAveragePrice(PriceInfo averagePrice) {
+    this.averagePrice = averagePrice;
+  }
 
   
   /**
@@ -69,28 +91,41 @@ public class TableInfo  {
 
   
   /**
-   * 餐桌的Logo图，用于背景
+   * 餐厅ID
    **/
-  @ApiModelProperty(required = false, value = "餐桌的Logo图，用于背景")
-  @JsonProperty("tableLogo")
-  public ImageInfo getTableLogo() {
-    return tableLogo;
+  @ApiModelProperty(required = false, value = "餐厅ID")
+  @JsonProperty("restaurantId")
+  public Long getRestaurantId() {
+    return restaurantId;
   }
-  public void setTableLogo(ImageInfo tableLogo) {
-    this.tableLogo = tableLogo;
+  public void setRestaurantId(Long restaurantId) {
+    this.restaurantId = restaurantId;
   }
 
   
   /**
-   * 餐桌人均价格
+   * 餐桌座位类型
    **/
-  @ApiModelProperty(required = false, value = "餐桌人均价格")
-  @JsonProperty("averagePrice")
-  public PriceInfo getAveragePrice() {
-    return averagePrice;
+  @ApiModelProperty(required = false, value = "餐桌座位类型")
+  @JsonProperty("tableType")
+  public String getTableType() {
+    return tableType;
   }
-  public void setAveragePrice(PriceInfo averagePrice) {
-    this.averagePrice = averagePrice;
+  public void setTableType(String tableType) {
+    this.tableType = tableType;
+  }
+
+  
+  /**
+   * 餐桌唯一ID
+   **/
+  @ApiModelProperty(required = false, value = "餐桌唯一ID")
+  @JsonProperty("tableId")
+  public Long getTableId() {
+    return tableId;
+  }
+  public void setTableId(Long tableId) {
+    this.tableId = tableId;
   }
 
   
@@ -146,63 +181,24 @@ public class TableInfo  {
   }
 
   
-  /**
-   * 餐厅ID
-   **/
-  @ApiModelProperty(required = false, value = "餐厅ID")
-  @JsonProperty("restaurantId")
-  public Long getRestaurantId() {
-    return restaurantId;
-  }
-  public void setRestaurantId(Long restaurantId) {
-    this.restaurantId = restaurantId;
-  }
-
-  
-  /**
-   * 餐桌座位类型
-   **/
-  @ApiModelProperty(required = false, value = "餐桌座位类型")
-  @JsonProperty("tableType")
-  public String getTableType() {
-    return tableType;
-  }
-  public void setTableType(String tableType) {
-    this.tableType = tableType;
-  }
-
-  
-  /**
-   * 餐桌唯一ID
-   **/
-  @ApiModelProperty(required = false, value = "餐桌唯一ID")
-  @JsonProperty("tableId")
-  public Long getTableId() {
-    return tableId;
-  }
-  public void setTableId(Long tableId) {
-    this.tableId = tableId;
-  }
-
-  
 
   @Override
   public String toString()  {
     StringBuilder sb = new StringBuilder();
     sb.append("class TableInfo {\n");
     
+    sb.append("  tableLogo: ").append(tableLogo).append("\n");
+    sb.append("  averagePrice: ").append(averagePrice).append("\n");
     sb.append("  tableStatus: ").append(tableStatus).append("\n");
     sb.append("  tableIndex: ").append(tableIndex).append("\n");
     sb.append("  restaurantInfo: ").append(restaurantInfo).append("\n");
-    sb.append("  tableLogo: ").append(tableLogo).append("\n");
-    sb.append("  averagePrice: ").append(averagePrice).append("\n");
+    sb.append("  restaurantId: ").append(restaurantId).append("\n");
+    sb.append("  tableType: ").append(tableType).append("\n");
+    sb.append("  tableId: ").append(tableId).append("\n");
     sb.append("  mealTime: ").append(mealTime).append("\n");
     sb.append("  mealType: ").append(mealType).append("\n");
     sb.append("  payType: ").append(payType).append("\n");
     sb.append("  talkGroupId: ").append(talkGroupId).append("\n");
-    sb.append("  restaurantId: ").append(restaurantId).append("\n");
-    sb.append("  tableType: ").append(tableType).append("\n");
-    sb.append("  tableId: ").append(tableId).append("\n");
     sb.append("}\n");
     return sb.toString();
   }
