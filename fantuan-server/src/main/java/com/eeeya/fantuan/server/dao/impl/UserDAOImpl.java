@@ -20,6 +20,7 @@ import com.eeeya.fantuan.server.utils.DomainUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -70,7 +71,7 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public UserLoginModel getUserLoginModelByPhoneAndPassword(String userPhone, String encodePassword) {
+    public UserLoginModel getUserLoginModelByPhoneAndPassword(String userPhone, String encodePassword) throws ApiException {
 
         UserLoginAuthModel userLoginAuthModel = getUserLoginAuthModelByPhone(userPhone);
         if (encodePassword != null && encodePassword.equals(userLoginAuthModel.getEncodedPassword())) {
@@ -87,7 +88,7 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public UserLoginAuthModel getUserLoginAuthModelByPhone(String userPhone) {
+    public UserLoginAuthModel getUserLoginAuthModelByPhone(String userPhone) throws ApiException {
         YfUserExample yfUserExample = new YfUserExample();
         yfUserExample.or().andTelphoneEqualTo(userPhone);
         yfUserExample.setOffset(0);
@@ -102,5 +103,17 @@ public class UserDAOImpl implements UserDAO {
         DomainUtils.loadUserLoginAuthModel(userLoginModel, yfUser);
         return userLoginModel;
 
+    }
+
+    @Override
+    public List<UserLoginModel> getAllUserLoginModel() {
+        List<YfUser> yfUserList = yfUserMapper.selectByExample(new YfUserExample());
+        List<UserLoginModel> userLoginModelList = new ArrayList<UserLoginModel>();
+        for(YfUser yfUser: yfUserList){
+            UserLoginAuthModel userLoginModel = new UserLoginAuthModel();
+            DomainUtils.loadUserLoginAuthModel(userLoginModel, yfUser);
+            userLoginModelList.add(userLoginModel);
+        }
+        return userLoginModelList;
     }
 }

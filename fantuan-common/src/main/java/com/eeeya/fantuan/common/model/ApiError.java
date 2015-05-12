@@ -37,7 +37,10 @@ public enum ApiError {
     DATABASE_INSERT_FAILED(50301, "数据库插入失败"),
     USER_PHONE_NOT_FOUND(4004, "用户手机号未找到"),
     USER_PHONE_PASSWORD_NOT_MATCH(4005, "用户手机号和密码不匹配"),
-    FAILED_TO_SEND_POST(4006, "请求发送失败")
+    FAILED_TO_SEND_POST(4006, "请求发送失败"),
+    DATABASE_DUPLICATE_KEY(50302, "不满足唯一性"),
+    IM_ERROR(50303, "聊天系统出错"),
+    DATABASE_REMOVE_FAILED(50304, "删除数据出错")
     ;
 
 

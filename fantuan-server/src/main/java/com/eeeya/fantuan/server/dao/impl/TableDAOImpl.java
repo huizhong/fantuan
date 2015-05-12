@@ -24,6 +24,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Repository;
 
+import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -80,15 +81,15 @@ public class TableDAOImpl implements TableDAO {
         return getTableInfoByDomain(yfTable, tableIndex);
     }
 
+    @NotNull
     @Override
-    public Long insertTable(RestaurantMetaInfo restaurantMetaInfo) {
+    public Long insertTable(RestaurantMetaInfo restaurantMetaInfo, String talkGroupId) throws ApiException {
         YfTable yfTable = new YfTable();
         yfTable.setMealType(FantuanServerConfig.DEFAULT_MEAL_TYPE.getValue());
         yfTable.setTableType(FantuanServerConfig.DEFAULT_TABLE_TYPE.getValue());
         yfTable.setPayType(FantuanServerConfig.DEFAULT_PAY_TYPE.getValue());
         yfTable.setRestaurantId(restaurantMetaInfo.getRestaurantId());
-        // todo talk group
-        yfTable.setTalkGroupId(FantuanServerConfig.DEFAULT_TALK_GROUP_ID);
+        yfTable.setTalkGroupId(talkGroupId);
         if( 1 == yfTableMapper.insertSelective(yfTable)){
             return yfTable.getId();
         }
@@ -97,8 +98,10 @@ public class TableDAOImpl implements TableDAO {
         }
     }
 
+
+    @NotNull
     @Override
-    public Long insertJoinStatus(Long tableId, Long userId) {
+    public Long insertJoinStatus(Long tableId, Long userId) throws ApiException {
         YfTableJoin yfTableJoin = new YfTableJoin();
         yfTableJoin.setTableId(tableId);
         yfTableJoin.setUserId(userId);
@@ -107,14 +110,16 @@ public class TableDAOImpl implements TableDAO {
             if(affectNumber == 1){
                 return yfTableJoin.getId();
             }
-        }catch (DuplicateKeyException ignore){
-            // todo 插入失败处理
+        }catch (DuplicateKeyException e){
+            throw new ApiException(ApiError.DATABASE_DUPLICATE_KEY, "插入用户参加状态失败", e);
         }
-        return null;
+        throw new ApiException(ApiError.DATABASE_INSERT_FAILED);
     }
 
+
+    @NotNull
     @Override
-    public Long insertStartStatus(Long tableId, Long userId) {
+    public Long insertStartStatus(Long tableId, Long userId) throws ApiException {
         YfTableStart yfTableStart = new YfTableStart();
         yfTableStart.setTableId(tableId);
         yfTableStart.setUserId(userId);
@@ -123,14 +128,14 @@ public class TableDAOImpl implements TableDAO {
             if(affectNumber == 1){
                 return yfTableStart.getId();
             }
-        }catch (DuplicateKeyException ignore){
-            // todo 插入失败处理
+        }catch (DuplicateKeyException e){
+            throw new ApiException(ApiError.DATABASE_DUPLICATE_KEY, "插入用户出发状态失败", e);
         }
-        return null;
+        throw new ApiException(ApiError.DATABASE_INSERT_FAILED);
     }
 
     @Override
-    public Long insertVoteStatus(Long tableId, Long userId, Long foodItemId) {
+    public Long insertVoteStatus(Long tableId, Long userId, Long foodItemId) throws ApiException {
         YfTableVote yfTableVote = new YfTableVote();
         yfTableVote.setTableId(tableId);
         yfTableVote.setUserId(userId);
@@ -140,10 +145,18 @@ public class TableDAOImpl implements TableDAO {
             if(affectNumber == 1){
                 return yfTableVote.getId();
             }
-        }catch (DuplicateKeyException ignore){
-            // todo 插入失败处理
+        }catch (DuplicateKeyException e){
+            throw new ApiException(ApiError.DATABASE_DUPLICATE_KEY, "插入用户投票状态失败", e);
         }
-        return null;
+        throw new ApiException(ApiError.DATABASE_INSERT_FAILED);
+    }
+
+    @Override
+    public void removeUserJoinStatus(Long joinId) throws ApiException {
+        Integer affectNumber = yfTableMapper.deleteByPrimaryKey(joinId);
+        if(affectNumber != 1){
+            throw new ApiException(ApiError.DATABASE_REMOVE_FAILED, "删除加入状态失败, 表：join_status, key: " + joinId);
+        }
     }
 
     private TableInfo getTableInfoByDomain(YfTable yfTable, Integer tableIndex) {

@@ -2,6 +2,7 @@ package com.eeeya.fantuan.server.controller;
 
 import com.eeeya.fantuan.api.v1.contants.V1Constants;
 import com.eeeya.fantuan.api.v1.model.table.TableInfo;
+import com.eeeya.fantuan.common.exception.ApiException;
 import com.eeeya.fantuan.common.model.ResultModel;
 import com.eeeya.fantuan.server.param.RestaurantSelectParam;
 import com.eeeya.fantuan.server.service.RestaurantService;
@@ -34,7 +35,7 @@ public class RestaurantController {
             @ApiParam("切换到更远") @RequestParam Boolean isFarther,
             @ApiParam("用户位置经度") @RequestParam Double userLatitude,
             @ApiParam("用户位置纬度") @RequestParam Double userLongitude
-    ){
+    ) throws ApiException {
         RestaurantSelectParam restaurantSelectParam = new RestaurantSelectParam(isFarther, userLatitude, userLongitude, tableId);
         return new ResultModel<TableInfo>(restaurantService.getNewRestaurant(restaurantSelectParam));
     }
@@ -44,7 +45,7 @@ public class RestaurantController {
     public ResultModel<TableInfo> getRecommendTableInfo(
             @ApiParam("用户位置经度") @RequestParam Double userLatitude,
             @ApiParam("用户位置纬度") @RequestParam Double userLongitude
-    ){
+    ) throws ApiException {
         return new ResultModel<TableInfo>(restaurantService.getNewRestaurant(userLatitude, userLongitude));
     }
 

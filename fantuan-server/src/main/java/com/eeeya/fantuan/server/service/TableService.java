@@ -16,11 +16,11 @@ public interface TableService {
 
     TableInfo getTableInfo(Long tableId);
 
-    TableInfo getNextTable(Long tableId);
+    TableInfo getNextTable(Long tableId) throws ApiException;
 
-    TableInfo joinTable(Long tableId, Long userId);
+    TableInfo joinTable(Long tableId, Long userId) throws ApiException;
 
-    TableInfo startMeal(Long tableId, Long userId);
+    TableInfo startMeal(Long tableId, Long userId) throws ApiException;
 
-    TableInfo voteMeal(Long tableId, Long userId, Long foodItemId);
+    TableInfo voteMeal(Long tableId, Long userId, Long foodItemId) throws ApiException;
 }

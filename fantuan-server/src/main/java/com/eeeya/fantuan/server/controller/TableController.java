@@ -3,6 +3,7 @@ package com.eeeya.fantuan.server.controller;
 import com.eeeya.fantuan.api.v1.contants.V1Constants;
 import com.eeeya.fantuan.api.v1.model.table.TableInfo;
 import com.eeeya.fantuan.api.v1.model.table.TableStatus;
+import com.eeeya.fantuan.common.exception.ApiException;
 import com.eeeya.fantuan.common.model.ResultModel;
 import com.eeeya.fantuan.server.service.RestaurantService;
 import com.eeeya.fantuan.server.service.TableService;
@@ -54,7 +55,7 @@ public class TableController {
     @RequestMapping(value = "{tableId}/change.do", method = RequestMethod.POST)
     public ResultModel<TableInfo> changeTableByTableId(
             @ApiParam("当前餐桌ID") @PathVariable Long tableId
-    ){
+    ) throws ApiException {
         return new ResultModel<TableInfo>(tableService.getNextTable(tableId));
     }
 
@@ -64,7 +65,7 @@ public class TableController {
             @ApiParam("当前餐桌ID") @PathVariable Long tableId,
             @ApiParam("用户ID") @RequestParam Long userId,
             @ApiParam("用户Token") @RequestParam String userToken
-    ){
+    ) throws ApiException {
         userService.checkPermission(userId, userToken);
         return new ResultModel<TableInfo>(tableService.joinTable(tableId, userId));
     }
@@ -76,7 +77,7 @@ public class TableController {
             @ApiParam("投票菜品ID") @RequestParam Long foodItemId,
             @ApiParam("用户ID") @RequestParam Long userId,
             @ApiParam("用户Token") @RequestParam String userToken
-    ){
+    ) throws ApiException {
         userService.checkPermission(userId, userToken);
         return new ResultModel<TableInfo>(tableService.voteMeal(tableId, userId, foodItemId));
     }
@@ -88,7 +89,7 @@ public class TableController {
             @ApiParam("当前餐桌ID") @PathVariable Long tableId,
             @ApiParam("用户ID") @RequestParam Long userId,
             @ApiParam("用户Token") @RequestParam String userToken
-    ){
+    ) throws ApiException {
         userService.checkPermission(userId, userToken);
         return new ResultModel<TableInfo>(tableService.startMeal(tableId, userId));
     }

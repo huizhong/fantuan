@@ -12,7 +12,7 @@
     <result column="table_type" jdbcType="TINYINT" property="tableType" />
     <result column="pay_type" jdbcType="TINYINT" property="payType" />
     <result column="restaurant_Id" jdbcType="BIGINT" property="restaurantId" />
-    <result column="talk_group_id" jdbcType="INTEGER" property="talkGroupId" />
+    <result column="talk_group_id" jdbcType="VARCHAR" property="talkGroupId" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <!--
@@ -148,7 +148,7 @@
       pay_type, restaurant_Id, talk_group_id
       )
     values (#{mealTime,jdbcType=TIMESTAMP}, #{mealType,jdbcType=TINYINT}, #{tableType,jdbcType=TINYINT}, 
-      #{payType,jdbcType=TINYINT}, #{restaurantId,jdbcType=BIGINT}, #{talkGroupId,jdbcType=INTEGER}
+      #{payType,jdbcType=TINYINT}, #{restaurantId,jdbcType=BIGINT}, #{talkGroupId,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.eeeya.fantuan.server.domain.YfTable">
@@ -197,7 +197,7 @@
         #{restaurantId,jdbcType=BIGINT},
       </if>
       <if test="talkGroupId != null">
-        #{talkGroupId,jdbcType=INTEGER},
+        #{talkGroupId,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -237,7 +237,7 @@
         restaurant_Id = #{record.restaurantId,jdbcType=BIGINT},
       </if>
       <if test="record.talkGroupId != null">
-        talk_group_id = #{record.talkGroupId,jdbcType=INTEGER},
+        talk_group_id = #{record.talkGroupId,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null">
@@ -256,7 +256,7 @@
       table_type = #{record.tableType,jdbcType=TINYINT},
       pay_type = #{record.payType,jdbcType=TINYINT},
       restaurant_Id = #{record.restaurantId,jdbcType=BIGINT},
-      talk_group_id = #{record.talkGroupId,jdbcType=INTEGER}
+      talk_group_id = #{record.talkGroupId,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -284,7 +284,7 @@
         restaurant_Id = #{restaurantId,jdbcType=BIGINT},
       </if>
       <if test="talkGroupId != null">
-        talk_group_id = #{talkGroupId,jdbcType=INTEGER},
+        talk_group_id = #{talkGroupId,jdbcType=VARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
@@ -300,7 +300,7 @@
       table_type = #{tableType,jdbcType=TINYINT},
       pay_type = #{payType,jdbcType=TINYINT},
       restaurant_Id = #{restaurantId,jdbcType=BIGINT},
-      talk_group_id = #{talkGroupId,jdbcType=INTEGER}
+      talk_group_id = #{talkGroupId,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

@@ -621,52 +621,62 @@ public class YfTableExample {
             return (Criteria) this;
         }
 
-        public Criteria andTalkGroupIdEqualTo(Integer value) {
+        public Criteria andTalkGroupIdEqualTo(String value) {
             addCriterion("talk_group_id =", value, "talkGroupId");
             return (Criteria) this;
         }
 
-        public Criteria andTalkGroupIdNotEqualTo(Integer value) {
+        public Criteria andTalkGroupIdNotEqualTo(String value) {
             addCriterion("talk_group_id <>", value, "talkGroupId");
             return (Criteria) this;
         }
 
-        public Criteria andTalkGroupIdGreaterThan(Integer value) {
+        public Criteria andTalkGroupIdGreaterThan(String value) {
             addCriterion("talk_group_id >", value, "talkGroupId");
             return (Criteria) this;
         }
 
-        public Criteria andTalkGroupIdGreaterThanOrEqualTo(Integer value) {
+        public Criteria andTalkGroupIdGreaterThanOrEqualTo(String value) {
             addCriterion("talk_group_id >=", value, "talkGroupId");
             return (Criteria) this;
         }
 
-        public Criteria andTalkGroupIdLessThan(Integer value) {
+        public Criteria andTalkGroupIdLessThan(String value) {
             addCriterion("talk_group_id <", value, "talkGroupId");
             return (Criteria) this;
         }
 
-        public Criteria andTalkGroupIdLessThanOrEqualTo(Integer value) {
+        public Criteria andTalkGroupIdLessThanOrEqualTo(String value) {
             addCriterion("talk_group_id <=", value, "talkGroupId");
             return (Criteria) this;
         }
 
-        public Criteria andTalkGroupIdIn(List<Integer> values) {
+        public Criteria andTalkGroupIdLike(String value) {
+            addCriterion("talk_group_id like", value, "talkGroupId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTalkGroupIdNotLike(String value) {
+            addCriterion("talk_group_id not like", value, "talkGroupId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTalkGroupIdIn(List<String> values) {
             addCriterion("talk_group_id in", values, "talkGroupId");
             return (Criteria) this;
         }
 
-        public Criteria andTalkGroupIdNotIn(List<Integer> values) {
+        public Criteria andTalkGroupIdNotIn(List<String> values) {
             addCriterion("talk_group_id not in", values, "talkGroupId");
             return (Criteria) this;
         }
 
-        public Criteria andTalkGroupIdBetween(Integer value1, Integer value2) {
+        public Criteria andTalkGroupIdBetween(String value1, String value2) {
             addCriterion("talk_group_id between", value1, value2, "talkGroupId");
             return (Criteria) this;
         }
 
-        public Criteria andTalkGroupIdNotBetween(Integer value1, Integer value2) {
+        public Criteria andTalkGroupIdNotBetween(String value1, String value2) {
             addCriterion("talk_group_id not between", value1, value2, "talkGroupId");
             return (Criteria) this;
         }

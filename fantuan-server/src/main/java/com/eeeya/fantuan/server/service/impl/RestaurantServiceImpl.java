@@ -2,6 +2,7 @@ package com.eeeya.fantuan.server.service.impl;
 
 import com.eeeya.fantuan.api.v1.model.CoordinatePosition;
 import com.eeeya.fantuan.api.v1.model.table.TableInfo;
+import com.eeeya.fantuan.common.exception.ApiException;
 import com.eeeya.fantuan.server.dao.RestaurantDAO;
 import com.eeeya.fantuan.server.model.RestaurantFullInfo;
 import com.eeeya.fantuan.server.param.RestaurantSelectParam;
@@ -26,7 +27,7 @@ public class RestaurantServiceImpl implements RestaurantService {
     TableService tableService;
 
     @Override
-    public TableInfo getNewRestaurant(RestaurantSelectParam restaurantSelectParam) {
+    public TableInfo getNewRestaurant(RestaurantSelectParam restaurantSelectParam) throws ApiException {
         CoordinatePosition userCoordinatePosition = new CoordinatePosition();
         userCoordinatePosition.setLongitudeValue(restaurantSelectParam.getUserLongitude());
         userCoordinatePosition.setLatitudeValue(restaurantSelectParam.getUserLatitude());
@@ -45,7 +46,7 @@ public class RestaurantServiceImpl implements RestaurantService {
 
 
     @Override
-    public TableInfo getNewRestaurant(Double userLatitude, Double userLongitude) {
+    public TableInfo getNewRestaurant(Double userLatitude, Double userLongitude) throws ApiException {
         CoordinatePosition userCoordinatePosition = new CoordinatePosition();
         userCoordinatePosition.setLongitudeValue(userLongitude);
         userCoordinatePosition.setLatitudeValue(userLatitude);
@@ -54,7 +55,7 @@ public class RestaurantServiceImpl implements RestaurantService {
     }
 
 
-    private TableInfo getNewRestaurant(CoordinatePosition userCoordinatePosition, Double currentDistance, Boolean isFarther) {
+    private TableInfo getNewRestaurant(CoordinatePosition userCoordinatePosition, Double currentDistance, Boolean isFarther) throws ApiException {
         RestaurantFullInfo restaurantFullInfo = findRestaurantByDistance(userCoordinatePosition, currentDistance, isFarther);
         if(restaurantFullInfo == null){
             return null;

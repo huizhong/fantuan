@@ -3,6 +3,7 @@ package com.eeeya.fantuan.server.controller;
 import com.eeeya.fantuan.api.v1.contants.V1Constants;
 import com.eeeya.fantuan.api.v1.model.CoordinatePosition;
 import com.eeeya.fantuan.api.v1.model.UserLoginModel;
+import com.eeeya.fantuan.common.exception.ApiException;
 import com.eeeya.fantuan.common.model.ResultModel;
 import com.eeeya.fantuan.server.service.UserService;
 import com.wordnik.swagger.annotations.Api;
@@ -28,7 +29,7 @@ public class UserController {
     public ResultModel<CoordinatePosition> getUserCoordinatePosition(
             @ApiParam("用户ID") @PathVariable Long userId,
             @ApiParam("用户Token") @RequestParam String userToken
-    ){
+    ) throws ApiException {
         userService.checkPermission(userId, userToken);
         CoordinatePosition coordinatePosition = userService.getUserCoordinatePosition(userId);
 
@@ -40,7 +41,7 @@ public class UserController {
     public ResultModel<UserLoginModel> getUserLoginModel(
             @ApiParam("用户手机号") @RequestParam String userPhone,
             @ApiParam("用户密码") @RequestParam String password
-    ){
+    ) throws ApiException {
         return new ResultModel<UserLoginModel>(userService.getUserLoginModelByPassword(userPhone, password));
     }
 

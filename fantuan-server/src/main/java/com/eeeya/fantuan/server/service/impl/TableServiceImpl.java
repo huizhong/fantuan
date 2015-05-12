@@ -5,6 +5,8 @@ import com.eeeya.fantuan.api.v1.model.RestaurantMetaInfo;
 import com.eeeya.fantuan.api.v1.model.table.TableInfo;
 import com.eeeya.fantuan.common.exception.ApiException;
 import com.eeeya.fantuan.common.model.ApiError;
+import com.eeeya.fantuan.im.server.exception.ImException;
+import com.eeeya.fantuan.im.server.utils.ImUtils;
 import com.eeeya.fantuan.server.dao.TableDAO;
 import com.eeeya.fantuan.server.model.RestaurantFullInfo;
 import com.eeeya.fantuan.server.service.RestaurantService;
@@ -34,13 +36,12 @@ public class TableServiceImpl implements TableService {
     }
 
     @Override
-    public TableInfo getRestaurantRecommendTable(RestaurantFullInfo restaurantFullInfo){
-        List<TableInfo> tableInfoList =  tableDAO.getAllTableByRestaurantId(restaurantFullInfo.getRestaurantId());
+    public TableInfo getRestaurantRecommendTable(RestaurantFullInfo restaurantFullInfo) throws ApiException {
+        List<TableInfo> tableInfoList = tableDAO.getAllTableByRestaurantId(restaurantFullInfo.getRestaurantId());
         TableInfo tableInfo;
-        if(tableInfoList.isEmpty()){
+        if (tableInfoList.isEmpty()) {
             tableInfo = insertTable(restaurantFullInfo);
-        }
-        else{
+        } else {
             // todo 目前随机选
             int randTableIndex = (int) (Math.random() * tableInfoList.size());
             tableInfo = tableInfoList.get(randTableIndex);
@@ -51,9 +52,22 @@ public class TableServiceImpl implements TableService {
 
     }
 
+    private TableInfo insertTable(RestaurantMetaInfo restaurantFullInfo) throws ApiException {
+        try {
+            String talkGroupId = ImUtils.createGroup(
+                    restaurantFullInfo.getShortName(),
+                    restaurantFullInfo.getRestaurantId() + ":" + restaurantFullInfo.getFullName(),
+                    true
+            );
+            return insertTable(restaurantFullInfo, talkGroupId);
+        } catch (ImException e) {
+            throw new ApiException(ApiError.IM_ERROR, "创建群组失败", e);
+        }
+    }
+
     @NotNull
-    private TableInfo insertTable(RestaurantMetaInfo restaurantMetaInfo){
-        Long newTableId = tableDAO.insertTable(restaurantMetaInfo);
+    private TableInfo insertTable(RestaurantMetaInfo restaurantMetaInfo, String talkGroupId) throws ApiException {
+        Long newTableId = tableDAO.insertTable(restaurantMetaInfo, talkGroupId);
         return getTableInfo(newTableId);
     }
 
@@ -63,22 +77,21 @@ public class TableServiceImpl implements TableService {
     }
 
     @Override
-    public TableInfo getNextTable(Long tableId) {
+    public TableInfo getNextTable(Long tableId) throws ApiException {
         TableInfo tableInfo = tableDAO.getTableInfoByTableId(tableId);
         List<TableInfo> tableInfoList = tableDAO.getAllTableByRestaurantId(tableInfo.getRestaurantId()); // 需要按table index排序
         TableInfo lastTable = tableInfoList.get(tableInfoList.size() - 1);
-        if(tableId.equals(lastTable.getTableId())){
-            if( lastTable.getTableStatus().getJoinStatus().getJoinNumber() != 0
-                && lastTable.getRestaurantInfo().getMaxTable() > lastTable.getTableIndex()
-                ){
-                    return insertTable(lastTable.getRestaurantInfo());
-                }
-            else {
-                    return tableInfoList.get(0);
-                }
+        if (tableId.equals(lastTable.getTableId())) {
+            if (lastTable.getTableStatus().getJoinStatus().getJoinNumber() != 0
+                    && lastTable.getRestaurantInfo().getMaxTable() > lastTable.getTableIndex()
+                    ) {
+                return insertTable(lastTable.getRestaurantInfo());
+            } else {
+                return tableInfoList.get(0);
+            }
         }
-        for(TableInfo tableInfoElement : tableInfoList){
-            if(tableInfoElement.getTableIndex() > tableInfo.getTableIndex() ){
+        for (TableInfo tableInfoElement : tableInfoList) {
+            if (tableInfoElement.getTableIndex() > tableInfo.getTableIndex()) {
                 return tableInfoElement;
             }
         }
@@ -86,21 +99,26 @@ public class TableServiceImpl implements TableService {
     }
 
     @Override
-    public TableInfo joinTable(Long tableId, Long userId) {
+    public TableInfo joinTable(Long tableId, Long userId) throws ApiException {
         Long joinId = tableDAO.insertJoinStatus(tableId, userId);
-        // todo 插入失败时提示
-        return getTableInfo(tableId);
+        TableInfo tableInfo= getTableInfo(tableId);
+        try {
+            ImUtils.addUserToGroup(tableInfo.getTalkGroupId(), userId.toString());
+        } catch (ImException e) {
+            tableDAO.removeUserJoinStatus(joinId);
+            throw new ApiException(ApiError.IM_ERROR, "添加用户到群失败", e);
+        }
+        return tableInfo;
     }
 
     @Override
-    public TableInfo startMeal(Long tableId, Long userId) {
+    public TableInfo startMeal(Long tableId, Long userId) throws ApiException {
         Long startId = tableDAO.insertStartStatus(tableId, userId);
-        // todo 插入失败时提示
         return getTableInfo(tableId);
     }
 
     @Override
-    public TableInfo voteMeal(Long tableId, Long userId, Long foodItemId) {
+    public TableInfo voteMeal(Long tableId, Long userId, Long foodItemId) throws ApiException {
         Long voteId = tableDAO.insertVoteStatus(tableId, userId, foodItemId);
         // todo 插入失败时提示
         return getTableInfo(tableId);

@@ -10,6 +10,8 @@ import com.eeeya.fantuan.server.utils.MathUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * @author zhonghui
  * @since 5/9/15.
@@ -26,18 +28,23 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public UserLoginModel getUserLoginModelByPassword(String userPhone, String password){
+    public UserLoginModel getUserLoginModelByPassword(String userPhone, String password) throws ApiException {
         String encodePassword = MathUtils.md5(password);
         return userDAO.getUserLoginModelByPhoneAndPassword(userPhone, encodePassword);
         // $params['token'] = md5(time() . $params['telphone'] .rand(1,99));   //生成TOKEN
     }
 
     @Override
-    public void checkPermission(Long userId, String token){
+    public void checkPermission(Long userId, String token) throws ApiException {
         Boolean isRightToken = userDAO.isRightToken(userId, token);
         if(!isRightToken){
             throw new ApiException(ApiError.AUTHENTICATE_FAIL);
         }
+    }
+
+    @Override
+    public List<UserLoginModel> getAllUserLoginModel() {
+        return userDAO.getAllUserLoginModel();
     }
 
 }

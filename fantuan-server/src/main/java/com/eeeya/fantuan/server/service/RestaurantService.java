@@ -1,6 +1,7 @@
 package com.eeeya.fantuan.server.service;
 
 import com.eeeya.fantuan.api.v1.model.table.TableInfo;
+import com.eeeya.fantuan.common.exception.ApiException;
 import com.eeeya.fantuan.server.param.RestaurantSelectParam;
 
 import javax.annotation.Nullable;
@@ -12,7 +13,7 @@ import javax.annotation.Nullable;
 public interface RestaurantService {
 
     @Nullable
-    TableInfo getNewRestaurant(RestaurantSelectParam restaurantSelectParam);
+    TableInfo getNewRestaurant(RestaurantSelectParam restaurantSelectParam) throws ApiException;
 
-    TableInfo getNewRestaurant(Double userLatitude, Double userLongitude);
+    TableInfo getNewRestaurant(Double userLatitude, Double userLongitude) throws ApiException;
 }

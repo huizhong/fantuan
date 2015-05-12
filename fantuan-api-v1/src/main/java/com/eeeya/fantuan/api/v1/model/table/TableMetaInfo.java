@@ -33,7 +33,7 @@ public class TableMetaInfo {
     Long restaurantId;
 
     @ApiModelProperty("环信群聊ID")
-    Integer talkGroupId;
+    String talkGroupId;
 
     public Long getTableId() {
         return tableId;
@@ -83,11 +83,11 @@ public class TableMetaInfo {
         this.restaurantId = restaurantId;
     }
 
-    public Integer getTalkGroupId() {
+    public String getTalkGroupId() {
         return talkGroupId;
     }
 
-    public void setTalkGroupId(Integer talkGroupId) {
+    public void setTalkGroupId(String talkGroupId) {
         this.talkGroupId = talkGroupId;
     }
 

@@ -9,7 +9,7 @@ import java.util.Arrays;
  * @author zhonghui
  * @since 1/18/15.
  */
-public class ApiException extends RuntimeException {
+public class ApiException extends Exception {
     private final ApiError apiError;
 
     public ApiException(ApiError apiError) {
