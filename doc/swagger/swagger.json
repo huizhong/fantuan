@@ -1,0 +1,912 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "description" : "约团前后端接口。<br/>时间都是timestamp<br/>未特别说明，都返回Json",
+    "version" : "0.3",
+    "title" : "API for YueFan",
+    "termsOfService" : "",
+    "contact" : {
+      "url" : ""
+    },
+    "license" : {
+      "name" : "",
+      "url" : ""
+    }
+  },
+  "host" : "test.daidaiduoduo.com",
+  "basePath" : "/",
+  "schemes" : [ "http" ],
+  "paths" : {
+    "/api/v1/restaurant/recommend.json" : {
+      "get" : {
+        "tags" : [ "restaurant" ],
+        "summary" : "餐厅餐桌推荐",
+        "description" : "getRecommendTableInfo",
+        "operationId" : "getRecommendTableInfo",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "*/*" ],
+        "parameters" : [ {
+          "name" : "userLatitude",
+          "in" : "query",
+          "description" : "用户位置经度",
+          "required" : true,
+          "type" : "number",
+          "format" : "double"
+        }, {
+          "name" : "userLongitude",
+          "in" : "query",
+          "description" : "用户位置纬度",
+          "required" : true,
+          "type" : "number",
+          "format" : "double"
+        } ],
+        "responses" : {
+          "404" : {
+            "description" : "Not Found"
+          },
+          "200" : {
+            "description" : "success",
+            "schema" : {
+              "$ref" : "#/definitions/ResultModelOfTableInfo"
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized"
+          },
+          "403" : {
+            "description" : "Forbidden"
+          }
+        }
+      }
+    },
+    "/api/v1/restaurant/{tableId}/change.do" : {
+      "post" : {
+        "tags" : [ "restaurant" ],
+        "summary" : "换餐厅",
+        "description" : "changeRestaurantByTableId",
+        "operationId" : "changeRestaurantByTableId",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "*/*" ],
+        "parameters" : [ {
+          "name" : "tableId",
+          "in" : "path",
+          "description" : "当前餐桌ID",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int64"
+        }, {
+          "name" : "isFarther",
+          "in" : "query",
+          "description" : "切换到更远",
+          "required" : true,
+          "type" : "boolean"
+        }, {
+          "name" : "userLatitude",
+          "in" : "query",
+          "description" : "用户位置经度",
+          "required" : true,
+          "type" : "number",
+          "format" : "double"
+        }, {
+          "name" : "userLongitude",
+          "in" : "query",
+          "description" : "用户位置纬度",
+          "required" : true,
+          "type" : "number",
+          "format" : "double"
+        } ],
+        "responses" : {
+          "404" : {
+            "description" : "Not Found"
+          },
+          "200" : {
+            "description" : "success",
+            "schema" : {
+              "$ref" : "#/definitions/ResultModelOfTableInfo"
+            }
+          },
+          "201" : {
+            "description" : "Created"
+          },
+          "401" : {
+            "description" : "Unauthorized"
+          },
+          "403" : {
+            "description" : "Forbidden"
+          }
+        }
+      }
+    },
+    "/api/v1/table/{tableId}/change.do" : {
+      "post" : {
+        "tags" : [ "table" ],
+        "summary" : "换桌",
+        "description" : "changeTableByTableId",
+        "operationId" : "changeTableByTableId",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "*/*" ],
+        "parameters" : [ {
+          "name" : "tableId",
+          "in" : "path",
+          "description" : "当前餐桌ID",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int64"
+        } ],
+        "responses" : {
+          "404" : {
+            "description" : "Not Found"
+          },
+          "200" : {
+            "description" : "success",
+            "schema" : {
+              "$ref" : "#/definitions/ResultModelOfTableInfo"
+            }
+          },
+          "201" : {
+            "description" : "Created"
+          },
+          "401" : {
+            "description" : "Unauthorized"
+          },
+          "403" : {
+            "description" : "Forbidden"
+          }
+        }
+      }
+    },
+    "/api/v1/table/{tableId}/info.json" : {
+      "get" : {
+        "tags" : [ "table" ],
+        "summary" : "餐桌信息",
+        "description" : "getTableInfo",
+        "operationId" : "getTableInfo",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "*/*" ],
+        "parameters" : [ {
+          "name" : "tableId",
+          "in" : "path",
+          "description" : "当前餐桌ID",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int64"
+        } ],
+        "responses" : {
+          "404" : {
+            "description" : "Not Found"
+          },
+          "200" : {
+            "description" : "success",
+            "schema" : {
+              "$ref" : "#/definitions/ResultModelOfTableInfo"
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized"
+          },
+          "403" : {
+            "description" : "Forbidden"
+          }
+        }
+      }
+    },
+    "/api/v1/table/{tableId}/join.do" : {
+      "post" : {
+        "tags" : [ "table" ],
+        "summary" : "拼桌",
+        "description" : "joinTable",
+        "operationId" : "joinTable",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "*/*" ],
+        "parameters" : [ {
+          "name" : "tableId",
+          "in" : "path",
+          "description" : "当前餐桌ID",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int64"
+        }, {
+          "name" : "userId",
+          "in" : "query",
+          "description" : "用户ID",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int64"
+        }, {
+          "name" : "userToken",
+          "in" : "query",
+          "description" : "用户Token",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "404" : {
+            "description" : "Not Found"
+          },
+          "200" : {
+            "description" : "success",
+            "schema" : {
+              "$ref" : "#/definitions/ResultModelOfTableInfo"
+            }
+          },
+          "201" : {
+            "description" : "Created"
+          },
+          "401" : {
+            "description" : "Unauthorized"
+          },
+          "403" : {
+            "description" : "Forbidden"
+          }
+        }
+      }
+    },
+    "/api/v1/table/{tableId}/start.do" : {
+      "post" : {
+        "tags" : [ "table" ],
+        "summary" : "出发",
+        "description" : "startMeal",
+        "operationId" : "startMeal",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "*/*" ],
+        "parameters" : [ {
+          "name" : "tableId",
+          "in" : "path",
+          "description" : "当前餐桌ID",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int64"
+        }, {
+          "name" : "userId",
+          "in" : "query",
+          "description" : "用户ID",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int64"
+        }, {
+          "name" : "userToken",
+          "in" : "query",
+          "description" : "用户Token",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "404" : {
+            "description" : "Not Found"
+          },
+          "200" : {
+            "description" : "success",
+            "schema" : {
+              "$ref" : "#/definitions/ResultModelOfTableInfo"
+            }
+          },
+          "201" : {
+            "description" : "Created"
+          },
+          "401" : {
+            "description" : "Unauthorized"
+          },
+          "403" : {
+            "description" : "Forbidden"
+          }
+        }
+      }
+    },
+    "/api/v1/table/{tableId}/status.json" : {
+      "get" : {
+        "tags" : [ "table" ],
+        "summary" : "餐桌状态",
+        "description" : "getTableStatus",
+        "operationId" : "getTableStatus",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "*/*" ],
+        "parameters" : [ {
+          "name" : "tableId",
+          "in" : "path",
+          "description" : "当前餐桌ID",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int64"
+        } ],
+        "responses" : {
+          "404" : {
+            "description" : "Not Found"
+          },
+          "200" : {
+            "description" : "success",
+            "schema" : {
+              "$ref" : "#/definitions/ResultModelOfTableStatus"
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized"
+          },
+          "403" : {
+            "description" : "Forbidden"
+          }
+        }
+      }
+    },
+    "/api/v1/table/{tableId}/vote.do" : {
+      "post" : {
+        "tags" : [ "table" ],
+        "summary" : "投票",
+        "description" : "voteFoodItem",
+        "operationId" : "voteFoodItem",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "*/*" ],
+        "parameters" : [ {
+          "name" : "tableId",
+          "in" : "path",
+          "description" : "当前餐桌ID",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int64"
+        }, {
+          "name" : "foodItemId",
+          "in" : "query",
+          "description" : "投票菜品ID",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int64"
+        }, {
+          "name" : "userId",
+          "in" : "query",
+          "description" : "用户ID",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int64"
+        }, {
+          "name" : "userToken",
+          "in" : "query",
+          "description" : "用户Token",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "404" : {
+            "description" : "Not Found"
+          },
+          "200" : {
+            "description" : "success",
+            "schema" : {
+              "$ref" : "#/definitions/ResultModelOfTableInfo"
+            }
+          },
+          "201" : {
+            "description" : "Created"
+          },
+          "401" : {
+            "description" : "Unauthorized"
+          },
+          "403" : {
+            "description" : "Forbidden"
+          }
+        }
+      }
+    },
+    "/api/v1/user/login.json" : {
+      "get" : {
+        "tags" : [ "user" ],
+        "summary" : "用户登录",
+        "description" : "getUserLoginModel",
+        "operationId" : "getUserLoginModel",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "*/*" ],
+        "parameters" : [ {
+          "name" : "userPhone",
+          "in" : "query",
+          "description" : "用户手机号",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "password",
+          "in" : "query",
+          "description" : "用户密码",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "404" : {
+            "description" : "Not Found"
+          },
+          "200" : {
+            "description" : "success",
+            "schema" : {
+              "$ref" : "#/definitions/ResultModelOfUserLoginModel"
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized"
+          },
+          "403" : {
+            "description" : "Forbidden"
+          }
+        }
+      }
+    },
+    "/api/v1/user/{userId}/coordinatePosition.json" : {
+      "get" : {
+        "tags" : [ "user" ],
+        "summary" : "用户位置信息",
+        "description" : "getUserCoordinatePosition",
+        "operationId" : "getUserCoordinatePosition",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "*/*" ],
+        "parameters" : [ {
+          "name" : "userId",
+          "in" : "path",
+          "description" : "用户ID",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int64"
+        }, {
+          "name" : "userToken",
+          "in" : "query",
+          "description" : "用户Token",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "404" : {
+            "description" : "Not Found"
+          },
+          "200" : {
+            "description" : "success",
+            "schema" : {
+              "$ref" : "#/definitions/ResultModelOfCoordinatePosition"
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized"
+          },
+          "403" : {
+            "description" : "Forbidden"
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "TableMessageStatus" : {
+      "properties" : {
+        "hasNewMessage" : {
+          "type" : "boolean",
+          "description" : "是否有新消息"
+        },
+        "updateTime" : {
+          "type" : "integer",
+          "format" : "int64",
+          "description" : "状态更新时间"
+        }
+      },
+      "description" : ""
+    },
+    "ImageInfo" : {
+      "properties" : {
+        "imageType" : {
+          "type" : "string",
+          "description" : "图片类型，例如：用户Logo"
+        },
+        "imageUrl" : {
+          "type" : "string",
+          "description" : "图片URL"
+        }
+      },
+      "description" : ""
+    },
+    "ResultModelOfCoordinatePosition" : {
+      "properties" : {
+        "message" : {
+          "type" : "string",
+          "description" : "错误信息"
+        },
+        "ext" : {
+          "type" : "object",
+          "description" : "其它信息"
+        },
+        "status" : {
+          "type" : "integer",
+          "format" : "int32",
+          "description" : "请求状态, 0表示正常"
+        },
+        "time" : {
+          "type" : "integer",
+          "format" : "int64",
+          "description" : "服务器时间"
+        },
+        "data" : {
+          "description" : "请求的数据",
+          "$ref" : "#/definitions/CoordinatePosition"
+        }
+      },
+      "description" : ""
+    },
+    "CoordinatePosition" : {
+      "properties" : {
+        "latitudeValue" : {
+          "type" : "number",
+          "format" : "double",
+          "description" : "纬度"
+        },
+        "longitudeValue" : {
+          "type" : "number",
+          "format" : "double",
+          "description" : "经度"
+        }
+      },
+      "description" : ""
+    },
+    "MealStartStatus" : {
+      "properties" : {
+        "mealStartItemList" : {
+          "description" : "出发信息列表",
+          "$ref" : "#/definitions/List"
+        },
+        "updateTime" : {
+          "type" : "integer",
+          "format" : "int64",
+          "description" : "状态更新时间"
+        }
+      },
+      "description" : ""
+    },
+    "TableInfo" : {
+      "properties" : {
+        "tableLogo" : {
+          "description" : "餐桌的Logo图，用于背景",
+          "$ref" : "#/definitions/ImageInfo"
+        },
+        "averagePrice" : {
+          "description" : "餐桌人均价格",
+          "$ref" : "#/definitions/PriceInfo"
+        },
+        "tableStatus" : {
+          "description" : "餐桌状态，会实时变化",
+          "$ref" : "#/definitions/TableStatus"
+        },
+        "tableIndex" : {
+          "type" : "integer",
+          "format" : "int32",
+          "description" : "餐桌在餐厅的位置序号"
+        },
+        "restaurantInfo" : {
+          "description" : "餐厅信息",
+          "$ref" : "#/definitions/RestaurantInfo"
+        },
+        "restaurantId" : {
+          "type" : "integer",
+          "format" : "int64",
+          "description" : "餐厅ID"
+        },
+        "tableType" : {
+          "type" : "string",
+          "description" : "餐桌座位类型"
+        },
+        "tableId" : {
+          "type" : "integer",
+          "format" : "int64",
+          "description" : "餐桌唯一ID"
+        },
+        "mealTime" : {
+          "type" : "integer",
+          "format" : "int64",
+          "description" : "会餐时间"
+        },
+        "mealType" : {
+          "type" : "string",
+          "description" : "会餐类型"
+        },
+        "payType" : {
+          "type" : "string",
+          "description" : "餐桌付款方式"
+        },
+        "talkGroupId" : {
+          "type" : "integer",
+          "format" : "int32",
+          "description" : "环信群聊ID"
+        }
+      },
+      "description" : ""
+    },
+    "MealStartItem" : {
+      "properties" : {
+        "userInfo" : {
+          "description" : "会餐人员",
+          "$ref" : "#/definitions/UserInfo"
+        },
+        "startTime" : {
+          "type" : "integer",
+          "format" : "int64",
+          "description" : "出发时间"
+        },
+        "updateTime" : {
+          "type" : "integer",
+          "format" : "int64",
+          "description" : "状态更新时间"
+        }
+      },
+      "description" : ""
+    },
+    "ResultModelOfTableStatus" : {
+      "properties" : {
+        "message" : {
+          "type" : "string",
+          "description" : "错误信息"
+        },
+        "ext" : {
+          "type" : "object",
+          "description" : "其它信息"
+        },
+        "status" : {
+          "type" : "integer",
+          "format" : "int32",
+          "description" : "请求状态, 0表示正常"
+        },
+        "time" : {
+          "type" : "integer",
+          "format" : "int64",
+          "description" : "服务器时间"
+        },
+        "data" : {
+          "description" : "请求的数据",
+          "$ref" : "#/definitions/TableStatus"
+        }
+      },
+      "description" : ""
+    },
+    "PriceInfo" : {
+      "properties" : {
+        "priceValue" : {
+          "type" : "integer",
+          "format" : "int32",
+          "description" : "价格数值"
+        },
+        "priceUnit" : {
+          "type" : "string",
+          "description" : "价格单位"
+        }
+      },
+      "description" : ""
+    },
+    "TableJoinStatus" : {
+      "properties" : {
+        "joinUserList" : {
+          "description" : "参与人员列表",
+          "$ref" : "#/definitions/List"
+        },
+        "tableStatusLabel" : {
+          "type" : "string",
+          "description" : "参与状态标题，比如'四缺一'"
+        },
+        "tableIconType" : {
+          "type" : "string",
+          "description" : "参与状态标签"
+        },
+        "joinNumber" : {
+          "type" : "integer",
+          "format" : "int32",
+          "description" : "参与人数"
+        },
+        "updateTime" : {
+          "type" : "integer",
+          "format" : "int64",
+          "description" : "状态更新时间"
+        }
+      },
+      "description" : ""
+    },
+    "UserInfo" : {
+      "properties" : {
+        "userLogo" : {
+          "description" : "用于展示在桌面上的圆头像",
+          "$ref" : "#/definitions/ImageInfo"
+        },
+        "userPhone" : {
+          "type" : "string",
+          "description" : "手机号"
+        },
+        "userId" : {
+          "type" : "integer",
+          "format" : "int64",
+          "description" : "用户Id"
+        },
+        "userName" : {
+          "type" : "string",
+          "description" : "用户名"
+        }
+      },
+      "description" : ""
+    },
+    "MealVoteStatus" : {
+      "properties" : {
+        "mealVoteItemList" : {
+          "description" : "会餐投票列表",
+          "$ref" : "#/definitions/List"
+        },
+        "updateTime" : {
+          "type" : "integer",
+          "format" : "int64",
+          "description" : "状态更新时间"
+        }
+      },
+      "description" : ""
+    },
+    "TableStatus" : {
+      "properties" : {
+        "messageStatus" : {
+          "description" : "消息状态",
+          "$ref" : "#/definitions/TableMessageStatus"
+        },
+        "mealStartStatus" : {
+          "description" : "会餐人员出发状态",
+          "$ref" : "#/definitions/MealStartStatus"
+        },
+        "mealVoteStatus" : {
+          "description" : "菜品投票状态",
+          "$ref" : "#/definitions/MealVoteStatus"
+        },
+        "joinStatus" : {
+          "description" : "参与状态",
+          "$ref" : "#/definitions/TableJoinStatus"
+        },
+        "updateTime" : {
+          "type" : "integer",
+          "format" : "int64",
+          "description" : "状态更新时间"
+        }
+      },
+      "description" : ""
+    },
+    "RestaurantInfo" : {
+      "properties" : {
+        "foodItemList" : {
+          "description" : "菜品列表",
+          "$ref" : "#/definitions/List"
+        },
+        "restaurantId" : {
+          "type" : "integer",
+          "format" : "int64",
+          "description" : "餐厅唯一ID"
+        },
+        "coordinatePosition" : {
+          "description" : "餐厅经纬度",
+          "$ref" : "#/definitions/CoordinatePosition"
+        },
+        "maxTable" : {
+          "type" : "integer",
+          "format" : "int32",
+          "description" : "最大饭桌数"
+        },
+        "fullName" : {
+          "type" : "string",
+          "description" : "全名称，比如'金百万（望京店）'"
+        },
+        "restaurantPhone" : {
+          "type" : "string",
+          "description" : "餐厅电话"
+        },
+        "restaurantAddress" : {
+          "type" : "string",
+          "description" : "餐厅地址"
+        },
+        "shortName" : {
+          "type" : "string",
+          "description" : "短名称，比如'金百万'"
+        }
+      },
+      "description" : ""
+    },
+    "MealVoteItem" : {
+      "properties" : {
+        "userInfo" : {
+          "description" : "投票人",
+          "$ref" : "#/definitions/UserInfo"
+        },
+        "foodItem" : {
+          "description" : "投的菜品",
+          "$ref" : "#/definitions/FoodItem"
+        },
+        "voteTime" : {
+          "type" : "integer",
+          "format" : "int64",
+          "description" : "投票时间"
+        },
+        "updateTime" : {
+          "type" : "integer",
+          "format" : "int64",
+          "description" : "状态更新时间"
+        }
+      },
+      "description" : ""
+    },
+    "ResultModelOfTableInfo" : {
+      "properties" : {
+        "message" : {
+          "type" : "string",
+          "description" : "错误信息"
+        },
+        "ext" : {
+          "type" : "object",
+          "description" : "其它信息"
+        },
+        "status" : {
+          "type" : "integer",
+          "format" : "int32",
+          "description" : "请求状态, 0表示正常"
+        },
+        "time" : {
+          "type" : "integer",
+          "format" : "int64",
+          "description" : "服务器时间"
+        },
+        "data" : {
+          "description" : "请求的数据",
+          "$ref" : "#/definitions/TableInfo"
+        }
+      },
+      "description" : ""
+    },
+    "UserLoginModel" : {
+      "properties" : {
+        "userToken" : {
+          "type" : "string"
+        },
+        "userId" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "userName" : {
+          "type" : "string"
+        }
+      },
+      "description" : ""
+    },
+    "ResultModelOfUserLoginModel" : {
+      "properties" : {
+        "message" : {
+          "type" : "string",
+          "description" : "错误信息"
+        },
+        "ext" : {
+          "type" : "object",
+          "description" : "其它信息"
+        },
+        "status" : {
+          "type" : "integer",
+          "format" : "int32",
+          "description" : "请求状态, 0表示正常"
+        },
+        "time" : {
+          "type" : "integer",
+          "format" : "int64",
+          "description" : "服务器时间"
+        },
+        "data" : {
+          "description" : "请求的数据",
+          "$ref" : "#/definitions/UserLoginModel"
+        }
+      },
+      "description" : ""
+    },
+    "FoodItem" : {
+      "properties" : {
+        "foodName" : {
+          "type" : "string",
+          "description" : "菜品名字"
+        },
+        "foodPrice" : {
+          "type" : "integer",
+          "format" : "int32",
+          "description" : "菜品价格"
+        },
+        "foodId" : {
+          "type" : "integer",
+          "format" : "int64",
+          "description" : "菜品唯一ID"
+        }
+      },
+      "description" : ""
+    }
+  }
+}
