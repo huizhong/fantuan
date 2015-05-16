@@ -15,9 +15,9 @@
         <!--<module>fantuan-web</module>-->
         <module>fantuan-api-v1</module>
         <!--<module>fantuan-api-client-codegen</module>-->
-        <module>fantuan-api-java-client</module>
+        <!--<module>fantuan-api-java-client</module>-->
         <module>mybatis-offset</module>
-        <module>fantuan-web</module>
+        <!--<module>fantuan-web</module>-->
         <module>fantuan-service</module>
         <module>fantuan-im-server</module>
     </modules>
@@ -40,22 +40,22 @@
                 <artifactId>fantuan-im-server</artifactId>
                 <version>1.0-SNAPSHOT</version>
             </dependency>
-            <dependency>
-                <groupId>com.eeeya.fantuan</groupId>
-                <artifactId>fantuan-web</artifactId>
-                <version>${project.version}</version>
-            </dependency>
+            <!--<dependency>-->
+                <!--<groupId>com.eeeya.fantuan</groupId>-->
+                <!--<artifactId>fantuan-web</artifactId>-->
+                <!--<version>${project.version}</version>-->
+            <!--</dependency>-->
 
             <dependency>
                 <groupId>com.eeeya.fantuan</groupId>
                 <artifactId>fantuan-service</artifactId>
                 <version>1.0-SNAPSHOT</version>
             </dependency>
-            <dependency>
-                <groupId>com.eeeya.fantuan</groupId>
-                <artifactId>fantuan-api-java-client</artifactId>
-                <version>1.0-SNAPSHOT</version>
-            </dependency>
+            <!--<dependency>-->
+                <!--<groupId>com.eeeya.fantuan</groupId>-->
+                <!--<artifactId>fantuan-api-java-client</artifactId>-->
+                <!--<version>1.0-SNAPSHOT</version>-->
+            <!--</dependency>-->
             <dependency>
                 <groupId>com.eeeya.fantuan</groupId>
                 <artifactId>fantuan-server</artifactId>
@@ -69,11 +69,6 @@
             <dependency>
                 <groupId>com.eeeya.fantuan</groupId>
                 <artifactId>fantuan-api-v1</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.eeeya.fantuan</groupId>
-                <artifactId>fantuan-api-client</artifactId>
                 <version>${project.version}</version>
             </dependency>
 
