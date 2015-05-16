@@ -260,7 +260,7 @@ public class TableDAOImpl implements TableDAO {
         joinStatus.setJoinUserList(userInfoList);
         Integer joinNumber = userInfoList.size();
         joinStatus.setJoinNumber(joinNumber);
-        String tableStatusTitle = String.format(FantuanServerConfig.DEFAULT_TABLE_STATUS_TITLE, tableSize, joinNumber);
+        String tableStatusTitle = String.format(FantuanServerConfig.DEFAULT_TABLE_STATUS_TITLE, tableSize, tableSize-joinNumber);
         joinStatus.setTableStatusLabel(tableStatusTitle);
         if(joinNumber.equals((int)tableSize)){
             joinStatus.setTableIconType(TableIconType.FULL);

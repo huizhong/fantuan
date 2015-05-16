@@ -10,6 +10,7 @@ import com.wordnik.swagger.annotations.Api;
 import com.wordnik.swagger.annotations.ApiOperation;
 import com.wordnik.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -18,7 +19,7 @@ import org.springframework.web.bind.annotation.*;
  */
 @Api(value = "用户接口", description = "用于查看用户信息")
 @RestController
-@RequestMapping(V1Constants.URL_PREFIX + "/user")
+@RequestMapping(value = V1Constants.URL_PREFIX + "/user", produces = MediaType.APPLICATION_JSON_VALUE)
 public class UserController {
 
     @Autowired
@@ -37,7 +38,7 @@ public class UserController {
     }
 
     @ApiOperation("用户登录")
-    @RequestMapping(value="/login.json", method = RequestMethod.GET)
+    @RequestMapping(value="/login.json", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE )
     public ResultModel<UserLoginModel> getUserLoginModel(
             @ApiParam("用户手机号") @RequestParam String userPhone,
             @ApiParam("用户密码") @RequestParam String password
