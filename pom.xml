@@ -16,7 +16,7 @@
         <module>fantuan-api-v1</module>
         <!--<module>fantuan-api-client-codegen</module>-->
         <!--<module>fantuan-api-java-client</module>-->
-        <module>mybatis-offset</module>
+        <!--<module>mybatis-offset</module>-->
         <!--<module>fantuan-web</module>-->
         <module>fantuan-service</module>
         <module>fantuan-im-server</module>
