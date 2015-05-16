@@ -33,36 +33,6 @@ public class EasemobChatMessage {
             Constants.APP_CLIENT_SECRET, Roles.USER_ROLE_APPADMIN);
 
     /**
-     * Main Test
-     *
-     * @param args
-     */
-    public static void main(String[] args) {
-
-        // 聊天消息 获取最新的20条记录
-        ObjectNode queryStrNode = factory.objectNode();
-        queryStrNode.put("limit", "20");
-        ObjectNode messages = getChatMessages(queryStrNode);
-
-        // 聊天消息 获取7天以内的消息
-        String currentTimestamp = String.valueOf(System.currentTimeMillis());
-        String senvenDayAgo = String.valueOf(System.currentTimeMillis() - 7 * 24 * 60 * 60 * 1000);
-        ObjectNode queryStrNode1 = factory.objectNode();
-        queryStrNode1.put("ql", "select * where  timestamp > " + senvenDayAgo + " and timestamp < " + currentTimestamp);
-        ObjectNode messages1 = getChatMessages(queryStrNode1);
-
-        // 聊天消息 分页获取
-        ObjectNode queryStrNode2 = factory.objectNode();
-        queryStrNode2.put("limit", "20");
-        // 第一页
-        ObjectNode messages2 = getChatMessages(queryStrNode2);
-        // 第二页
-        String cursor = messages2.get("cursor").asText();
-        queryStrNode2.put("cursor", cursor);
-        ObjectNode messages3 = getChatMessages(queryStrNode2);
-    }
-
-    /**
 	 * 获取聊天消息
 	 * 
 	 * @param queryStrNode
