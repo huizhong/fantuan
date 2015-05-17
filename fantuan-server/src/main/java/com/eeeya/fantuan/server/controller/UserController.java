@@ -2,6 +2,7 @@ package com.eeeya.fantuan.server.controller;
 
 import com.eeeya.fantuan.api.v1.contants.V1Constants;
 import com.eeeya.fantuan.api.v1.model.CoordinatePosition;
+import com.eeeya.fantuan.api.v1.model.UserInfo;
 import com.eeeya.fantuan.api.v1.model.UserLoginModel;
 import com.eeeya.fantuan.common.exception.ApiException;
 import com.eeeya.fantuan.common.model.ResultModel;
@@ -38,12 +39,20 @@ public class UserController {
     }
 
     @ApiOperation("用户登录")
-    @RequestMapping(value="/login.json", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE )
+    @RequestMapping(value="/login.json", method = RequestMethod.GET)
     public ResultModel<UserLoginModel> getUserLoginModel(
             @ApiParam("用户手机号") @RequestParam String userPhone,
             @ApiParam("用户密码") @RequestParam String password
     ) throws ApiException {
         return new ResultModel<UserLoginModel>(userService.getUserLoginModelByPassword(userPhone, password));
+    }
+
+    @ApiOperation("获取用户基本信息")
+    @RequestMapping(value = "/info.json", method = RequestMethod.GET)
+    public ResultModel<UserInfo> getUserInfo(
+            @ApiParam("用户ID") @PathVariable Long userId
+    ){
+        return new ResultModel<UserInfo>(userService.getUserInfo(userId));
     }
 
 }

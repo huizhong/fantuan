@@ -1,6 +1,7 @@
 package com.eeeya.fantuan.server.service;
 
 import com.eeeya.fantuan.api.v1.model.CoordinatePosition;
+import com.eeeya.fantuan.api.v1.model.UserInfo;
 import com.eeeya.fantuan.api.v1.model.UserLoginModel;
 import com.eeeya.fantuan.common.exception.ApiException;
 
@@ -18,4 +19,6 @@ public interface UserService {
     void checkPermission(Long userId, String token) throws ApiException;
 
     List<UserLoginModel> getAllUserLoginModel();
+
+    UserInfo getUserInfo(Long userId);
 }
