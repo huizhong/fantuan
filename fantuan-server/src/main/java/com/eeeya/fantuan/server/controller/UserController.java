@@ -50,7 +50,7 @@ public class UserController {
     @ApiOperation("获取用户基本信息")
     @RequestMapping(value = "/info.json", method = RequestMethod.GET)
     public ResultModel<UserInfo> getUserInfo(
-            @ApiParam("用户ID") @PathVariable Long userId
+            @ApiParam("用户ID") @RequestParam Long userId
     ){
         return new ResultModel<UserInfo>(userService.getUserInfo(userId));
     }
